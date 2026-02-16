@@ -8,6 +8,7 @@ signal enter_resources
 
 func add_money(amount: int):
 	money += amount
+	print("Money: " + str(money))
 	
 func add_resources(amount: int):
 	resources += amount

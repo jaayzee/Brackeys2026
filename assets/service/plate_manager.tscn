@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cmwdb6cmikev0"]
+
+[ext_resource type="Script" uid="uid://b5s315npcosae" path="res://scripts/plate_manager.gd" id="1_sox3t"]
+
+[node name="plate_manager" type="Node" unique_id=133560238]
+script = ExtResource("1_sox3t")

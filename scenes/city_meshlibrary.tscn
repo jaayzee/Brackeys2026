@@ -1,49 +1,49 @@
 [gd_scene format=3 uid="uid://cqdh54rpqtlb4"]
 
-[ext_resource type="PackedScene" uid="uid://d1ly6d6uf52qg" path="res://assets/cityassets/building_e.tscn" id="1_67pwg"]
-[ext_resource type="PackedScene" uid="uid://wns85err1l02" path="res://assets/cityassets/building_d.tscn" id="2_7ydne"]
-[ext_resource type="PackedScene" uid="uid://li0hn4e6nld1" path="res://assets/cityassets/base.tscn" id="3_pplvu"]
-[ext_resource type="PackedScene" uid="uid://bxw45imp62i02" path="res://assets/cityassets/building_a.tscn" id="4_d1cft"]
-[ext_resource type="PackedScene" uid="uid://b1mb7kcuj5dj7" path="res://assets/cityassets/building_b.tscn" id="5_2fe8e"]
-[ext_resource type="PackedScene" uid="uid://cmf7vw02i5m2y" path="res://assets/cityassets/building_c.tscn" id="6_4eevd"]
-[ext_resource type="PackedScene" uid="uid://b3eh81xy5wbv7" path="res://assets/cityassets/building_f.tscn" id="7_8dsth"]
-[ext_resource type="PackedScene" uid="uid://bq83rnqsm1ij6" path="res://assets/cityassets/building_g.tscn" id="8_gupxd"]
-[ext_resource type="PackedScene" uid="uid://b570sb1ybnvmq" path="res://assets/cityassets/building_h.tscn" id="9_1kmet"]
-[ext_resource type="PackedScene" uid="uid://dnkuktk5c7d17" path="res://assets/cityassets/road_corner.tscn" id="10_alei6"]
-[ext_resource type="PackedScene" uid="uid://ca0s17g73qrjl" path="res://assets/cityassets/road_corner_curved.tscn" id="11_tl0i6"]
-[ext_resource type="PackedScene" uid="uid://cc53t6rxwscbp" path="res://assets/cityassets/road_junction.tscn" id="12_0bb41"]
-[ext_resource type="PackedScene" uid="uid://cikdttg80at3o" path="res://assets/cityassets/road_straight.tscn" id="13_l4q3d"]
-[ext_resource type="PackedScene" uid="uid://be4ijyf0rqas5" path="res://assets/cityassets/road_straight_crossing.tscn" id="14_rsy5c"]
-[ext_resource type="PackedScene" uid="uid://ciqpbw2mdyjpy" path="res://assets/cityassets/road_tsplit.tscn" id="15_pkiod"]
+[ext_resource type="PackedScene" uid="uid://d1ly6d6uf52qg" path="res://assets/cityassets/building_e.tscn" id="1_cofpw"]
+[ext_resource type="PackedScene" uid="uid://wns85err1l02" path="res://assets/cityassets/building_d.tscn" id="2_mcrih"]
+[ext_resource type="PackedScene" uid="uid://li0hn4e6nld1" path="res://assets/cityassets/base.tscn" id="3_nwm1y"]
+[ext_resource type="PackedScene" uid="uid://bxw45imp62i02" path="res://assets/cityassets/building_a.tscn" id="4_0sds7"]
+[ext_resource type="PackedScene" uid="uid://b1mb7kcuj5dj7" path="res://assets/cityassets/building_b.tscn" id="5_51ht0"]
+[ext_resource type="PackedScene" uid="uid://cmf7vw02i5m2y" path="res://assets/cityassets/building_c.tscn" id="6_u7yel"]
+[ext_resource type="PackedScene" uid="uid://b3eh81xy5wbv7" path="res://assets/cityassets/building_f.tscn" id="7_n20sh"]
+[ext_resource type="PackedScene" uid="uid://bq83rnqsm1ij6" path="res://assets/cityassets/building_g.tscn" id="8_aqovl"]
+[ext_resource type="PackedScene" uid="uid://b570sb1ybnvmq" path="res://assets/cityassets/building_h.tscn" id="9_rjwba"]
+[ext_resource type="PackedScene" uid="uid://dnkuktk5c7d17" path="res://assets/cityassets/road_corner.tscn" id="10_4ynwf"]
+[ext_resource type="PackedScene" uid="uid://ca0s17g73qrjl" path="res://assets/cityassets/road_corner_curved.tscn" id="11_gdsfy"]
+[ext_resource type="PackedScene" uid="uid://cc53t6rxwscbp" path="res://assets/cityassets/road_junction.tscn" id="12_5aulk"]
+[ext_resource type="PackedScene" uid="uid://cikdttg80at3o" path="res://assets/cityassets/road_straight.tscn" id="13_k4klv"]
+[ext_resource type="PackedScene" uid="uid://be4ijyf0rqas5" path="res://assets/cityassets/road_straight_crossing.tscn" id="14_8xfqj"]
+[ext_resource type="PackedScene" uid="uid://ciqpbw2mdyjpy" path="res://assets/cityassets/road_tsplit.tscn" id="15_8tb1c"]
 
 [node name="City_MeshLibrary" type="Node2D" unique_id=1587156612]
 
-[node name="building_E" parent="." unique_id=750599897 instance=ExtResource("1_67pwg")]
+[node name="building_E" parent="." unique_id=750599897 instance=ExtResource("1_cofpw")]
 
-[node name="building_D" parent="." unique_id=2074231133 instance=ExtResource("2_7ydne")]
+[node name="building_D" parent="." unique_id=2074231133 instance=ExtResource("2_mcrih")]
 
-[node name="base" parent="." unique_id=554628883 instance=ExtResource("3_pplvu")]
+[node name="base" parent="." unique_id=554628883 instance=ExtResource("3_nwm1y")]
 
-[node name="building_A" parent="." unique_id=1331274702 instance=ExtResource("4_d1cft")]
+[node name="building_A" parent="." unique_id=1331274702 instance=ExtResource("4_0sds7")]
 
-[node name="building_B" parent="." unique_id=1099723249 instance=ExtResource("5_2fe8e")]
+[node name="building_B" parent="." unique_id=1099723249 instance=ExtResource("5_51ht0")]
 
-[node name="building_C" parent="." unique_id=1336790539 instance=ExtResource("6_4eevd")]
+[node name="building_C" parent="." unique_id=1336790539 instance=ExtResource("6_u7yel")]
 
-[node name="building_F" parent="." unique_id=1315535909 instance=ExtResource("7_8dsth")]
+[node name="building_F" parent="." unique_id=1315535909 instance=ExtResource("7_n20sh")]
 
-[node name="building_G" parent="." unique_id=961506127 instance=ExtResource("8_gupxd")]
+[node name="building_G" parent="." unique_id=961506127 instance=ExtResource("8_aqovl")]
 
-[node name="building_H" parent="." unique_id=1405246430 instance=ExtResource("9_1kmet")]
+[node name="building_H" parent="." unique_id=1405246430 instance=ExtResource("9_rjwba")]
 
-[node name="road_corner" parent="." unique_id=1656595865 instance=ExtResource("10_alei6")]
+[node name="road_corner" parent="." unique_id=1656595865 instance=ExtResource("10_4ynwf")]
 
-[node name="road_corner_curved" parent="." unique_id=1927701897 instance=ExtResource("11_tl0i6")]
+[node name="road_corner_curved" parent="." unique_id=1927701897 instance=ExtResource("11_gdsfy")]
 
-[node name="road_junction" parent="." unique_id=764060471 instance=ExtResource("12_0bb41")]
+[node name="road_junction" parent="." unique_id=764060471 instance=ExtResource("12_5aulk")]
 
-[node name="road_straight" parent="." unique_id=1907752610 instance=ExtResource("13_l4q3d")]
+[node name="road_straight" parent="." unique_id=1907752610 instance=ExtResource("13_k4klv")]
 
-[node name="road_straight_crossing" parent="." unique_id=1748906901 instance=ExtResource("14_rsy5c")]
+[node name="road_straight_crossing" parent="." unique_id=1748906901 instance=ExtResource("14_8xfqj")]
 
-[node name="road_tsplit" parent="." unique_id=1554198436 instance=ExtResource("15_pkiod")]
+[node name="road_tsplit" parent="." unique_id=1554198436 instance=ExtResource("15_8tb1c")]

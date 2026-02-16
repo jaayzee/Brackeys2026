@@ -13,6 +13,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bk77xql47vf60" path="res://assets/imported_assets/obj/trash_A.obj" id="11_58hjd"]
 [ext_resource type="ArrayMesh" uid="uid://fwwgylh1m7ng" path="res://assets/imported_assets/obj/trash_B.obj" id="12_fuohi"]
 [ext_resource type="PackedScene" uid="uid://ci7e5pah6paxc" path="res://assets/service/plate.tscn" id="13_3c71k"]
+[ext_resource type="PackedScene" uid="uid://cmwdb6cmikev0" path="res://assets/service/plate_manager.tscn" id="14_3525t"]
 
 [sub_resource type="Environment" id="Environment_ykrsh"]
 background_mode = 1
@@ -441,6 +442,11 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u6vd6"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_04hkr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpn1e"]
+albedo_color = Color(0, 0.8404894, 0.7690677, 1)
+
 [node name="Control" type="Control" unique_id=626734268]
 layout_mode = 3
 anchors_preset = 15
@@ -541,11 +547,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Bench2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1017517422]
-transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 12.955318)
+transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 12.898605)
 mesh = ExtResource("6_tv8w5")
 
 [node name="Bench3" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=381729282]
-transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 13.1594715)
+transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 13.122583)
 mesh = ExtResource("6_tv8w5")
 
 [node name="Bench4" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=159819426]
@@ -657,13 +663,6 @@ mesh = SubResource("BoxMesh_cwtuy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control2" unique_id=1782580100]
 shape = SubResource("BoxShape3D_u6vd6")
 
-[node name="Plate" parent="SubViewportContainer/SubViewport/Control/Control2" unique_id=224386613 instance=ExtResource("13_3c71k")]
-transform = Transform3D(4.723712, 0, 0, 0, 3.4465313, 0, 0, 0, 0.69307935, -0.013139725, 0.4931115, 0.23873043)
-visible = false
-
-[node name="Plate2" parent="SubViewportContainer/SubViewport/Control/Control2" unique_id=1613940706 instance=ExtResource("13_3c71k")]
-transform = Transform3D(4.723712, 0, 0, 0, 3.4465313, 0, 0, 0, 0.69307935, -0.013139725, 0.4931115, 0.06304932)
-
 [node name="Control3" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=96010104]
 transform = Transform3D(0.29620743, 0, 0, 0, 0.034532454, 0, 0, 0, 0.22897516, 3.8354938, 0.3035815, 14.1133)
 
@@ -677,7 +676,60 @@ shape = SubResource("BoxShape3D_u6vd6")
 transform = Transform3D(0.29620743, 0, 0, 0, 0.034532454, 0, 0, 0, 0.22897516, 4.427078, 0.3035815, 14.1133)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control4" unique_id=52841425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.7806688, 0, 0, 0.10451126)
 mesh = SubResource("BoxMesh_cwtuy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control4" unique_id=233287458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.7806688, 0, 0, 0.10451126)
 shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="plate_manager" parent="." unique_id=133560238 instance=ExtResource("14_3525t")]
+plate_obj = ExtResource("13_3c71k")
+
+[node name="plate_slot" type="Node3D" parent="plate_manager" unique_id=1469876148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.480767, 0.33770612, 12.942237)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate_manager/plate_slot" unique_id=720174193]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, -0.045778275)
+mesh = SubResource("SphereMesh_04hkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpn1e")
+
+[node name="plate_slot2" type="Node3D" parent="plate_manager" unique_id=1733432476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4873247, 0.33770612, 13.18052)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate_manager/plate_slot2" unique_id=151400665]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, -0.064151764)
+mesh = SubResource("SphereMesh_04hkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpn1e")
+
+[node name="plate_slot3" type="Node3D" parent="plate_manager" unique_id=1817183259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4840465, 0.33770612, 13.354314)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate_manager/plate_slot3" unique_id=997565516]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0.0056619644)
+mesh = SubResource("SphereMesh_04hkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpn1e")
+
+[node name="plate_slot4" type="Node3D" parent="plate_manager" unique_id=1338484903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48186, 0.33770612, 13.595876)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate_manager/plate_slot4" unique_id=893163030]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0)
+mesh = SubResource("SphereMesh_04hkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpn1e")
+
+[node name="plate_slot5" type="Node3D" parent="plate_manager" unique_id=867382596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4807673, 0.33770612, 13.825415)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate_manager/plate_slot5" unique_id=1023986140]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0.012513161)
+mesh = SubResource("SphereMesh_04hkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpn1e")
+
+[node name="plate_slot6" type="Node3D" parent="plate_manager" unique_id=2052372837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4851394, 0.33770612, 14.066977)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate_manager/plate_slot6" unique_id=610279520]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0)
+mesh = SubResource("SphereMesh_04hkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpn1e")
