@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c8nxysl8cyoek"]
+
+[ext_resource type="PackedScene" uid="uid://bseg0r3dn4bhf" path="res://assets/Assets/gltf/bench.gltf" id="1_lps7h"]
+[ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_a5qnj"]
+[ext_resource type="Texture2D" uid="uid://dywrxdgnyv6ej" path="res://assets/Assets/obj/citybits_texture.png" id="3_iu8r7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6k0q"]
+render_priority = 0
+shader = ExtResource("2_a5qnj")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_iu8r7")
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[node name="bench" unique_id=1432274028 instance=ExtResource("1_lps7h")]
+
+[node name="bench" parent="." index="0" unique_id=1158574779]
+surface_material_override/0 = SubResource("ShaderMaterial_i6k0q")
