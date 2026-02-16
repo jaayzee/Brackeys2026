@@ -479,7 +479,7 @@ billboard = 1
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_vki1i")
-animation = &"attack"
+animation = &"walk"
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=320185773]
 transform = Transform3D(1.0239401, -0.41123745, 0.5873079, 0, 1.0239401, 0.71697056, -0.71697056, -0.58730793, 0.8387626, 4.777351, 6.318703, 6.9969664)
