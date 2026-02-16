@@ -12,6 +12,7 @@
 [ext_resource type="ArrayMesh" uid="uid://nxicnypourvq" path="res://assets/Assets/obj/dumpster.obj" id="10_ijelv"]
 [ext_resource type="ArrayMesh" uid="uid://bk77xql47vf60" path="res://assets/Assets/obj/trash_A.obj" id="11_h6c6m"]
 [ext_resource type="ArrayMesh" uid="uid://fwwgylh1m7ng" path="res://assets/Assets/obj/trash_B.obj" id="12_mjsuy"]
+[ext_resource type="PackedScene" uid="uid://ci7e5pah6paxc" path="res://assets/service/plate.tscn" id="13_u6vd6"]
 
 [sub_resource type="Environment" id="Environment_ykrsh"]
 background_mode = 1
@@ -436,6 +437,10 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="TorusMesh" id="TorusMesh_ykrsh"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_cwtuy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6vd6"]
+
 [node name="Control" type="Control" unique_id=626734268]
 layout_mode = 3
 anchors_preset = 15
@@ -456,7 +461,7 @@ stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
-size = Vector2i(640, 360)
+size = Vector2i(333, 216)
 render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=204393029]
@@ -473,7 +478,8 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 20.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="SubViewportContainer/SubViewport" unique_id=375660025]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 4.3402185, 0.3251122, 13.381998)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 4.3402185, 0.3251122, 13.270649)
+collision_layer = 3
 script = ExtResource("1_63dms")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=1565488381]
@@ -534,28 +540,48 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Bench" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1006621253]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.326023, 0.100000024, 15.109962)
+[node name="Bench2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1017517422]
+transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 12.955318)
 mesh = ExtResource("6_cwtuy")
 
-[node name="Bench2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1017517422]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.445859, 0.100000024, 14.722959)
+[node name="Bench3" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=381729282]
+transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 13.1594715)
+mesh = ExtResource("6_cwtuy")
+
+[node name="Bench4" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=159819426]
+transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 13.360258)
+mesh = ExtResource("6_cwtuy")
+
+[node name="Bench5" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=91010154]
+transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 13.596192)
+mesh = ExtResource("6_cwtuy")
+
+[node name="Bench6" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=34107312]
+transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 13.82293)
+mesh = ExtResource("6_cwtuy")
+
+[node name="Bench7" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1227351048]
+transform = Transform3D(-1.44787045e-08, 0, 0.99999994, 0, 0.9995266, 0, -0.33123416, 0, -4.3711385e-08, 4.7240047, 0.100000024, 14.064734)
 mesh = ExtResource("6_cwtuy")
 
 [node name="BoxA" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1664709407]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4537973, 0.10000008, 14.406304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1062675, 0.10000008, 12.536611)
 mesh = ExtResource("7_u6vd6")
 
 [node name="BoxB" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1240394703]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6819887, 0.099999905, 14.336289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.310302, 0.099999905, 12.579214)
 mesh = ExtResource("8_ohtne")
 
 [node name="Bush" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=636091227]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.438982, 0.099999905, 14.068753)
+transform = Transform3D(0.9992794, 0, 0, 0, 0.9992794, 0, 0, 0, 0.9992794, 4.516412, 0.099999905, 14.373787)
+mesh = ExtResource("9_6l4lo")
+
+[node name="Bush2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1252223478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.524606, 0.099999905, 12.650342)
 mesh = ExtResource("9_6l4lo")
 
 [node name="Dumpster" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=695766338]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7687323, 0.099999905, 14.578442)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6668098, 0.099999905, 14.484612)
 mesh = ExtResource("10_ijelv")
 
 [node name="TrashA" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1576817087]
@@ -565,3 +591,93 @@ mesh = ExtResource("11_h6c6m")
 [node name="TrashB" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control" unique_id=2033045256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.519009, 0.099999905, 13.798939)
 mesh = ExtResource("12_mjsuy")
+
+[node name="Control" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1959257072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7598555, 0.4395029, 13.280037)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control" unique_id=1636768134]
+transform = Transform3D(0.11677188, 0, 0, 0, 0.77316654, 0, 0, 0, 1.9570946, 0, 0, -0.023154259)
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control" unique_id=150070512]
+transform = Transform3D(0.11677188, 0, 0, 0, 0.77316654, 0, 0, 0, 1.9570946, 0, 0, -0.023154259)
+shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="Control5" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=2079072435]
+transform = Transform3D(0.13573195, 0, 0, 0, 0.21882825, 0, 0, 0, 0.5609906, 3.8512356, 0.6197598, 13.765412)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control5" unique_id=1937594878]
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control5" unique_id=1255255540]
+shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="Control6" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1136021439]
+transform = Transform3D(0.13573195, 0, 0, 0, 0.21882825, 0, 0, 0, 0.5609906, 3.8512356, 0.6197598, 13.064237)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control6" unique_id=391555334]
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control6" unique_id=368267509]
+shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="Control8" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1066625573]
+transform = Transform3D(0.21580906, 0, 0, 0, 0.21882825, 0, 0, 0, 0.88293815, 3.8512356, 0.2145308, 13.460555)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control8" unique_id=2024236015]
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control8" unique_id=893071853]
+shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="Control9" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1551956652]
+transform = Transform3D(0.21580906, 0, 0, 0, 0.21882825, 0, 0, 0, 0.7198155, 3.8512356, 0.2145308, 12.615987)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control9" unique_id=1864366404]
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control9" unique_id=31287231]
+shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="Control7" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1143203422]
+transform = Transform3D(0.13573195, 0, 0, 0, 0.21882825, 0, 0, 0, 0.30507916, 3.8512356, 0.6197598, 12.501852)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control7" unique_id=1328145957]
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control7" unique_id=870295598]
+shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="Control2" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1503797065]
+transform = Transform3D(0.21169792, 0, 0, 0, 0.2901468, 0, 0, 0, 1.4428363, 4.4859676, 0.17629606, 13.506205)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control2" unique_id=882005126]
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control2" unique_id=1782580100]
+shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="Plate" parent="SubViewportContainer/SubViewport/Control/Control2" unique_id=224386613 instance=ExtResource("13_u6vd6")]
+transform = Transform3D(4.723712, 0, 0, 0, 3.4465313, 0, 0, 0, 0.69307935, -0.013139725, 0.4931115, 0.23873043)
+visible = false
+
+[node name="Plate2" parent="SubViewportContainer/SubViewport/Control/Control2" unique_id=1613940706 instance=ExtResource("13_u6vd6")]
+transform = Transform3D(4.723712, 0, 0, 0, 3.4465313, 0, 0, 0, 0.69307935, -0.013139725, 0.4931115, 0.06304932)
+
+[node name="Control3" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=96010104]
+transform = Transform3D(0.29620743, 0, 0, 0, 0.034532454, 0, 0, 0, 0.22897516, 3.8354938, 0.3035815, 14.1133)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control3" unique_id=1041780871]
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control3" unique_id=438056957]
+shape = SubResource("BoxShape3D_u6vd6")
+
+[node name="Control4" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Control" unique_id=1703689942]
+transform = Transform3D(0.29620743, 0, 0, 0, 0.034532454, 0, 0, 0, 0.22897516, 4.427078, 0.3035815, 14.1133)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Control/Control4" unique_id=52841425]
+mesh = SubResource("BoxMesh_cwtuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Control/Control4" unique_id=233287458]
+shape = SubResource("BoxShape3D_u6vd6")

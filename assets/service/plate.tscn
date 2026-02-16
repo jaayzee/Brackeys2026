@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ci7e5pah6paxc"]
+
+[ext_resource type="Script" uid="uid://bro8r74qiwt1m" path="res://scripts/plate.gd" id="1_4k5jw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_30ge7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4k5jw"]
+radius = 0.15764636
+
+[node name="Plate" type="Area3D" unique_id=224386613]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_4k5jw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=880331163]
+transform = Transform3D(0.2, 0, 0, 0, 0.010728689, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("CylinderMesh_30ge7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2077764220]
+transform = Transform3D(0.175, 0, 0, 0, 0.011, 0, 0, 0, 0.175, 0, 0.008692216, 0)
+transparency = 0.29
+mesh = SubResource("CylinderMesh_30ge7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2043737907]
+shape = SubResource("SphereShape3D_4k5jw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
