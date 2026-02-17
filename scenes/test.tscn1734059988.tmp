@@ -476,7 +476,6 @@ shape = SubResource("CapsuleShape3D_ykrsh")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=2078791595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06591666, 0)
 billboard = 1
-double_sided = false
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_vki1i")
@@ -486,7 +485,7 @@ animation = &"walk"
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.40639025, 0)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CharacterBody3D/CameraPivot" unique_id=320185773]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 10, 10)
 compositor = SubResource("Compositor_00tp4")
 projection = 1
 current = true
@@ -524,43 +523,3 @@ data = {
 "cells": PackedInt32Array(65532, 5, 14, 65533, 5, 1441805, 4, 5, 655371, 3, 5, 1441805, 2, 5, 1048588, 1, 7, 1441795, 0, 8, 655372, 1, 4, 2, 1, 6, 655362, 0, 6, 655373, 0, 7, 655372, 65535, 6, 2, 0, 5, 655371, 1, 5, 1441805, 0, 4, 13, 65534, 5, 1048588, 65535, 5, 1441805, 65535, 4, 2, 65535, 0, 1048583, 65535, 65535, 1048584, 0, 65533, 1441806, 0, 65534, 655373, 0, 65535, 1048588, 0, 0, 12, 0, 2, 12, 0, 3, 12, 65535, 3, 1048579, 65535, 2, 1048581, 65535, 1, 1048576, 0, 1, 12, 65534, 4, 6, 65535, 7, 1048581, 65535, 8, 1048577, 1, 3, 1441793, 1, 2, 1441792, 1, 1, 1441792, 1, 0, 1441798, 1, 65535, 1441795, 2, 4, 1441794, 2, 3, 1441794, 2, 2, 1441794, 2, 1, 1441794, 2, 0, 1441794, 65534, 65534, 1441794, 65534, 65535, 1048588, 65534, 0, 1441794, 65534, 2, 1441794, 65534, 3, 1441794, 65534, 1, 1441794, 65535, 65534, 1441794, 5, 5, 1441805, 4, 4, 655373, 4, 6, 655373, 4, 3, 655372, 4, 2, 655372, 4, 1, 655372, 4, 0, 655372, 4, 65535, 655372, 4, 7, 655372, 4, 8, 655372, 2, 65535, 655362, 2, 6, 655362, 1, 8, 655362, 2, 8, 655362, 2, 7, 655362, 3, 6, 655362, 3, 7, 1048577, 3, 8, 1048577, 3, 4, 1048581, 3, 3, 1048581, 3, 2, 1048576, 3, 1, 1048583, 3, 0, 1048579, 65534, 6, 1048578, 65534, 7, 1048578, 65534, 8, 1048578, 65533, 6, 1441794, 65533, 7, 1441794, 65533, 8, 1441794, 65532, 6, 655372, 65532, 7, 655372, 65532, 8, 655372, 65532, 3, 655372, 65532, 4, 655372, 65532, 2, 655372, 65532, 1, 655372, 65532, 0, 655372, 65532, 65535, 655372, 65532, 65534, 655373, 65533, 4, 1441797, 65533, 3, 1441797, 65533, 2, 1441797, 65533, 1, 1441797, 65533, 0, 1441792, 65533, 65535, 1441792, 65533, 65534, 1441794, 65532, 65533, 1441806, 4, 65534, 655373, 4, 65533, 1441806, 65533, 65533, 1441804, 65534, 65533, 1441804, 65535, 65533, 1441804, 1, 65533, 1441804, 2, 65533, 1441804, 3, 65533, 1441804, 2, 65534, 655361, 1, 65534, 655362, 3, 65534, 655362, 3, 65535, 655362, 5, 65534, 655362, 5, 65535, 655362, 5, 0, 655362, 5, 1, 655362, 5, 2, 655362, 5, 3, 655362, 5, 4, 655362, 5, 6, 655362, 5, 7, 655362, 5, 8, 655362, 5, 65533, 1048588)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1210627444]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.67586106, 0.41041964, 0)
-billboard = 1
-double_sided = false
-alpha_cut = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_vki1i")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." unique_id=1883596803]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9489629, 0.41041964, -3.7789774)
-billboard = 1
-double_sided = false
-alpha_cut = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_vki1i")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="." unique_id=403517380]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5942676, 0.41041964, 1.3937297)
-billboard = 1
-double_sided = false
-alpha_cut = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_vki1i")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="." unique_id=1827750643]
-transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, -1.0321723, 0.34453613, 3.3057303)
-billboard = 1
-double_sided = false
-alpha_cut = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_vki1i")
-animation = &"idle"
-autoplay = "walk"
