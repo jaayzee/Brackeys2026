@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cikdttg80at3o"]
 
-[ext_resource type="PackedScene" uid="uid://bbgqqq6lw2njr" path="res://assets/imported_assets/fbx (unity)/road_straight.fbx" id="1_gatdh"]
+[ext_resource type="PackedScene" uid="uid://bbgqqq6lw2njr" path="res://assets/Assets/fbx (unity)/road_straight.fbx" id="1_gatdh"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_05mdu"]
-[ext_resource type="Texture2D" uid="uid://dywrxdgnyv6ej" path="res://assets/imported_assets/obj/citybits_texture.png" id="3_epx2e"]
+[ext_resource type="Texture2D" uid="uid://bkg42yit6rqju" path="res://assets/Assets/obj/citybits_texture.png" id="3_epx2e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ckw8"]
 render_priority = 0

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ca0s17g73qrjl"]
 
-[ext_resource type="PackedScene" uid="uid://btxg1mi8mhj4t" path="res://assets/imported_assets/fbx (unity)/road_corner_curved.fbx" id="1_u0dx6"]
+[ext_resource type="PackedScene" uid="uid://btxg1mi8mhj4t" path="res://assets/Assets/fbx (unity)/road_corner_curved.fbx" id="1_u0dx6"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_q2xoh"]
-[ext_resource type="Texture2D" uid="uid://dywrxdgnyv6ej" path="res://assets/imported_assets/obj/citybits_texture.png" id="3_payi8"]
+[ext_resource type="Texture2D" uid="uid://bkg42yit6rqju" path="res://assets/Assets/obj/citybits_texture.png" id="3_payi8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kycfu"]
 render_priority = 0

@@ -8,6 +8,9 @@ extends CharacterBody3D
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var sprite = $AnimatedSprite3D
 
+# Shooting
+@export var bullet: PackedScene # Can be plates or actually bullets
+
 func _physics_process(delta):
 	# Gravity
 	if not is_on_floor():
@@ -34,6 +37,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
+	# SHOOTING
+	if Input.is_action_just_pressed("Interact"):
+		shoot()
+	
 	# Animation logic
 	if is_on_floor():
 		if direction:
@@ -42,3 +49,7 @@ func _physics_process(delta):
 			sprite.play("idle")
 	else:
 		sprite.play("jump")
+		
+func shoot():
+	
+	pass

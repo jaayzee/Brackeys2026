@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b3eh81xy5wbv7"]
 
-[ext_resource type="PackedScene" uid="uid://do5eemc4tyy6k" path="res://assets/imported_assets/fbx (unity)/building_F.fbx" id="1_2wsxy"]
+[ext_resource type="PackedScene" uid="uid://do5eemc4tyy6k" path="res://assets/Assets/fbx (unity)/building_F.fbx" id="1_2wsxy"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_t5sxe"]
-[ext_resource type="Texture2D" uid="uid://dywrxdgnyv6ej" path="res://assets/imported_assets/obj/citybits_texture.png" id="3_m45mw"]
+[ext_resource type="Texture2D" uid="uid://bkg42yit6rqju" path="res://assets/Assets/obj/citybits_texture.png" id="3_m45mw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o3p61"]
 render_priority = 0

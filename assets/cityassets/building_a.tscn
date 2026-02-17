@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bxw45imp62i02"]
 
-[ext_resource type="PackedScene" uid="uid://dnqsiurrtercl" path="res://assets/imported_assets/gltf/building_A.gltf" id="1_qe46a"]
+[ext_resource type="PackedScene" uid="uid://dnqsiurrtercl" path="res://assets/Assets/gltf/building_A.gltf" id="1_qe46a"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_rmw86"]
-[ext_resource type="Texture2D" uid="uid://dywrxdgnyv6ej" path="res://assets/imported_assets/obj/citybits_texture.png" id="3_vv74x"]
+[ext_resource type="Texture2D" uid="uid://bkg42yit6rqju" path="res://assets/Assets/obj/citybits_texture.png" id="3_vv74x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qdhx"]
 render_priority = 0
