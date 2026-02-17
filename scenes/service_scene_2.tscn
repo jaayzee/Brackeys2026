@@ -462,7 +462,7 @@ stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
-size = Vector2i(333, 216)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=204393029]
@@ -478,7 +478,7 @@ shadow_blur = 0.0
 directional_shadow_mode = 0
 directional_shadow_max_distance = 20.0
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="SubViewportContainer/SubViewport" unique_id=375660025]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="SubViewportContainer/SubViewport" unique_id=375660025 groups=["player"]]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 4.3402185, 0.3251122, 13.270649)
 collision_layer = 3
 script = ExtResource("1_8pxsy")

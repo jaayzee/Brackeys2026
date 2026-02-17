@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2mh2sbhf60gf"]
+
+[ext_resource type="Script" uid="uid://yvf1t2mynwsu" path="res://scripts/abilities/shadow_step.gd" id="1_5j8mq"]
+
+[node name="shadow_step" type="Node3D" unique_id=828650858]
+script = ExtResource("1_5j8mq")

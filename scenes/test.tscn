@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bl5bf1sb52ucn" path="res://sprites/TheDummyAnim-SpriteSheet.png" id="2_lpvoh"]
 [ext_resource type="Shader" uid="uid://po4m5x17hwuv" path="res://shaders/screenspace.gdshader" id="3_at5dv"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="4_jcd4p"]
+[ext_resource type="PackedScene" uid="uid://daw2qug5au0of" path="res://scenes/prototypes/ability_manager.tscn" id="4_lpvoh"]
 [ext_resource type="MeshLibrary" uid="uid://8p02d0kdnf6n" path="res://assets/city_library.meshlib" id="5_uacia"]
+[ext_resource type="Material" uid="uid://cgpf0c5gdu58j" path="res://shaders/transparentshader.tres" id="7_at5dv"]
 
 [sub_resource type="Environment" id="Environment_ykrsh"]
 background_mode = 1
@@ -429,6 +431,14 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="TorusMesh" id="TorusMesh_ykrsh"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_lpvoh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at5dv"]
+transparency = 1
+albedo_color = Color(0.34306318, 0.99999994, 0.90660983, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_at5dv"]
+
 [node name="Control" type="Control" unique_id=626734268]
 layout_mode = 3
 anchors_preset = 15
@@ -449,7 +459,7 @@ stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
-size = Vector2i(640, 360)
+size = Vector2i(333, 283)
 render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=204393029]
@@ -458,7 +468,7 @@ environment = SubResource("Environment_ykrsh")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=944369888]
 transform = Transform3D(0.7071067, -0.49999994, 0.49999994, 0, 0.7071067, 0.7071067, -0.7071067, -0.49999994, 0.49999994, 0, 21.053648, 0)
 light_color = Color(0.48452926, 0.5370987, 0.6262097, 1)
-light_energy = 0.3
+light_energy = 3.079
 shadow_enabled = true
 shadow_reverse_cull_face = true
 shadow_blur = 0.0
@@ -499,6 +509,8 @@ layers = 524288
 cast_shadow = 0
 mesh = SubResource("QuadMesh_ehkex")
 surface_material_override/0 = SubResource("ShaderMaterial_ykrsh")
+
+[node name="AbilityManager" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=1483282738 instance=ExtResource("4_lpvoh")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=1274248113]
 transform = Transform3D(0.6741735, 0, -0.738573, 0, 1, 0, 0.738573, 0, 0.6741735, -0.08061299, 0.5144521, -3.5555174)
@@ -564,3 +576,26 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_vki1i")
 animation = &"idle"
 autoplay = "walk"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1642471172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33716214, 7.837285)
+visible = false
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2053974015]
+transform = Transform3D(1.3149511, 0, 0, 0, 0.74709666, 0, 0, 0, 0.7684597, 0, 0.5026163, 8.807557)
+size = Vector3(1, 0.8321533, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2" unique_id=252295069]
+transform = Transform3D(0.54164386, 0, 0, 0, 0.49325085, 0, 0, 0, 0.82675683, 0.04669698, 0.09636551, -0.0144786835)
+operation = 2
+size = Vector3(1, 0.8321533, 1.6688232)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=596289759]
+transform = Transform3D(1.0319815, 0, 0, 0, 0.6242733, 0, 0, 0, 0.59006333, 0, 0.668104, 9.892214)
+mesh = SubResource("BoxMesh_lpvoh")
+surface_material_override/0 = SubResource("StandardMaterial3D_at5dv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=568877778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5797365, 1.0616556, 9.744823)
+mesh = SubResource("SphereMesh_at5dv")
+surface_material_override/0 = ExtResource("7_at5dv")

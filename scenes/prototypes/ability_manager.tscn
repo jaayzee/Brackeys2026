@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://daw2qug5au0of"]
+
+[ext_resource type="Script" uid="uid://byjxptf0ab702" path="res://scripts/abilities/ability_manager.gd" id="1_h6t5y"]
+[ext_resource type="PackedScene" uid="uid://c2mh2sbhf60gf" path="res://scenes/abilities/shadow_step.tscn" id="2_tdbhv"]
+
+[node name="AbilityManager" type="Node3D" unique_id=1483282738]
+script = ExtResource("1_h6t5y")
+shadow_step = ExtResource("2_tdbhv")

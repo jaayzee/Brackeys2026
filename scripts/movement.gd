@@ -12,9 +12,6 @@ var camera_angle = 0.0
 @onready var camera_pivot = $CameraPivot
 @onready var camera = $CameraPivot/Camera3D
 
-# Shooting
-@export var bullet: PackedScene # Can be plates or actually bullets
-
 func _physics_process(delta):
 	# Gravity
 	if not is_on_floor():
@@ -57,10 +54,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	# SHOOTING
-	if Input.is_action_just_pressed("Interact"):
-		shoot()
-	
 	# Animation logic
 	if is_on_floor():
 		if direction:
@@ -70,6 +63,6 @@ func _physics_process(delta):
 	else:
 		sprite.play("jump")
 		
-func shoot():
-	
-	pass
+func _boost_speed(increment: float):
+	speed += increment
+	print("Speed: " + str(increment))
