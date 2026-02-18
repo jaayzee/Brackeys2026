@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c2mh2sbhf60gf"]
 
 [ext_resource type="Script" uid="uid://yvf1t2mynwsu" path="res://scripts/abilities/shadow_step.gd" id="1_5j8mq"]
+[ext_resource type="PackedScene" uid="uid://ce2bg4ybqiui0" path="res://scenes/shadow_particles.tscn" id="2_em4g4"]
 
 [node name="shadow_step" type="Node3D" unique_id=828650858]
 script = ExtResource("1_5j8mq")
+shadow_particles = ExtResource("2_em4g4")

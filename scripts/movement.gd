@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var speed = 1.5
+@export var speed = 1
 @export var jump_velocity = 3.0
 @export var acceleration = 10.0
 @export var friction = 10.0

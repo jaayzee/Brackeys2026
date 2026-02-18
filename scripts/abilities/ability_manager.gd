@@ -7,7 +7,6 @@ var shadow_step_ab
 # 3 core abilities that you can upgrade and improve on 
 # abilities have a name, effect, bool if its activated, and levels (scope)
 
-
 # var passives
 var player
 

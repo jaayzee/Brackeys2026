@@ -433,11 +433,25 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="BoxMesh" id="BoxMesh_lpvoh"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcd4p"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at5dv"]
+next_pass = SubResource("StandardMaterial3D_jcd4p")
 transparency = 1
 albedo_color = Color(0.34306318, 0.99999994, 0.90660983, 1)
+stencil_mode = 2
+stencil_flags = 2
 
-[sub_resource type="SphereMesh" id="SphereMesh_at5dv"]
+[sub_resource type="BoxMesh" id="BoxMesh_at5dv"]
 
 [node name="Control" type="Control" unique_id=626734268]
 layout_mode = 3
@@ -479,6 +493,8 @@ directional_shadow_max_distance = 20.0
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3251122, 0)
 script = ExtResource("1_j5jx5")
 
+[node name="AbilityManager" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=1483282738 instance=ExtResource("4_lpvoh")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=1565488381]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.088582516, 0)
 shape = SubResource("CapsuleShape3D_ykrsh")
@@ -509,8 +525,6 @@ layers = 524288
 cast_shadow = 0
 mesh = SubResource("QuadMesh_ehkex")
 surface_material_override/0 = SubResource("ShaderMaterial_ykrsh")
-
-[node name="AbilityManager" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=1483282738 instance=ExtResource("4_lpvoh")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=1274248113]
 transform = Transform3D(0.6741735, 0, -0.738573, 0, 1, 0, 0.738573, 0, 0.6741735, -0.08061299, 0.5144521, -3.5555174)
@@ -591,11 +605,16 @@ operation = 2
 size = Vector3(1, 0.8321533, 1.6688232)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=596289759]
-transform = Transform3D(1.0319815, 0, 0, 0, 0.6242733, 0, 0, 0, 0.59006333, 0, 0.668104, 9.892214)
+transform = Transform3D(1.0319815, 0, 0, 0, 0.6242733, 0, 0, 0, 0.59006333, 0, 0.668104, 12.474226)
+mesh = SubResource("BoxMesh_lpvoh")
+surface_material_override/0 = SubResource("StandardMaterial3D_at5dv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=663277539]
+transform = Transform3D(1.0319815, 0, 0, 0, 0.6242733, 0, 0, 0, 0.59006333, 1.7317066, 0.668104, 12.588443)
 mesh = SubResource("BoxMesh_lpvoh")
 surface_material_override/0 = SubResource("StandardMaterial3D_at5dv")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=568877778]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5797365, 1.0616556, 9.744823)
-mesh = SubResource("SphereMesh_at5dv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41443762, 0.7124264, 13.898114)
+mesh = SubResource("BoxMesh_at5dv")
 surface_material_override/0 = ExtResource("7_at5dv")
