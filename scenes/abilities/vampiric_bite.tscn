@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dtenhlc74gqxq"]
+
+[ext_resource type="Script" uid="uid://0hrxuwfhkj7g" path="res://scripts/abilities/vampiric_bite.gd" id="1_6mef2"]
+
+[node name="vampiric_bite" type="Node3D" unique_id=450265629]
+script = ExtResource("1_6mef2")
+ab_name = "Vampiric Bite"

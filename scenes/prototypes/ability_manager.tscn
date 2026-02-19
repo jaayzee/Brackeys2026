@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://byjxptf0ab702" path="res://scripts/abilities/ability_manager.gd" id="1_h6t5y"]
 [ext_resource type="PackedScene" uid="uid://c2mh2sbhf60gf" path="res://scenes/abilities/shadow_step.tscn" id="2_tdbhv"]
+[ext_resource type="PackedScene" uid="uid://q8abkpl0bc5" path="res://scenes/abilities/blood_lust.tscn" id="3_yud5s"]
+[ext_resource type="PackedScene" uid="uid://dtenhlc74gqxq" path="res://scenes/abilities/vampiric_bite.tscn" id="4_gl7ec"]
 
 [node name="AbilityManager" type="Node3D" unique_id=1483282738]
 script = ExtResource("1_h6t5y")
 shadow_step = ExtResource("2_tdbhv")
+blood_lust = ExtResource("3_yud5s")
+vampiric_bite = ExtResource("4_gl7ec")

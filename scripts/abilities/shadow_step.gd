@@ -1,7 +1,6 @@
 extends Ability
 
 var speed_boost := 1.0
-var duration := 2.50
 
 @export var shadow_particles: PackedScene
 var particles
@@ -11,14 +10,12 @@ func _ready() -> void:
 	ab_is_unlocked = false
 	ab_is_active = false
 	ab_level = 0
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	
+	duration = 2.5
 
 func _activate():
 	print("Active: Shadowstep")
+	ab_is_active = true
 	player._boost_speed(speed_boost)
 	
 	# Particles
@@ -27,16 +24,11 @@ func _activate():
 	particles.global_transform.origin = player.global_transform.origin
 	player.sprite.visible = false
 	
-	# Start a timer 
-	var t = Timer.new()
-	t.wait_time = duration
-	add_child(t)
-	t.start()
-	t.one_shot = true
-	t.timeout.connect(Callable(self, "_deactivate"))
+	_start_timer(duration)
 
 func _deactivate():
 	print("Deactive: Shadowstep")
+	ab_is_active = false
 	player._boost_speed(-speed_boost)
 	particles.queue_free()
 	player.sprite.visible = true

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://q8abkpl0bc5"]
+
+[ext_resource type="Script" uid="uid://boxfn4cmigrw8" path="res://scripts/abilities/blood_lust.gd" id="1_vlcbc"]
+[ext_resource type="PackedScene" uid="uid://cp55uu324ami2" path="res://scenes/blood_particles.tscn" id="2_hxpoo"]
+
+[node name="blood_lust" type="Node3D" unique_id=647305150]
+script = ExtResource("1_vlcbc")
+blood_lust_particles = ExtResource("2_hxpoo")
+ab_name = "Blood Lust"
+duration = 2.5

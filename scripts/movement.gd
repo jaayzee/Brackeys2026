@@ -12,6 +12,8 @@ var camera_angle = 0.0
 @onready var camera_pivot = $CameraPivot
 @onready var camera = $CameraPivot/Camera3D
 
+@onready var col_detector = $CollisionDetector
+	
 func _physics_process(delta):
 	# Gravity
 	if not is_on_floor():
@@ -63,6 +65,13 @@ func _physics_process(delta):
 	else:
 		sprite.play("jump")
 		
+	# NPC / Monster Collision Detection
+	
+
+# Ability 
 func _boost_speed(increment: float):
 	speed += increment
 	print("Speed: " + str(increment))
+	
+func _get_near_npcs() -> Array:
+	return col_detector.get_overlapping_bodies()

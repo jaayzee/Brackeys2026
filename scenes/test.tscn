@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dc87h4sgx2onk"]
 
-[ext_resource type="Script" uid="uid://shwcr1hbrhrc" path="res://scripts/movement.gd" id="1_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://dugmcrgktndbu" path="res://scenes/player.tscn" id="1_at5dv"]
 [ext_resource type="Texture2D" uid="uid://bl5bf1sb52ucn" path="res://sprites/TheDummyAnim-SpriteSheet.png" id="2_lpvoh"]
-[ext_resource type="Shader" uid="uid://po4m5x17hwuv" path="res://shaders/screenspace.gdshader" id="3_at5dv"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="4_jcd4p"]
-[ext_resource type="PackedScene" uid="uid://daw2qug5au0of" path="res://scenes/prototypes/ability_manager.tscn" id="4_lpvoh"]
 [ext_resource type="MeshLibrary" uid="uid://8p02d0kdnf6n" path="res://assets/city_library.meshlib" id="5_uacia"]
 [ext_resource type="Material" uid="uid://cgpf0c5gdu58j" path="res://shaders/transparentshader.tres" id="7_at5dv"]
+[ext_resource type="PackedScene" uid="uid://beue6pjuph0jo" path="res://scenes/monster.tscn" id="7_jcd4p"]
+[ext_resource type="PackedScene" uid="uid://dk1rcbvu130kw" path="res://scenes/monster_manager.tscn" id="7_uacia"]
 
 [sub_resource type="Environment" id="Environment_ykrsh"]
 background_mode = 1
@@ -16,9 +16,28 @@ ambient_light_color = Color(0.1297342, 0.14431481, 0.1809994, 1)
 ambient_light_energy = 2.0
 tonemap_mode = 3
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ykrsh"]
-radius = 0.077
-height = 0.445
+[sub_resource type="BoxMesh" id="BoxMesh_t77du"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77dp3"]
+render_priority = 0
+shader = ExtResource("4_jcd4p")
+shader_parameter/albedo = Color(0.75379395, 0.84905356, 0.7188798, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = -0.05499990761249984
+shader_parameter/steepness = 1.1550000073625
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 10.4350004956625
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="TorusMesh" id="TorusMesh_ykrsh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g14j6"]
 atlas = ExtResource("2_lpvoh")
@@ -382,73 +401,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Compositor" id="Compositor_00tp4"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_ehkex"]
-lightmap_size_hint = Vector2i(102, 58)
-add_uv2 = true
-size = Vector2(20, 11.25)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykrsh"]
-render_priority = 0
-shader = ExtResource("3_at5dv")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.4
-shader_parameter/highlight_strength = 0.0499999988824
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
-shader_parameter/bw_enabled = true
-shader_parameter/contrast = 1.0
-shader_parameter/brightness = 1.0
-shader_parameter/rain_enabled = true
-shader_parameter/rain_speed = 10.0
-shader_parameter/rain_spacing = 10.0
-shader_parameter/streak_length = 1.0
-shader_parameter/streak_width = 0.00450000021375
-shader_parameter/drop_brightness = 0.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_t77du"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_77dp3"]
-render_priority = 0
-shader = ExtResource("4_jcd4p")
-shader_parameter/albedo = Color(0.75379395, 0.84905356, 0.7188798, 1)
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = -0.05499990761249984
-shader_parameter/steepness = 1.1550000073625
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = true
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 10.4350004956625
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
-
-[sub_resource type="TorusMesh" id="TorusMesh_ykrsh"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_lpvoh"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcd4p"]
-render_priority = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uacia"]
 transparency = 1
-no_depth_test = true
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-stencil_mode = 3
-stencil_flags = 1
-stencil_compare = 5
-metadata/_stencil_owned = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at5dv"]
-next_pass = SubResource("StandardMaterial3D_jcd4p")
-transparency = 1
-albedo_color = Color(0.34306318, 0.99999994, 0.90660983, 1)
-stencil_mode = 2
 stencil_flags = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_at5dv"]
@@ -473,7 +429,7 @@ stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
-size = Vector2i(333, 283)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=204393029]
@@ -489,42 +445,8 @@ shadow_blur = 0.0
 directional_shadow_mode = 0
 directional_shadow_max_distance = 20.0
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="SubViewportContainer/SubViewport" unique_id=375660025]
+[node name="player" parent="SubViewportContainer/SubViewport" unique_id=52209652 instance=ExtResource("1_at5dv")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3251122, 0)
-script = ExtResource("1_j5jx5")
-
-[node name="AbilityManager" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=1483282738 instance=ExtResource("4_lpvoh")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=1565488381]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.088582516, 0)
-shape = SubResource("CapsuleShape3D_ykrsh")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=2078791595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06591666, 0)
-billboard = 1
-double_sided = false
-alpha_cut = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_vki1i")
-animation = &"walk"
-
-[node name="CameraPivot" type="Node3D" parent="SubViewportContainer/SubViewport/CharacterBody3D" unique_id=215065987]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.40639025, 0)
-
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CharacterBody3D/CameraPivot" unique_id=320185773]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 10)
-compositor = SubResource("Compositor_00tp4")
-projection = 1
-current = true
-size = 3.0
-far = 20.0
-
-[node name="PostProcessingQuad" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/CharacterBody3D/CameraPivot/Camera3D" unique_id=525331144]
-transform = Transform3D(-0.99999976, 8.742278e-08, 0, -8.7422755e-08, -1, 0, 0, 0, 0.99999964, -0.09171629, -0.008658409, -1.6456938)
-layers = 524288
-cast_shadow = 0
-mesh = SubResource("QuadMesh_ehkex")
-surface_material_override/0 = SubResource("ShaderMaterial_ykrsh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=1274248113]
 transform = Transform3D(0.6741735, 0, -0.738573, 0, 1, 0, 0.738573, 0, 0.6741735, -0.08061299, 0.5144521, -3.5555174)
@@ -551,7 +473,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1210627444]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1210627444 groups=["npc"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.67586106, 0.41041964, 0)
 billboard = 1
 double_sided = false
@@ -591,30 +513,32 @@ sprite_frames = SubResource("SpriteFrames_vki1i")
 animation = &"idle"
 autoplay = "walk"
 
+[node name="npc" parent="." unique_id=1633928452 groups=["npc"] instance=ExtResource("7_jcd4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0413513, 0.39749688, 1.3261738)
+
+[node name="monster_manager" parent="." unique_id=1060842955 groups=["monster_manager"] instance=ExtResource("7_uacia")]
+
+[node name="monster" parent="monster_manager" unique_id=322722219 groups=["monster"] instance=ExtResource("7_jcd4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27067718, 0.42000008, 4.234597)
+
+[node name="monster2" parent="monster_manager" unique_id=1010985247 groups=["monster"] instance=ExtResource("7_jcd4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49826545, 0.40717065, 2.8952162)
+
+[node name="monster3" parent="monster_manager" unique_id=771777928 groups=["monster"] instance=ExtResource("7_jcd4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3005008, 0.40717065, 2.0002916)
+
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1642471172]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33716214, 7.837285)
 visible = false
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2053974015]
-transform = Transform3D(1.3149511, 0, 0, 0, 0.74709666, 0, 0, 0, 0.7684597, 0, 0.5026163, 8.807557)
-size = Vector3(1, 0.8321533, 1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2" unique_id=252295069]
-transform = Transform3D(0.54164386, 0, 0, 0, 0.49325085, 0, 0, 0, 0.82675683, 0.04669698, 0.09636551, -0.0144786835)
-operation = 2
-size = Vector3(1, 0.8321533, 1.6688232)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=596289759]
-transform = Transform3D(1.0319815, 0, 0, 0, 0.6242733, 0, 0, 0, 0.59006333, 0, 0.668104, 12.474226)
+[node name="TransparencyTest" type="MeshInstance3D" parent="." unique_id=596289759]
+transform = Transform3D(1.0319815, 0, 0, 0, 0.6242733, 0, 0, 0, 0.59006333, 3.800312, 0.668104, 13.666043)
 mesh = SubResource("BoxMesh_lpvoh")
-surface_material_override/0 = SubResource("StandardMaterial3D_at5dv")
+surface_material_override/0 = SubResource("StandardMaterial3D_uacia")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=663277539]
-transform = Transform3D(1.0319815, 0, 0, 0, 0.6242733, 0, 0, 0, 0.59006333, 1.7317066, 0.668104, 12.588443)
-mesh = SubResource("BoxMesh_lpvoh")
-surface_material_override/0 = SubResource("StandardMaterial3D_at5dv")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=568877778]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41443762, 0.7124264, 13.898114)
+[node name="TransparencyDetector" type="MeshInstance3D" parent="." unique_id=568877778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1377058, 0.36994112, 12.293138)
 mesh = SubResource("BoxMesh_at5dv")
 surface_material_override/0 = ExtResource("7_at5dv")
+
+[editable path="SubViewportContainer/SubViewport/player"]
