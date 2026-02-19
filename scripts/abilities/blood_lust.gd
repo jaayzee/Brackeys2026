@@ -3,6 +3,8 @@ extends Ability
 @export var blood_lust_particles : PackedScene
 var blood_particles: Array = []
 
+@export var particle_offset: Vector3
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -18,9 +20,9 @@ func _activate():
 		var particles = blood_lust_particles.instantiate()
 		blood_particles.append(particles)
 		monster.add_child(particles)
-		particles.global_transform.origin = monster.global_transform.origin
+		particles.global_transform.origin = monster.global_transform.origin + particle_offset
 
-	_start_timer(duration)
+	_start_timer()
 	
 func _deactivate():
 	ab_is_active = false

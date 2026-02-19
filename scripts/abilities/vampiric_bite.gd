@@ -28,6 +28,7 @@ func _activate():
 		if body.is_in_group("monster"):
 			print("Biting monster")
 			_bite(body)
+			monster_manager._capture_monster()
 		elif body.is_in_group("npc"):
 			print("Biting npc")
 			_bite(body)
@@ -44,7 +45,6 @@ func _stop_death_animation():
 	sprite.stop()
 	#sprite.frame = sprite.frame_frames.get_frame_count("die") - 1
 	sprite.frame = 6 # errors for some reason if I do ^
-	print("Died")
 	
 func _deactivate():
 	pass

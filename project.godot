@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="testpixelfilter"
-run/main_scene="res://scenes/test.tscn"
+run/main_scene="res://scenes/game_scenes/main_night.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
@@ -35,6 +35,7 @@ enabled=PackedStringArray()
 player=""
 monster=""
 npc=""
+player_ui=""
 
 [input]
 

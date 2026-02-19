@@ -6,12 +6,7 @@ var speed_boost := 1.0
 var particles
 
 func _ready() -> void:
-	ab_name = "Shadow Step"
-	ab_is_unlocked = false
-	ab_is_active = false
-	ab_level = 0
-	
-	duration = 2.5
+	pass
 
 func _activate():
 	print("Active: Shadowstep")
@@ -24,11 +19,12 @@ func _activate():
 	particles.global_transform.origin = player.global_transform.origin
 	player.sprite.visible = false
 	
-	_start_timer(duration)
+	_start_timer()
 
 func _deactivate():
 	print("Deactive: Shadowstep")
 	ab_is_active = false
 	player._boost_speed(-speed_boost)
-	particles.queue_free()
+	if particles:
+		particles.queue_free()
 	player.sprite.visible = true

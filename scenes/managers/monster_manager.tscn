@@ -4,3 +4,4 @@
 
 [node name="monster_manager" type="Node3D" unique_id=1060842955]
 script = ExtResource("1_4iwms")
+monster_quota = 1

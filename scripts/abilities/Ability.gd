@@ -21,7 +21,7 @@ func _activate():
 func _deactivate():
 	pass
 	
-func _start_timer(duration: float):
+func _start_timer():
 	# Start a timer 
 	var t = Timer.new()
 	t.wait_time = duration
