@@ -2,6 +2,17 @@
 
 [ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="1_xyikw"]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_665qc"]
+vertices = PackedVector3Array(-0.84000003, 0.12, -0.84000003, -0.84000003, 0.12, 0.8399999, 0.8399999, 0.12, 0.8399999, 0.8399999, 0.12, -0.84000003)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+cell_size = 0.01
+cell_height = 0.01
+agent_height = 0.4
+agent_radius = 0.15
+agent_max_climb = 0.2
+edge_max_error = 0.1
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_k58w1"]
 size = Vector3(2, 0.1, 2)
 
@@ -10,6 +21,9 @@ size = Vector3(2, 0.1, 2)
 [node name="base" type="MeshInstance3D" parent="." unique_id=1369000663]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = ExtResource("1_xyikw")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="base" unique_id=1272780130]
+navigation_mesh = SubResource("NavigationMesh_665qc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="base" unique_id=422359616]
 

@@ -2,6 +2,22 @@
 
 [ext_resource type="ArrayMesh" uid="uid://c3pyfpxoillq" path="res://assets/Assets/obj/road_straight.obj" id="1_1q7fl"]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_bmbho"]
+vertices = PackedVector3Array(-0.84000003, 0.12, -0.84000003, -0.84000003, 0.12, 0.8399999, -0.76, 0.12, 0.8399999, -0.76, 0.12, -0.84000003, 0.76, 0.12, -0.84000003, 0.76, 0.12, 0.8399999, 0.8399999, 0.12, 0.8399999, 0.8399999, 0.12, -0.84000003)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
+cell_size = 0.01
+cell_height = 0.01
+agent_height = 0.4
+agent_radius = 0.15
+agent_max_climb = 0.2
+edge_max_error = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17wbp"]
+size = Vector3(0.4, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d86uj"]
+size = Vector3(0.4, 0.1, 2)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_o7isj"]
 size = Vector3(2, 0.1, 2)
 
@@ -9,6 +25,19 @@ size = Vector3(2, 0.1, 2)
 
 [node name="road_straight" type="MeshInstance3D" parent="." unique_id=245761893]
 mesh = ExtResource("1_1q7fl")
+
+[node name="npc_navmesh" type="NavigationRegion3D" parent="road_straight" unique_id=547813748]
+navigation_mesh = SubResource("NavigationMesh_bmbho")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road_straight/npc_navmesh" unique_id=44039358]
+
+[node name="roadleft_c" type="CollisionShape3D" parent="road_straight/npc_navmesh/StaticBody3D" unique_id=1920111236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.05, -5.9604645e-08)
+shape = SubResource("BoxShape3D_17wbp")
+
+[node name="roadright-c" type="CollisionShape3D" parent="road_straight/npc_navmesh/StaticBody3D" unique_id=213755042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.05, 5.9604645e-08)
+shape = SubResource("BoxShape3D_d86uj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="road_straight" unique_id=205348968]
 
