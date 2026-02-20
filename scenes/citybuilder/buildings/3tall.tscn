@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkbgfue0oxcg6"]
 
-[ext_resource type="ArrayMesh" uid="uid://ctfrh5uq0by6k" path="res://assets/Assets/obj/building_D_withoutBase.obj" id="3_f623o"]
+[ext_resource type="ArrayMesh" uid="uid://ctfrh5uq0by6k" path="res://assets/Assets/obj/building_D_withoutBase.obj" id="1_4wrrs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xt0gf"]
 size = Vector3(1.2, 6.75, 1.3000001)
@@ -21,8 +21,8 @@ shape = SubResource("BoxShape3D_xt0gf")
 [node name="Node3D" type="Node3D" parent="." unique_id=1199521707]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1607989076]
-mesh = ExtResource("3_f623o")
+mesh = ExtResource("1_4wrrs")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D" unique_id=401203102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
-mesh = ExtResource("3_f623o")
+mesh = ExtResource("1_4wrrs")
