@@ -1,9 +1,9 @@
 extends Ability
 
-var speed_boost := 1.0
-
 @export var shadow_particles: PackedScene
 var particles
+
+@export var speed_boost := 1.0
 
 func _ready() -> void:
 	pass

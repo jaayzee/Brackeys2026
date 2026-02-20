@@ -7,7 +7,7 @@ extends Node
 var player_ui
 
 func _ready() -> void:
-	player_ui = $player_ui
+	player_ui = get_node_or_null("player_ui")
 	
 func _process(delta: float) -> void:
 	time_remaining = Time.get_ticks_msec() / 1000

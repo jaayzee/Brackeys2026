@@ -25,4 +25,4 @@ func _capture_monster():
 	
 	if monster_count >= monster_quota:
 		print("You Win")
-		GameManager._completed_level()
+		#GameManager._completed_level()
