@@ -9,7 +9,7 @@ func _ready() -> void:
 	pass
 
 func _activate():
-	print("Active: Shadowstep")
+	super()
 	ab_is_active = true
 	player._boost_speed(speed_boost)
 	
@@ -18,11 +18,10 @@ func _activate():
 	add_child(particles)
 	particles.global_transform.origin = player.global_transform.origin
 	player.sprite.visible = false
-	
-	_start_timer()
+	#_start_timer()
 
 func _deactivate():
-	print("Deactive: Shadowstep")
+	super()
 	ab_is_active = false
 	player._boost_speed(-speed_boost)
 	if particles:

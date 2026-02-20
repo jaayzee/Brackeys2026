@@ -1,49 +1,58 @@
 extends Node3D
 
-# var abilities: Array = []
-# Inital list of abilities
-@export var shadow_step : PackedScene
-var shadow_step_ab
-@export var blood_lust : PackedScene
-var blood_lust_ab
-@export var vampiric_bite : PackedScene
-var vampiric_bite_ab
-# 3 core abilities that you can upgrade and improve on 
-# abilities have a name, effect, bool if its activated, and levels (scope)
+@export var ability_scenes: Array[PackedScene] = []
+var abilities: Array = []
 
 # var passives
 var player
 var monster_manager
+var player_ui
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	monster_manager = get_tree().get_first_node_in_group("monster_manager")
+	player_ui = get_tree().get_first_node_in_group("player_ui")
 	
-	# Shadow_step
-	shadow_step_ab = shadow_step.instantiate()
-	add_child(shadow_step_ab)
-	shadow_step_ab.player = player
-	shadow_step_ab.monster_manager = monster_manager
-	
-	# Blood_lust
-	blood_lust_ab = blood_lust.instantiate()
-	add_child(blood_lust_ab)
-	blood_lust_ab.player = player
-	blood_lust_ab.monster_manager = monster_manager
-	
-	# Vampiric_bite
-	vampiric_bite_ab = vampiric_bite.instantiate()
-	add_child(vampiric_bite_ab)
-	vampiric_bite_ab.player = player
-	vampiric_bite_ab.monster_manager = monster_manager
+	for ability in ability_scenes:
+		var ability_obj = ability.instantiate()
+		abilities.append(ability_obj)
+		add_child(ability_obj)
+		ability_obj.player = player
+		ability_obj.monster_manager = monster_manager
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# Manages input
+	if GameManager.is_paranoia_full:
+		# Deactivate all abilities
+		# is unlocked = false
+		pass
+		
 	if Input.is_action_just_pressed("Ability1"):
-		shadow_step_ab._activate()
-	elif Input.is_action_just_pressed("Ability2"):
-		blood_lust_ab._activate()
-	elif Input.is_action_just_pressed("Ability3"):
-		vampiric_bite_ab._activate()
-	
+		abilities[0]._activate()
+		var ability1_label = player_ui.get_node("VBoxContainer/ability1")
+		ability1_label.modulate = Color(1, 1, 1, 1)
+	elif Input.is_action_just_released("Ability1"):
+		abilities[0]._deactivate()
+		
+	if Input.is_action_just_pressed("Ability2"):
+		abilities[1]._activate()
+		var ability2_label = player_ui.get_node("VBoxContainer/ability2")
+		ability2_label.modulate = Color(1, 1, 1, 1)
+	elif Input.is_action_just_released("Ability2"):
+		abilities[1]._deactivate()
+		
+	if Input.is_action_just_pressed("Ability3"):
+		abilities[2]._activate()
+		var ability3_label = player_ui.get_node("VBoxContainer/ability3")
+		ability3_label.modulate = Color(1, 1, 1, 1)
+		
+	# Checks if NPC is near while using an ability
+	for ability in abilities:
+		if ability.ab_is_active:
+			if (player._get_near_npcs().size() >= 1):
+				GameManager._add_paranoia(ability.paranoia_rate)
+		
+func _reset_UI():
+	var ability_container = player_ui.get_node("VBoxContainer")
+	for ability in ability_container.get_children():
+		ability.modulate = Color(1,1,1, .25)

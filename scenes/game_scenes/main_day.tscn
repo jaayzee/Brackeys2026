@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://bje2wbhoiyw28"]
 
-[ext_resource type="PackedScene" uid="uid://h0jhpu8opw1b" path="res://scenes/managers/game_manager.tscn" id="1_6k7wp"]
-[ext_resource type="PackedScene" uid="uid://bcucs32sg3yx" path="res://scenes/player.tscn" id="1_pvb3l"]
+[ext_resource type="PackedScene" uid="uid://c0yjajot5igvi" path="res://scenes/player.tscn" id="1_pvb3l"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_6k7wp"]
-[ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/player_ui.tscn" id="2_tfy45"]
+[ext_resource type="PackedScene" uid="uid://bw7uqdfhsy8d0" path="res://scenes/player_ui.tscn" id="2_tfy45"]
 [ext_resource type="PackedScene" uid="uid://d12cfks5dnnoo" path="res://scenes/game_scenes/shop_menu.tscn" id="3_3ga4s"]
 [ext_resource type="MeshLibrary" uid="uid://8p02d0kdnf6n" path="res://assets/city_library.meshlib" id="3_tfy45"]
 [ext_resource type="Texture2D" uid="uid://bl5bf1sb52ucn" path="res://sprites/TheDummyAnim-SpriteSheet.png" id="4_3ga4s"]
-[ext_resource type="PackedScene" uid="uid://beue6pjuph0jo" path="res://scenes/monster.tscn" id="5_imsfv"]
+[ext_resource type="PackedScene" uid="uid://dvpor02sp2dh0" path="res://scenes/monster.tscn" id="5_imsfv"]
 [ext_resource type="PackedScene" uid="uid://dk1rcbvu130kw" path="res://scenes/managers/monster_manager.tscn" id="6_sris7"]
 [ext_resource type="Material" uid="uid://cgpf0c5gdu58j" path="res://shaders/transparentshader.tres" id="7_uhbmf"]
 
@@ -420,13 +419,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Game_Manager" parent="." unique_id=388885606 instance=ExtResource("1_6k7wp")]
-
-[node name="player_ui" parent="Game_Manager" unique_id=343348417 instance=ExtResource("2_tfy45")]
-
-[node name="shop_menu" parent="Game_Manager" unique_id=1914158305 instance=ExtResource("3_3ga4s")]
-visible = false
-
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=657015897]
 layout_mode = 1
 anchors_preset = 15
@@ -529,15 +521,15 @@ autoplay = "walk"
 [node name="npc" parent="." unique_id=1633928452 groups=["npc"] instance=ExtResource("5_imsfv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0413513, 0.39749688, 1.3261738)
 
-[node name="monster_manager" parent="." unique_id=1060842955 groups=["monster_manager"] instance=ExtResource("6_sris7")]
+[node name="monster_manager" parent="." unique_id=1060842955 instance=ExtResource("6_sris7")]
 
-[node name="monster" parent="monster_manager" unique_id=322722219 groups=["monster"] instance=ExtResource("5_imsfv")]
+[node name="monster" parent="monster_manager" unique_id=322722219 instance=ExtResource("5_imsfv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27067718, 0.42000008, 4.234597)
 
-[node name="monster2" parent="monster_manager" unique_id=1010985247 groups=["monster"] instance=ExtResource("5_imsfv")]
+[node name="monster2" parent="monster_manager" unique_id=1010985247 instance=ExtResource("5_imsfv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49826545, 0.40717065, 2.8952162)
 
-[node name="monster3" parent="monster_manager" unique_id=771777928 groups=["monster"] instance=ExtResource("5_imsfv")]
+[node name="monster3" parent="monster_manager" unique_id=771777928 instance=ExtResource("5_imsfv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3005008, 0.40717065, 2.0002916)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1642471172]
@@ -554,5 +546,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1377058, 0.36994112, 12.293
 visible = false
 mesh = SubResource("BoxMesh_at5dv")
 surface_material_override/0 = ExtResource("7_uhbmf")
+
+[node name="shop_menu" parent="." unique_id=1914158305 instance=ExtResource("3_3ga4s")]
+layout_mode = 1
+
+[node name="player_ui" parent="." unique_id=343348417 instance=ExtResource("2_tfy45")]
+layout_mode = 1
 
 [editable path="SubViewportContainer/SubViewport/player"]

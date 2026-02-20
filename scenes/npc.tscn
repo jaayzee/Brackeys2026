@@ -20,7 +20,7 @@ script = ExtResource("2_rv78h")
 wait_time_min = 0.0
 wait_time_max = 0.0
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1691904217]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1691904217 groups=["npc"]]
 transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0.20821357, 0)
 cast_shadow = 0
 billboard = 1
@@ -28,6 +28,7 @@ alpha_cut = 1
 texture_filter = 0
 sprite_frames = ExtResource("2_abqhh")
 animation = &"die"
+autoplay = "idle"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1667543603]
 path_desired_distance = 0.1

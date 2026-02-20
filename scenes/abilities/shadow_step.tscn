@@ -9,3 +9,4 @@ shadow_particles = ExtResource("2_em4g4")
 speed_boost = 0.5
 ab_name = "Shadow Step"
 duration = 2.5
+paranoia_rate = 2

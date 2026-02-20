@@ -5,3 +5,4 @@
 [node name="vampiric_bite" type="Node3D" unique_id=450265629]
 script = ExtResource("1_6mef2")
 ab_name = "Vampiric Bite"
+paranoia_rate = 10

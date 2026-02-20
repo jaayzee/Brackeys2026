@@ -1,18 +1,31 @@
 extends Node
 
-@export var money := 500
 @export var reward_money := 500 # Changes depending on level
-@export var total_time := 0
-@export var time_remaining := 0
+@export var total_time := 360
+@export var max_paranoia := 100
+@export var paranoia_reset_time := 3
+
+var money := 0
+var time_remaining := 0
+var current_paranoia := 0
+var is_paranoia_full = false
+
 var player_ui
 
 func _ready() -> void:
-	player_ui = get_node_or_null("player_ui")
+	print("Game Manager Ready")
+	player_ui = get_tree().get_first_node_in_group("player_ui")
 	
 func _process(delta: float) -> void:
+	# Game Timer & Paranoia
 	time_remaining = Time.get_ticks_msec() / 1000
+	time_remaining = total_time - time_remaining
+	
+	current_paranoia -= delta
+	
 	if player_ui:
 		player_ui.get_node("timer").text = "Time: " + str(time_remaining)
+		player_ui.get_node("paranoia").text = "Paranoia: " + str(current_paranoia)
 	
 func add_money(amount: int):
 	money += amount
@@ -28,3 +41,19 @@ func _completed_level():
 		player_ui.get_node("money").text = "Money: " + str(money)
 		
 	get_tree().change_scene_to_file("res://scenes/game_scenes/completed_level_menu.tscn")
+
+func _add_paranoia(amount: int):
+	current_paranoia += amount
+	if current_paranoia >= max_paranoia:
+		is_paranoia_full = true
+		
+		var t = Timer.new()
+		t.wait_time = paranoia_reset_time
+		add_child(t)
+		t.start()
+		t.one_shot = true
+		t.timeout.connect(Callable(self, "_reset_paranoia"))
+
+func _reset_paranoia():
+	current_paranoia = 0
+	is_paranoia_full = false

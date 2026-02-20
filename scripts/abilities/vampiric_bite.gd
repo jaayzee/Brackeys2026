@@ -16,12 +16,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _activate():
-	# Check radius around player
-	# is there an enemy
-	# if so is it a monster or a npc
-	# check by group
-	# if monster -> print() -> leads to winning level
-	# if NPC -> get blood or do nothing rn
+	super()
+
 	var bodies = player._get_near_npcs()
 	print(bodies.size())
 	for body in bodies:
@@ -32,6 +28,9 @@ func _activate():
 		elif body.is_in_group("npc"):
 			print("Biting npc")
 			_bite(body)
+			body.die()
+			GameManager._add_paranoia(paranoia_rate)
+	_deactivate()
 	
 func _bite(body: Node3D):
 	sprite = body.get_node_or_null("AnimatedSprite3D")
@@ -40,11 +39,13 @@ func _bite(body: Node3D):
 		sprite.animation_finished.connect(_stop_death_animation, CONNECT_ONE_SHOT)
 	else:
 		print("no animatedsprite")
+		_deactivate()
 
 func _stop_death_animation():
 	sprite.stop()
 	#sprite.frame = sprite.frame_frames.get_frame_count("die") - 1
 	sprite.frame = 6 # errors for some reason if I do ^
+	_deactivate()
 	
 func _deactivate():
-	pass
+	super()

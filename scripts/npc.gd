@@ -15,6 +15,7 @@ extends CharacterBody3D
 
 var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _panicking := false
+var _dead := false
 var _panic_timer := 0.0
 var _panic_source := Vector3.ZERO
 
@@ -75,6 +76,11 @@ func _pick():
 	await get_tree().create_timer(randf_range(wait_time_min, wait_time_max)).timeout
 	_pick()
 
+func die():
+	_dead = true
+	move_speed = 0
+	print("DIED:" + str(velocity.x) + ", " + str(velocity.y))
+	
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= _gravity * delta
@@ -99,10 +105,11 @@ func _physics_process(delta):
 			velocity.x = dir.x * speed
 			velocity.z = dir.z * speed
 			sprite.flip_h = dir.x < 0
-			sprite.play("panic" if _panicking else "walk")
+			if !_dead:
+				sprite.play("panic" if _panicking else "walk")
 	else:
 		velocity.x = 0
 		velocity.z = 0
-		sprite.play("panic" if _panicking else "idle")
+		sprite.play("die" if _dead else "idle")
 
 	move_and_slide()

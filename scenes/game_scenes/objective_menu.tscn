@@ -9,7 +9,7 @@ font_size = 75
 font_color = Color(0.93, 0, 0.015499763, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vw068"]
-font_size = 25
+font_size = 20
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4a46h"]
 texture = ExtResource("1_hkq2a")
@@ -27,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 script = ExtResource("1_p1ucr")
 
 [node name="Panel2" type="Panel" parent="." unique_id=1840453587]
@@ -38,21 +39,35 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="." unique_id=1979727990]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 126.0
-offset_right = 1267.0
-offset_bottom = 267.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -300.0
+offset_right = 450.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Capture:
 Robin R. Banks "
 label_settings = SubResource("LabelSettings_p1ucr")
 
 [node name="Label2" type="Label" parent="." unique_id=375508462]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 347.0
-offset_right = 1377.0
-offset_bottom = 526.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -93.0
+offset_right = 644.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "A vampire only known to steal money from various bank sites
 along New York. We don't know why or what he's doing
 with this money but all we do know is he tends to stick
@@ -64,40 +79,44 @@ label_settings = SubResource("LabelSettings_vw068")
 
 [node name="wanted_poster" type="Panel" parent="." unique_id=1115487612]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -681.0
-offset_top = -428.0
-offset_right = -127.0
-offset_bottom = 319.50238
-grow_horizontal = 2
+offset_left = 101.0
+offset_top = -241.0
+offset_right = 439.0
+offset_bottom = 215.05743
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_4a46h")
 
 [node name="wanted_poster2" type="Panel" parent="." unique_id=1861699521]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = 94.0
-offset_right = 113.0
-offset_bottom = 351.7129
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = -241.0
+offset_right = 225.0
+offset_bottom = -99.32538
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_1qw2o")
 
 [node name="Label3" type="Label" parent="." unique_id=1509759098]
-layout_mode = 0
-offset_left = 1088.0
-offset_top = 701.0
-offset_right = 1569.0
-offset_bottom = 817.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -221.0
+offset_right = 131.0
+offset_bottom = -105.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "500 Gold"
 label_settings = SubResource("LabelSettings_o7gnl")
 
@@ -108,10 +127,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -165.0
-offset_top = -132.0
-offset_right = 169.96777
-offset_bottom = -44.0
+offset_left = -167.48389
+offset_top = -88.0
+offset_right = 167.48389
 grow_horizontal = 2
 grow_vertical = 0
 text = "Press to Begin"

@@ -10,8 +10,7 @@ func _ready() -> void:
 	pass
 
 func _activate():
-	print("Activating: Blood Lust")
-	ab_is_active = true
+	super()
 	monster_manager._enable_blood()
 	
 	blood_particles = []
@@ -22,11 +21,12 @@ func _activate():
 		monster.add_child(particles)
 		particles.global_transform.origin = monster.global_transform.origin + particle_offset
 
-	_start_timer()
+	#_start_timer()
 	
 func _deactivate():
-	ab_is_active = false
+	super()
 	monster_manager._disable_blood()
 	
 	for particle in blood_particles:
-		particle.queue_free()
+		if particle:
+			particle.queue_free()

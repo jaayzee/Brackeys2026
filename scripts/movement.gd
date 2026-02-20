@@ -69,7 +69,6 @@ func _physics_process(delta):
 	else:
 		sprite.play("jump")
 		
-	
 # Ability 
 func _boost_speed(increment: float):
 	speed += increment

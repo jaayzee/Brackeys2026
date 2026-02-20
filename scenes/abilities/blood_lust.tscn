@@ -9,3 +9,4 @@ blood_lust_particles = ExtResource("2_hxpoo")
 particle_offset = Vector3(0, 0.25, 0)
 ab_name = "Blood Lust"
 duration = 2.5
+paranoia_rate = 1
