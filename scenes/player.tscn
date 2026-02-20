@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dugmcrgktndbu"]
+[gd_scene format=3 uid="uid://bcucs32sg3yx"]
 
 [ext_resource type="Script" uid="uid://shwcr1hbrhrc" path="res://scripts/movement.gd" id="1_dqkch"]
 [ext_resource type="PackedScene" uid="uid://daw2qug5au0of" path="res://scenes/prototypes/ability_manager.tscn" id="2_qlg0r"]

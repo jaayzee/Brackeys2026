@@ -423,7 +423,7 @@ animations = [{
 radius = 0.11669922
 height = 0.4752655
 
-[node name="monster" type="CharacterBody3D" unique_id=1633928452]
+[node name="monster" type="CharacterBody3D" unique_id=1633928452 groups=["monster"]]
 collision_layer = 3
 script = ExtResource("1_1cbnp")
 
@@ -433,10 +433,8 @@ double_sided = false
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_md0e3")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
-frame = 6
-frame_progress = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=625569348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08594513, 0)

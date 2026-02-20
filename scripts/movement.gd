@@ -13,9 +13,6 @@ var camera_angle = 0.0
 @onready var camera = $CameraPivot/Camera3D
 
 @onready var col_detector = $CollisionDetector
-	
-# Shooting
-@export var bullet: PackedScene # Can be plates or actually bullets
 
 func _input(event):
 	if event.is_action_pressed("v"):
@@ -72,9 +69,7 @@ func _physics_process(delta):
 	else:
 		sprite.play("jump")
 		
-	# NPC / Monster Collision Detection
 	
-
 # Ability 
 func _boost_speed(increment: float):
 	speed += increment
