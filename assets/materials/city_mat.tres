@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bqi14it7231r7"]
+
+[ext_resource type="Texture2D" uid="uid://bik6je4035a7v" path="res://assets/Assets/fbx/citybits_texture.png" id="1_h7m30"]
+
+[resource]
+albedo_texture = ExtResource("1_h7m30")
+stencil_flags = 1
+stencil_compare = 5

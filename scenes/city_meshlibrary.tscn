@@ -15,35 +15,73 @@
 [ext_resource type="PackedScene" uid="uid://cikdttg80at3o" path="res://assets/cityassets/road_straight.tscn" id="13_k4klv"]
 [ext_resource type="PackedScene" uid="uid://be4ijyf0rqas5" path="res://assets/cityassets/road_straight_crossing.tscn" id="14_8xfqj"]
 [ext_resource type="PackedScene" uid="uid://ciqpbw2mdyjpy" path="res://assets/cityassets/road_tsplit.tscn" id="15_8tb1c"]
+[ext_resource type="PackedScene" uid="uid://drbs8wvuqkby3" path="res://scenes/tall_a.tscn" id="16_mcrih"]
+[ext_resource type="PackedScene" uid="uid://dkm21pmaoiq6h" path="res://scenes/tall_b.tscn" id="17_51ht0"]
+[ext_resource type="PackedScene" uid="uid://buse6anbulld4" path="res://scenes/tall_c.tscn" id="18_u7yel"]
+[ext_resource type="PackedScene" uid="uid://7axdsygvhovh" path="res://scenes/tall_d.tscn" id="19_n20sh"]
+[ext_resource type="PackedScene" uid="uid://kr4h826y43xe" path="res://scenes/light_corner.tscn" id="20_u7yel"]
+[ext_resource type="PackedScene" uid="uid://22kd6o7lvhqd" path="res://scenes/trash_corner.tscn" id="21_n20sh"]
 
-[node name="City_MeshLibrary" type="Node2D" unique_id=1587156612]
+[node name="City_MeshLibrary" type="Node3D" unique_id=312088807]
 
 [node name="building_E" parent="." unique_id=750599897 instance=ExtResource("1_cofpw")]
+visible = false
 
 [node name="building_D" parent="." unique_id=2074231133 instance=ExtResource("2_mcrih")]
+visible = false
 
 [node name="base" parent="." unique_id=554628883 instance=ExtResource("3_nwm1y")]
 
 [node name="building_A" parent="." unique_id=1331274702 instance=ExtResource("4_0sds7")]
+visible = false
 
 [node name="building_B" parent="." unique_id=1099723249 instance=ExtResource("5_51ht0")]
+visible = false
 
 [node name="building_C" parent="." unique_id=1336790539 instance=ExtResource("6_u7yel")]
+visible = false
 
 [node name="building_F" parent="." unique_id=1315535909 instance=ExtResource("7_n20sh")]
+visible = false
 
 [node name="building_G" parent="." unique_id=961506127 instance=ExtResource("8_aqovl")]
+visible = false
 
 [node name="building_H" parent="." unique_id=1405246430 instance=ExtResource("9_rjwba")]
+visible = false
 
 [node name="road_corner" parent="." unique_id=1656595865 instance=ExtResource("10_4ynwf")]
+visible = false
 
 [node name="road_corner_curved" parent="." unique_id=1927701897 instance=ExtResource("11_gdsfy")]
+visible = false
 
 [node name="road_junction" parent="." unique_id=764060471 instance=ExtResource("12_5aulk")]
+visible = false
 
 [node name="road_straight" parent="." unique_id=1907752610 instance=ExtResource("13_k4klv")]
+visible = false
 
 [node name="road_straight_crossing" parent="." unique_id=1748906901 instance=ExtResource("14_8xfqj")]
+visible = false
 
 [node name="road_tsplit" parent="." unique_id=1554198436 instance=ExtResource("15_8tb1c")]
+visible = false
+
+[node name="tall_A" parent="." unique_id=1482914164 instance=ExtResource("16_mcrih")]
+visible = false
+
+[node name="tall_B" parent="." unique_id=1730966764 instance=ExtResource("17_51ht0")]
+visible = false
+
+[node name="tall_C" parent="." unique_id=163517695 instance=ExtResource("18_u7yel")]
+visible = false
+
+[node name="tall_D" parent="." unique_id=280867364 instance=ExtResource("19_n20sh")]
+visible = false
+
+[node name="light_corner" parent="." unique_id=123789576 instance=ExtResource("20_u7yel")]
+visible = false
+
+[node name="trash_corner" parent="." unique_id=1974016172 instance=ExtResource("21_n20sh")]
+visible = false

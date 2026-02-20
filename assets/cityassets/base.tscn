@@ -1,39 +1,32 @@
 [gd_scene format=3 uid="uid://li0hn4e6nld1"]
 
-[ext_resource type="PackedScene" uid="uid://b3lkadob0t5sr" path="res://assets/Assets/gltf/base.gltf" id="1_8rhti"]
-[ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_ohhpf"]
-[ext_resource type="Texture2D" uid="uid://bkg42yit6rqju" path="res://assets/Assets/obj/citybits_texture.png" id="3_21bcp"]
+[ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="1_xyikw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohhpf"]
-render_priority = 0
-shader = ExtResource("2_ohhpf")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("3_21bcp")
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = true
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = true
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
+[sub_resource type="NavigationMesh" id="NavigationMesh_665qc"]
+vertices = PackedVector3Array(-0.84000003, 0.12, -0.84000003, -0.84000003, 0.12, 0.8399999, 0.8399999, 0.12, 0.8399999, 0.8399999, 0.12, -0.84000003)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+cell_size = 0.01
+cell_height = 0.01
+agent_height = 0.4
+agent_radius = 0.15
+agent_max_climb = 0.2
+edge_max_error = 0.1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_665qc"]
-size = Vector3(2, 0.09999999, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_k58w1"]
+size = Vector3(2, 0.1, 2)
 
-[node name="base" unique_id=554628883 instance=ExtResource("1_8rhti")]
+[node name="base" type="Node3D" unique_id=554628883]
 
-[node name="base" parent="." index="0" unique_id=388971555]
-surface_material_override/0 = SubResource("ShaderMaterial_ohhpf")
+[node name="base" type="MeshInstance3D" parent="." unique_id=1369000663]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = ExtResource("1_xyikw")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="base" index="0" unique_id=422359616]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="base" unique_id=1272780130]
+navigation_mesh = SubResource("NavigationMesh_665qc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="base/StaticBody3D" index="0" unique_id=2102236372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999993, 0)
-shape = SubResource("BoxShape3D_665qc")
+[node name="StaticBody3D" type="StaticBody3D" parent="base" unique_id=422359616]
+
+[node name="base_c" type="CollisionShape3D" parent="base/StaticBody3D" unique_id=430042343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_k58w1")

@@ -1,39 +1,60 @@
 [gd_scene format=3 uid="uid://cc53t6rxwscbp"]
 
-[ext_resource type="PackedScene" uid="uid://c6dx8mithbf3i" path="res://assets/Assets/fbx (unity)/road_junction.fbx" id="1_7v0wr"]
-[ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_x3asy"]
-[ext_resource type="Texture2D" uid="uid://bkg42yit6rqju" path="res://assets/Assets/obj/citybits_texture.png" id="3_ktget"]
+[ext_resource type="ArrayMesh" uid="uid://dqr1vpq4687ak" path="res://assets/Assets/obj/road_junction.obj" id="1_beb71"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bofrp"]
-render_priority = 0
-shader = ExtResource("2_x3asy")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("3_ktget")
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = true
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = true
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
+[sub_resource type="NavigationMesh" id="NavigationMesh_mt1ea"]
+vertices = PackedVector3Array(-0.84000003, 0.12, -0.84000003, -0.84000003, 0.12, -0.76, -0.76, 0.12, -0.76, -0.76, 0.12, -0.84000003, 0.76, 0.12, -0.84000003, 0.76, 0.12, -0.76, 0.8399999, 0.12, -0.76, 0.8399999, 0.12, -0.84000003, -0.84000003, 0.12, 0.76, -0.84000003, 0.12, 0.8399999, -0.75, 0.12, 0.8399999, -0.75, 0.12, 0.76, 0.76, 0.12, 0.76, 0.76, 0.12, 0.8399999, 0.8399999, 0.12, 0.8399999, 0.8399999, 0.12, 0.76)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13)]
+cell_size = 0.01
+cell_height = 0.01
+agent_height = 0.4
+agent_radius = 0.15
+agent_max_climb = 0.2
+edge_max_error = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ih0l1"]
+size = Vector3(0.4, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iapbc"]
+size = Vector3(0.4, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_erc3k"]
+size = Vector3(0.4, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_26i5o"]
+size = Vector3(0.4, 0.1, 0.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pkguc"]
-size = Vector3(2, 0.10000007, 2.0000002)
+size = Vector3(2, 0.1, 2)
 
-[node name="road_junction" unique_id=764060471 instance=ExtResource("1_7v0wr")]
+[node name="road_junction" type="Node3D" unique_id=764060471]
 
-[node name="road_junction" parent="." index="0" unique_id=1765826427]
-surface_material_override/0 = SubResource("ShaderMaterial_bofrp")
+[node name="road_junction" type="MeshInstance3D" parent="." unique_id=2101611320]
+mesh = ExtResource("1_beb71")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="road_junction" index="0" unique_id=922451835]
+[node name="npc_navmesh" type="NavigationRegion3D" parent="road_junction" unique_id=1314431993]
+navigation_mesh = SubResource("NavigationMesh_mt1ea")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="road_junction/StaticBody3D" index="0" unique_id=219314410]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04999999, -1.1920929e-07)
+[node name="StaticBody3D" type="StaticBody3D" parent="road_junction/npc_navmesh" unique_id=1239227209]
+
+[node name="roadtl_c" type="CollisionShape3D" parent="road_junction/npc_navmesh/StaticBody3D" unique_id=1653652100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.05, -0.8)
+shape = SubResource("BoxShape3D_ih0l1")
+
+[node name="roadbl_c" type="CollisionShape3D" parent="road_junction/npc_navmesh/StaticBody3D" unique_id=1960721369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79999995, 0.05, 0.8)
+shape = SubResource("BoxShape3D_iapbc")
+
+[node name="roadbr-c" type="CollisionShape3D" parent="road_junction/npc_navmesh/StaticBody3D" unique_id=1053108400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.05, 0.8)
+shape = SubResource("BoxShape3D_erc3k")
+
+[node name="roadtr_c" type="CollisionShape3D" parent="road_junction/npc_navmesh/StaticBody3D" unique_id=351171376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.05, -0.8)
+shape = SubResource("BoxShape3D_26i5o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road_junction" unique_id=1958527310]
+
+[node name="road_c" type="CollisionShape3D" parent="road_junction/StaticBody3D" unique_id=221932837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_pkguc")
