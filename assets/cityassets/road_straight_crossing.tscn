@@ -1,39 +1,53 @@
 [gd_scene format=3 uid="uid://be4ijyf0rqas5"]
 
-[ext_resource type="PackedScene" uid="uid://bniracssoky00" path="res://assets/Assets/fbx (unity)/road_straight_crossing.fbx" id="1_qw3up"]
-[ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_noswk"]
-[ext_resource type="Texture2D" uid="uid://bkg42yit6rqju" path="res://assets/Assets/obj/citybits_texture.png" id="3_qef7s"]
+[ext_resource type="ArrayMesh" uid="uid://drej0mf37vyy2" path="res://assets/Assets/obj/road_straight_crossing.obj" id="1_m20cd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktepp"]
-render_priority = 0
-shader = ExtResource("2_noswk")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("3_qef7s")
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = true
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = true
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
+[sub_resource type="NavigationMesh" id="NavigationMesh_qpffi"]
+vertices = PackedVector3Array(-0.72, 0.12, 0.37, -0.71000004, 0.12, 0.37, -0.71000004, 0.12, 0.36, -0.70000005, 0.12, 0.36, -0.70000005, 0.12, 0.35000002, -0.69, 0.12, 0.35000002, -0.69, 0.12, 0.3399999, 0.68999994, 0.12, 0.3399999, 0.68999994, 0.12, 0.35000002, 0.6999999, 0.12, 0.35000002, 0.6999999, 0.12, 0.36, 0.7099999, 0.12, 0.36, 0.7099999, 0.12, 0.37, 0.7199999, 0.12, 0.37, 0.7199999, 0.12, -0.37, 0.7099999, 0.12, -0.37, 0.7099999, 0.12, -0.36, 0.6999999, 0.12, -0.36, 0.6999999, 0.12, -0.35000002, 0.68999994, 0.12, -0.35000002, 0.68999994, 0.12, -0.34000003, -0.69, 0.12, -0.34000003, -0.69, 0.12, -0.35000002, -0.70000005, 0.12, -0.35000002, -0.70000005, 0.12, -0.36, -0.71000004, 0.12, -0.36, -0.71000004, 0.12, -0.37, -0.72, 0.12, -0.37, -0.76, 0.12, 0.44999993, -0.75, 0.12, 0.44999993, -0.75, 0.12, 0.42999995, -0.74, 0.12, 0.42999995, -0.74, 0.12, 0.40999997, -0.73, 0.12, 0.40999997, -0.73, 0.12, 0.39, -0.72, 0.12, 0.39, -0.67, 0.12, 0.3399999, -0.67, 0.12, 0.32999992, -0.65, 0.12, 0.32999992, -0.65, 0.12, 0.31999993, -0.63, 0.12, 0.31999993, -0.63, 0.12, 0.30999994, -0.61, 0.12, 0.30999994, -0.61, 0.12, 0.29999995, 0.61, 0.12, 0.29999995, 0.61, 0.12, 0.30999994, 0.63, 0.12, 0.30999994, 0.63, 0.12, 0.31999993, 0.65, 0.12, 0.31999993, 0.65, 0.12, 0.32999992, 0.66999996, 0.12, 0.32999992, 0.66999996, 0.12, 0.3399999, 0.7199999, 0.12, 0.39, 0.73, 0.12, 0.39, 0.73, 0.12, 0.40999997, 0.74, 0.12, 0.40999997, 0.74, 0.12, 0.42999995, 0.75, 0.12, 0.42999995, 0.75, 0.12, 0.44999993, 0.76, 0.12, 0.44999993, 0.76, 0.12, -0.45, 0.75, 0.12, -0.45, 0.75, 0.12, -0.43, 0.74, 0.12, -0.43, 0.74, 0.12, -0.41000003, 0.73, 0.12, -0.41000003, 0.73, 0.12, -0.39, 0.7199999, 0.12, -0.39, 0.66999996, 0.12, -0.34000003, 0.66999996, 0.12, -0.33000004, 0.65, 0.12, -0.33000004, 0.65, 0.12, -0.32, 0.63, 0.12, -0.32, 0.63, 0.12, -0.31, 0.61, 0.12, -0.31, 0.61, 0.12, -0.3, -0.61, 0.12, -0.3, -0.61, 0.12, -0.31, -0.63, 0.12, -0.31, -0.63, 0.12, -0.32, -0.65, 0.12, -0.32, -0.65, 0.12, -0.33000004, -0.67, 0.12, -0.33000004, -0.67, 0.12, -0.34000003, -0.72, 0.12, -0.39, -0.73, 0.12, -0.39, -0.73, 0.12, -0.41000003, -0.74, 0.12, -0.41000003, -0.74, 0.12, -0.43, -0.75, 0.12, -0.43, -0.75, 0.12, -0.45, -0.76, 0.12, -0.45, -0.84000003, 0.12, 0.8399999, -0.76, 0.12, 0.8399999, 0.76, 0.12, 0.8399999, 0.8399999, 0.12, 0.8399999, 0.8399999, 0.12, -0.84000003, 0.76, 0.12, -0.84000003, -0.76, 0.12, -0.84000003, -0.84000003, 0.12, -0.84000003)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 10, 9), PackedInt32Array(13, 12, 11), PackedInt32Array(16, 15, 14), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(25, 24, 23), PackedInt32Array(27, 26, 25), PackedInt32Array(30, 29, 28), PackedInt32Array(32, 31, 30), PackedInt32Array(34, 33, 32), PackedInt32Array(0, 35, 34), PackedInt32Array(37, 36, 6), PackedInt32Array(39, 38, 37), PackedInt32Array(41, 40, 39), PackedInt32Array(43, 42, 41), PackedInt32Array(46, 45, 44), PackedInt32Array(48, 47, 46), PackedInt32Array(50, 49, 48), PackedInt32Array(7, 51, 50), PackedInt32Array(53, 52, 13), PackedInt32Array(55, 54, 53), PackedInt32Array(57, 56, 55), PackedInt32Array(59, 58, 57), PackedInt32Array(62, 61, 60), PackedInt32Array(64, 63, 62), PackedInt32Array(66, 65, 64), PackedInt32Array(14, 67, 66), PackedInt32Array(69, 68, 20), PackedInt32Array(71, 70, 69), PackedInt32Array(73, 72, 71), PackedInt32Array(75, 74, 73), PackedInt32Array(78, 77, 76), PackedInt32Array(80, 79, 78), PackedInt32Array(82, 81, 80), PackedInt32Array(21, 83, 82), PackedInt32Array(85, 84, 27), PackedInt32Array(87, 86, 85), PackedInt32Array(89, 88, 87), PackedInt32Array(91, 90, 89), PackedInt32Array(28, 93, 92), PackedInt32Array(95, 94, 59), PackedInt32Array(60, 97, 96), PackedInt32Array(91, 99, 98), PackedInt32Array(91, 28, 99), PackedInt32Array(99, 28, 92), PackedInt32Array(76, 75, 43), PackedInt32Array(43, 75, 44), PackedInt32Array(30, 28, 89), PackedInt32Array(89, 28, 91), PackedInt32Array(75, 73, 44), PackedInt32Array(44, 73, 46), PackedInt32Array(32, 30, 87), PackedInt32Array(87, 30, 89), PackedInt32Array(73, 71, 46), PackedInt32Array(46, 71, 48), PackedInt32Array(34, 32, 85), PackedInt32Array(85, 32, 87), PackedInt32Array(48, 71, 50), PackedInt32Array(50, 71, 69), PackedInt32Array(0, 34, 27), PackedInt32Array(27, 34, 85), PackedInt32Array(69, 20, 50), PackedInt32Array(50, 20, 7), PackedInt32Array(2, 0, 25), PackedInt32Array(25, 0, 27), PackedInt32Array(20, 18, 7), PackedInt32Array(7, 18, 9), PackedInt32Array(4, 2, 23), PackedInt32Array(23, 2, 25), PackedInt32Array(18, 16, 9), PackedInt32Array(9, 16, 11), PackedInt32Array(21, 6, 23), PackedInt32Array(23, 6, 4), PackedInt32Array(16, 14, 11), PackedInt32Array(11, 14, 13), PackedInt32Array(37, 6, 82), PackedInt32Array(82, 6, 21), PackedInt32Array(14, 66, 13), PackedInt32Array(13, 66, 53), PackedInt32Array(39, 37, 80), PackedInt32Array(80, 37, 82), PackedInt32Array(66, 64, 53), PackedInt32Array(53, 64, 55), PackedInt32Array(41, 39, 78), PackedInt32Array(78, 39, 80), PackedInt32Array(64, 62, 55), PackedInt32Array(55, 62, 57), PackedInt32Array(43, 41, 76), PackedInt32Array(76, 41, 78), PackedInt32Array(62, 60, 57), PackedInt32Array(57, 60, 59), PackedInt32Array(60, 96, 59), PackedInt32Array(59, 96, 95)]
+cell_size = 0.01
+cell_height = 0.01
+agent_height = 0.4
+agent_radius = 0.15
+agent_max_climb = 0.2
+edge_max_error = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5sb4"]
+size = Vector3(0.4, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n0es"]
+size = Vector3(1.2, 0.1, 0.90000004)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6rvrn"]
+size = Vector3(0.4, 0.1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81anu"]
-size = Vector3(2, 0.10000008, 2)
+size = Vector3(2, 0.1, 2)
 
-[node name="road_straight_crossing" unique_id=1748906901 instance=ExtResource("1_qw3up")]
+[node name="road_straight_crossing" type="Node3D" unique_id=1748906901]
 
-[node name="road_straight_crossing" parent="." index="0" unique_id=2036965513]
-surface_material_override/0 = SubResource("ShaderMaterial_ktepp")
+[node name="road_straight_crossing" type="MeshInstance3D" parent="." unique_id=1335212503]
+mesh = ExtResource("1_m20cd")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="road_straight_crossing" index="0" unique_id=1025647070]
+[node name="npc_navmesh" type="NavigationRegion3D" parent="road_straight_crossing" unique_id=223973503]
+navigation_mesh = SubResource("NavigationMesh_qpffi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="road_straight_crossing/StaticBody3D" index="0" unique_id=730736243]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999997, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="road_straight_crossing/npc_navmesh" unique_id=60570066]
+
+[node name="roadleft_c" type="CollisionShape3D" parent="road_straight_crossing/npc_navmesh/StaticBody3D" unique_id=1783789008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.05, -5.9604645e-08)
+shape = SubResource("BoxShape3D_i5sb4")
+
+[node name="roadmiddle_c" type="CollisionShape3D" parent="road_straight_crossing/npc_navmesh/StaticBody3D" unique_id=1435064277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.05, -2.9802322e-08)
+shape = SubResource("BoxShape3D_1n0es")
+
+[node name="roadright_c" type="CollisionShape3D" parent="road_straight_crossing/npc_navmesh/StaticBody3D" unique_id=2079123842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.05, -5.9604645e-08)
+shape = SubResource("BoxShape3D_6rvrn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road_straight_crossing" unique_id=109146833]
+
+[node name="road_c" type="CollisionShape3D" parent="road_straight_crossing/StaticBody3D" unique_id=849739402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_81anu")

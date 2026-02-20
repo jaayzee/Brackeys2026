@@ -14,6 +14,13 @@ var camera_angle = 0.0
 
 @onready var col_detector = $CollisionDetector
 	
+# Shooting
+@export var bullet: PackedScene # Can be plates or actually bullets
+
+func _input(event):
+	if event.is_action_pressed("v"):
+		get_tree().get_root().find_child("NPC_Manager", true, false).trigger_panic(global_position, 15.0)
+
 func _physics_process(delta):
 	# Gravity
 	if not is_on_floor():

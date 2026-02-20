@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://djfwia4ifnx5b"]
+
+[ext_resource type="SpriteFrames" uid="uid://dui7cyl4a2o2j" path="res://sprites/npcs.tres" id="2_abqhh"]
+[ext_resource type="Script" uid="uid://dbewwkarwijqg" path="res://scripts/npc.gd" id="2_rv78h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4wlns"]
+radius = 0.05
+height = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_abqhh"]
+radius = 0.05
+height = 0.3
+
+[node name="Npc" type="CharacterBody3D" unique_id=1023549608]
+wall_min_slide_angle = 0.0
+floor_block_on_wall = false
+safe_margin = 0.05
+script = ExtResource("2_rv78h")
+move_speed = 0.5
+wait_time_min = 0.0
+wait_time_max = 0.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1691904217]
+transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0.20821357, 0)
+cast_shadow = 0
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = ExtResource("2_abqhh")
+animation = &"idle"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1667543603]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+path_max_distance = 0.11
+height = 0.3
+radius = 0.05
+max_neighbors = 2
+debug_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1979598249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1520479, 0)
+shape = SubResource("CapsuleShape3D_4wlns")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=523266934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15110299, 0)
+cast_shadow = 3
+mesh = SubResource("CapsuleMesh_abqhh")

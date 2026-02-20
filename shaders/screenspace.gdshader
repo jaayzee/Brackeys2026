@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded,  depth_test_disabled;
 
 // Edge highlight constnats
 uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
