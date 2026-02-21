@@ -7,6 +7,4 @@
 
 [node name="AbilityManager" type="Node3D" unique_id=1483282738]
 script = ExtResource("1_h6t5y")
-shadow_step = ExtResource("2_tdbhv")
-blood_lust = ExtResource("3_yud5s")
-vampiric_bite = ExtResource("4_gl7ec")
+ability_scenes = Array[PackedScene]([ExtResource("2_tdbhv"), ExtResource("3_yud5s"), ExtResource("4_gl7ec")])

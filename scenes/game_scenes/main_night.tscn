@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://jlgbm5ifykmk"]
 
 [ext_resource type="PackedScene" uid="uid://djfwia4ifnx5b" path="res://scenes/npc.tscn" id="1_ojrth"]
-[ext_resource type="PackedScene" uid="uid://c0yjajot5igvi" path="res://scenes/player.tscn" id="2_hwbp5"]
+[ext_resource type="PackedScene" uid="uid://bcucs32sg3yx" path="res://scenes/player.tscn" id="2_hwbp5"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="3_hcelk"]
 [ext_resource type="MeshLibrary" uid="uid://ldg5le2usw8h" path="res://assets/city.meshlib" id="4_sbdvb"]
 [ext_resource type="PackedScene" uid="uid://ce2bg4ybqiui0" path="res://scenes/particles/shadow_particles.tscn" id="5_1daek"]
 [ext_resource type="Script" uid="uid://0xsqh622je8r" path="res://scripts/NPC_Manager.gd" id="6_0kj6i"]
 [ext_resource type="PackedScene" uid="uid://dk1rcbvu130kw" path="res://scenes/managers/monster_manager.tscn" id="7_pac7f"]
-[ext_resource type="PackedScene" uid="uid://dvpor02sp2dh0" path="res://scenes/monster.tscn" id="8_vpkxf"]
-[ext_resource type="PackedScene" uid="uid://bw7uqdfhsy8d0" path="res://scenes/player_ui.tscn" id="9_68pu7"]
+[ext_resource type="PackedScene" uid="uid://beue6pjuph0jo" path="res://scenes/monster.tscn" id="8_vpkxf"]
+[ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/player_ui.tscn" id="9_68pu7"]
 
 [sub_resource type="Environment" id="Environment_ykrsh"]
 background_mode = 1
@@ -61,7 +61,7 @@ stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
-size = Vector2i(384, 216)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="Npc" parent="SubViewportContainer/SubViewport" unique_id=1023549608 instance=ExtResource("1_ojrth")]

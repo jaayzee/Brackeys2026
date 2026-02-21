@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bje2wbhoiyw28"]
 
-[ext_resource type="PackedScene" uid="uid://c0yjajot5igvi" path="res://scenes/player.tscn" id="1_pvb3l"]
+[ext_resource type="PackedScene" uid="uid://bcucs32sg3yx" path="res://scenes/player.tscn" id="1_pvb3l"]
 [ext_resource type="Shader" uid="uid://60gtg2vuwd4g" path="res://shaders/toonshader.gdshader" id="2_6k7wp"]
-[ext_resource type="PackedScene" uid="uid://bw7uqdfhsy8d0" path="res://scenes/player_ui.tscn" id="2_tfy45"]
+[ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/player_ui.tscn" id="2_tfy45"]
 [ext_resource type="PackedScene" uid="uid://d12cfks5dnnoo" path="res://scenes/game_scenes/shop_menu.tscn" id="3_3ga4s"]
 [ext_resource type="MeshLibrary" uid="uid://8p02d0kdnf6n" path="res://assets/city_library.meshlib" id="3_tfy45"]
 [ext_resource type="Texture2D" uid="uid://bl5bf1sb52ucn" path="res://sprites/TheDummyAnim-SpriteSheet.png" id="4_3ga4s"]
-[ext_resource type="PackedScene" uid="uid://dvpor02sp2dh0" path="res://scenes/monster.tscn" id="5_imsfv"]
+[ext_resource type="PackedScene" uid="uid://beue6pjuph0jo" path="res://scenes/monster.tscn" id="5_imsfv"]
 [ext_resource type="PackedScene" uid="uid://dk1rcbvu130kw" path="res://scenes/managers/monster_manager.tscn" id="6_sris7"]
 [ext_resource type="Material" uid="uid://cgpf0c5gdu58j" path="res://shaders/transparentshader.tres" id="7_uhbmf"]
 
@@ -431,7 +431,7 @@ stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
-size = Vector2i(384, 216)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=204393029]
