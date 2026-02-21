@@ -5,6 +5,9 @@ extends Node
 @export var max_paranoia := 100
 @export var paranoia_reset_time := 3
 
+@export var body_paranoia_rate := 1.0
+@export var blood_paranoia_rate := 0.1
+
 var money := 0
 var time_remaining := 0
 var current_paranoia := 0
@@ -26,6 +29,16 @@ func _process(delta: float) -> void:
 	
 	current_paranoia -= delta # Lowkey change from delta since it probably is FPS dependent
 	
+	# paranoia contributors
+	var bodies = get_tree().get_nodes_in_group("evidence_body").size()
+	var bloods = get_tree().get_nodes_in_group("evidence_blood").size()
+	
+	var penalty = (bodies * body_paranoia_rate) + (bloods * blood_paranoia_rate)
+	current_paranoia += penalty * delta
+	current_paranoia = clamp(current_paranoia, 0.0, max_paranoia)
+	if current_paranoia >= max_paranoia and not is_paranoia_full:
+		print("MAX PARANOIA")
+		
 	if player_ui:
 		player_ui.get_node("timer").text = "Time: " + str(time_remaining)
 		player_ui.get_node("paranoia").text = "Paranoia: " + str(current_paranoia)

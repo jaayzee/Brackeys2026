@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://betic7w2xgbsa"]
+
+[ext_resource type="Script" uid="uid://dnd16hjjgc0lh" path="res://scripts/abilities/drink_blood.gd" id="1_3tl1g"]
+
+[node name="vampiric_bite" type="Node3D" unique_id=450265629]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_3tl1g")

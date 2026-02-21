@@ -15,7 +15,7 @@ extends Node3D
 @export var corpse_spawn_min: float = 5.0
 @export var corpse_spawn_max: float = 6.5
 
-signal kill_occurred(location: Vector3)
+signal kill_occurred(corpse_node: Node3D)
 
 var _active_npcs: Array[Node3D] = []
 var _corpses: Array[Node3D] = []
@@ -86,4 +86,5 @@ func spawn_dead_body(kill_location: Vector3):
 	body.global_position = kill_location
 	_corpses.append(body)
 	
-	kill_occurred.emit(kill_location)
+	kill_occurred.emit(body)
+	trigger_panic(kill_location, 15.0)
