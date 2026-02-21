@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dvt2oywhi01c1" path="res://shop_menu.gd" id="1_v22as"]
 [ext_resource type="Texture2D" uid="uid://d1qvfenx33n5h" path="res://assets/images/iu_.png" id="2_mmms3"]
+[ext_resource type="PackedScene" uid="uid://cqji0ld4x608r" path="res://scenes/ui/move_speed_upgrade.tscn" id="2_qgdgx"]
+[ext_resource type="PackedScene" uid="uid://vmagpt02nq5v" path="res://scenes/ui/upgrade_card.tscn" id="3_mmms3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgdgx"]
 texture = ExtResource("2_mmms3")
@@ -14,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v22as")
+upgrades = Array[PackedScene]([ExtResource("2_qgdgx"), ExtResource("2_qgdgx"), ExtResource("2_qgdgx")])
 
 [node name="Panel" type="Panel" parent="." unique_id=1332926242]
 layout_mode = 1
@@ -43,4 +46,44 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Begin next Mission"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=259461644]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -123.0
+offset_right = 281.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="upgrade_card3" parent="HBoxContainer" unique_id=1671019311 instance=ExtResource("3_mmms3")]
+layout_mode = 2
+up_cost = 30
+
+[node name="upgrade_card2" parent="HBoxContainer/upgrade_card3" unique_id=1052139802 instance=ExtResource("3_mmms3")]
+layout_mode = 2
+up_cost = 30
+
+[node name="upgrade_card2" parent="HBoxContainer" unique_id=1540544417 instance=ExtResource("3_mmms3")]
+layout_mode = 2
+up_cost = 30
+
+[node name="upgrade_card2" parent="HBoxContainer/upgrade_card2" unique_id=1211058703 instance=ExtResource("3_mmms3")]
+layout_mode = 2
+up_cost = 30
+
+[node name="upgrade_card" parent="HBoxContainer" unique_id=880635053 instance=ExtResource("3_mmms3")]
+layout_mode = 2
+up_cost = 30
+
 [connection signal="pressed" from="next_mission" to="." method="_on_next_mission_pressed"]
+
+[editable path="HBoxContainer/upgrade_card3"]
+[editable path="HBoxContainer/upgrade_card3/upgrade_card2"]
+[editable path="HBoxContainer/upgrade_card2"]
+[editable path="HBoxContainer/upgrade_card2/upgrade_card2"]

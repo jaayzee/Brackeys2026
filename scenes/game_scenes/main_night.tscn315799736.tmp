@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dk1rcbvu130kw" path="res://scenes/managers/monster_manager.tscn" id="7_pac7f"]
 [ext_resource type="PackedScene" uid="uid://beue6pjuph0jo" path="res://scenes/monster.tscn" id="8_vpkxf"]
 [ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/player_ui.tscn" id="9_68pu7"]
-[ext_resource type="PackedScene" uid="uid://c3lml70rhsfjs" path="res://scenes/particles/blood_stain.tscn" id="10_hwbp5"]
 
 [sub_resource type="Environment" id="Environment_ykrsh"]
 background_mode = 1
@@ -62,9 +61,11 @@ stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(384, 216)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
+
+[node name="Npc" parent="SubViewportContainer/SubViewport" unique_id=1023549608 instance=ExtResource("1_ojrth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08413747, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=204393029]
 environment = SubResource("Environment_ykrsh")
@@ -119,9 +120,6 @@ script = ExtResource("6_0kj6i")
 npc_scene = ExtResource("1_ojrth")
 npc_count = 100
 
-[node name="Npc" parent="NPC_Manager" unique_id=1023549608 instance=ExtResource("1_ojrth")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24919817, 0)
-
 [node name="monster_manager" parent="." unique_id=1060842955 instance=ExtResource("7_pac7f")]
 
 [node name="monster" parent="monster_manager" unique_id=1633928452 instance=ExtResource("8_vpkxf")]
@@ -133,11 +131,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4098686, 0.41790557, 0)
 [node name="player_ui" parent="." unique_id=343348417 instance=ExtResource("9_68pu7")]
 layout_mode = 1
 
-[node name="blood_stain" parent="." unique_id=1283334616 instance=ExtResource("10_hwbp5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98277426, 0.10120487, -0.74947166)
-
-[node name="blood_stain2" parent="." unique_id=1882680563 instance=ExtResource("10_hwbp5")]
-transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 1.2953937, 0.10120487, -1.5346339)
-
-[node name="blood_stain3" parent="." unique_id=912632183 instance=ExtResource("10_hwbp5")]
-transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 0.3473301, 0.10120487, -0.23546505)
+[editable path="SubViewportContainer/SubViewport/player"]

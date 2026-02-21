@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dvpor02sp2dh0"]
+[gd_scene format=3 uid="uid://beue6pjuph0jo"]
 
 [ext_resource type="Script" uid="uid://btfaslqpw3pu8" path="res://scripts/monster.gd" id="1_1cbnp"]
 [ext_resource type="Texture2D" uid="uid://bl5bf1sb52ucn" path="res://sprites/TheDummyAnim-SpriteSheet.png" id="1_uwnm8"]

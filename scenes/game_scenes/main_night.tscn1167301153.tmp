@@ -62,7 +62,6 @@ stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
-canvas_item_default_texture_filter = 0
 size = Vector2i(384, 216)
 render_target_update_mode = 4
 
@@ -135,9 +134,3 @@ layout_mode = 1
 
 [node name="blood_stain" parent="." unique_id=1283334616 instance=ExtResource("10_hwbp5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98277426, 0.10120487, -0.74947166)
-
-[node name="blood_stain2" parent="." unique_id=1882680563 instance=ExtResource("10_hwbp5")]
-transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 1.2953937, 0.10120487, -1.5346339)
-
-[node name="blood_stain3" parent="." unique_id=912632183 instance=ExtResource("10_hwbp5")]
-transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, 0.3473301, 0.10120487, -0.23546505)

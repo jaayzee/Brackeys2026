@@ -447,6 +447,7 @@ player_path = NodePath("../..")
 
 [node name="PostProcessingQuad" type="MeshInstance3D" parent="CameraPivot/Camera3D" unique_id=1224180313]
 transform = Transform3D(-0.99999976, 8.742278e-08, 0, -8.7422755e-08, -1, 0, 0, 0, 0.99999964, -0.09171629, -0.008658409, -1.6456938)
+visible = false
 layers = 524288
 cast_shadow = 0
 mesh = SubResource("QuadMesh_ehkex")

@@ -43,7 +43,7 @@ func _activate():
 		_bite(closest_body)
 		closest_body.die()
 		GameManager._add_paranoia(paranoia_rate)
-		
+	
 	_deactivate()
 	
 func _bite(body: Node3D):
@@ -53,13 +53,15 @@ func _bite(body: Node3D):
 		sprite.animation_finished.connect(_stop_death_animation, CONNECT_ONE_SHOT)
 	else:
 		print("no animatedsprite")
-		_deactivate()
+	
+	# Bite Animation
+	bite_sprite = bite_sprite_obj.instantiate()
+	body.add_child(bite_sprite)
+	bite_sprite.global_transform.origin = body.global_transform.origin
 
 func _stop_death_animation():
 	sprite.stop()
-	#sprite.frame = sprite.frame_frames.get_frame_count("die") - 1
-	sprite.frame = 6 # errors for some reason if I do ^
-	_deactivate()
+	sprite.frame = sprite.sprite_frames.get_frame_count("die") - 1
 	
 func _deactivate():
 	super()

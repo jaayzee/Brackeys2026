@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://boxfn4cmigrw8" path="res://scripts/abilities/blood_lust.gd" id="1_vlcbc"]
 [ext_resource type="PackedScene" uid="uid://cp55uu324ami2" path="res://scenes/particles/blood_particles.tscn" id="2_hxpoo"]
+[ext_resource type="PackedScene" uid="uid://c3lml70rhsfjs" path="res://scenes/particles/blood_stain.tscn" id="3_1184s"]
 
 [node name="blood_lust" type="Node3D" unique_id=647305150]
 script = ExtResource("1_vlcbc")
 blood_lust_particles = ExtResource("2_hxpoo")
 particle_offset = Vector3(0, 0.25, 0)
+blood_stain_obj = ExtResource("3_1184s")
 ab_name = "Blood Lust"
 duration = 2.5
 paranoia_rate = 1

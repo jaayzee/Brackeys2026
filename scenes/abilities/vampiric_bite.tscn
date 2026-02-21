@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://dtenhlc74gqxq"]
 
 [ext_resource type="Script" uid="uid://0hrxuwfhkj7g" path="res://scripts/abilities/vampiric_bite.gd" id="1_6mef2"]
+[ext_resource type="PackedScene" uid="uid://dvispa6b5w3ng" path="res://scenes/particles/bite_sprite.tscn" id="2_hua12"]
 
 [node name="vampiric_bite" type="Node3D" unique_id=450265629]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_6mef2")
+bite_sprite_obj = ExtResource("2_hua12")
 ab_name = "Vampiric Bite"
 paranoia_rate = 10

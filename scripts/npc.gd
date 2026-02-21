@@ -79,7 +79,7 @@ func _pick():
 func die():
 	_dead = true
 	move_speed = 0
-	collision_layer &= ~(1 << 2) # Turns off layer 2 to not get bitten again
+	set_collision_layer_value(2, false)
 	print("DIED")
 	
 func _physics_process(delta):

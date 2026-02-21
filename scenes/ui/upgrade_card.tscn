@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://vmagpt02nq5v"]
+
+[ext_resource type="Script" uid="uid://b6w55jc7t7k43" path="res://scripts/ui/upgrade_card.gd" id="1_jq2e7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ikfdi"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="upgrade_card" type="Container" unique_id=1671019311]
+size_flags_horizontal = 3
+script = ExtResource("1_jq2e7")
+
+[node name="card_img" type="ColorRect" parent="." unique_id=153512921]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="card_title" type="Label" parent="." unique_id=1748514792]
+layout_mode = 2
+text = "UPGRADE"
+label_settings = SubResource("LabelSettings_ikfdi")
+
+[node name="Button" type="Button" parent="." unique_id=1579598537]
+modulate = Color(0.21029857, 1.1358858e-05, 0.86649436, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

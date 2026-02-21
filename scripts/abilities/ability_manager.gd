@@ -8,6 +8,13 @@ var player
 var monster_manager
 var player_ui
 
+# Tracks ability levels & upgrades
+# do i need a shop manager
+# shop interacts with ability_manager, movement (player stats), and game_manager (increased time/paranoia)
+# upgrades can be 
+# generate from a random list of buttons each with an indivdual on press trigger?
+# each button needs to have its own image & cost
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	monster_manager = get_tree().get_first_node_in_group("monster_manager")
@@ -19,6 +26,8 @@ func _ready() -> void:
 		add_child(ability_obj)
 		ability_obj.player = player
 		ability_obj.monster_manager = monster_manager
+	
+	print(ability_scenes.size())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -56,3 +65,6 @@ func _reset_UI():
 	var ability_container = player_ui.get_node("VBoxContainer")
 	for ability in ability_container.get_children():
 		ability.modulate = Color(1,1,1, .25)
+		
+func upgrade_ability(ability_index: int):
+	abilities[ability_index].ab_level += 1

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c3lml70rhsfjs"]
+
+[ext_resource type="Texture2D" uid="uid://djnpuxfd1d7sx" path="res://assets/images/blood_stains/blood_splatter_2.png" id="1_6qy3n"]
+
+[node name="blood_stain" type="Node3D" unique_id=1283334616]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=824202997]
+transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, 0.05, 0, -0.05, -2.1855695e-09, 0, 0.01, 0)
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_6qy3n")

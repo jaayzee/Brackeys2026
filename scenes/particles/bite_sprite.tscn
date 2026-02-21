@@ -1,42 +1,45 @@
 [gd_scene format=3 uid="uid://dvispa6b5w3ng"]
 
-[ext_resource type="Texture2D" uid="uid://gtn67s746hdk" path="res://sprites/Bite-Sheet.png" id="1_unqur"]
+[ext_resource type="Texture2D" uid="uid://bq7mxprys3x1t" path="res://sprites/Bite-Sheet.png" id="1_unqur"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3y065"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_unqur"]
 atlas = ExtResource("1_unqur")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p125s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y065"]
 atlas = ExtResource("1_unqur")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bsb2i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p125s"]
 atlas = ExtResource("1_unqur")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmexh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsb2i"]
 atlas = ExtResource("1_unqur")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3xvj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmexh"]
 atlas = ExtResource("1_unqur")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fwsu4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3xvj"]
 atlas = ExtResource("1_unqur")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qo55d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwsu4"]
 atlas = ExtResource("1_unqur")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_crtf1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo55d"]
 atlas = ExtResource("1_unqur")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uuuai"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unqur")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3y065")
 }, {
@@ -57,18 +60,17 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qo55d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_crtf1")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
 [node name="bite_sprite" type="AnimatedSprite3D" unique_id=1958687649]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.1, 0)
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_uuuai")
 autoplay = "default"
-frame = 2
 frame_progress = 0.73356616

@@ -10,6 +10,9 @@ var time_remaining := 0
 var current_paranoia := 0
 var is_paranoia_full = false
 
+# player stats
+@export var player_speed = 1
+
 var player_ui
 
 func _ready() -> void:
@@ -21,7 +24,7 @@ func _process(delta: float) -> void:
 	time_remaining = Time.get_ticks_msec() / 1000
 	time_remaining = total_time - time_remaining
 	
-	current_paranoia -= delta
+	current_paranoia -= delta # Lowkey change from delta since it probably is FPS dependent
 	
 	if player_ui:
 		player_ui.get_node("timer").text = "Time: " + str(time_remaining)
@@ -57,3 +60,6 @@ func _add_paranoia(amount: int):
 func _reset_paranoia():
 	current_paranoia = 0
 	is_paranoia_full = false
+	
+func get_player_speed():
+	return player_speed
