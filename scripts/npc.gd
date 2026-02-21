@@ -79,7 +79,8 @@ func _pick():
 func die():
 	_dead = true
 	move_speed = 0
-	print("DIED:" + str(velocity.x) + ", " + str(velocity.y))
+	collision_layer &= ~(1 << 2) # Turns off layer 2 to not get bitten again
+	print("DIED")
 	
 func _physics_process(delta):
 	if not is_on_floor():
