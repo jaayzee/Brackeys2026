@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://boet4uls6ajn1"]
+
+[ext_resource type="Shader" uid="uid://cu6dhppl1atk" path="res://shaders/xray/xray.gdshader" id="1_yt346"]
+[ext_resource type="Texture2D" uid="uid://bik6je4035a7v" path="res://assets/Assets/fbx/citybits_texture.png" id="2_r1cu7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yt346")
+shader_parameter/building_texture = ExtResource("2_r1cu7")
+shader_parameter/center_hole_radius = 0.5
+shader_parameter/dither_fade_length = 0.4
+shader_parameter/vertical_offset = 0.15
+shader_parameter/floor_height = 0.0

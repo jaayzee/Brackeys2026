@@ -1,9 +1,0 @@
-[gd_resource type="MultiMesh" format=3]
-
-[ext_resource type="ArrayMesh" path="res://assets/Assets/obj/building_F_withoutBase.obj" id="1_s3gei"]
-
-[resource]
-transform_format = 1
-instance_count = 4
-mesh = ExtResource("1_s3gei")
-buffer = PackedFloat32Array(1, 0, 0, 0, 0, 1, 0, -0.1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 2.15, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 4.4, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 6.65, 0, 0, 1, 0)
