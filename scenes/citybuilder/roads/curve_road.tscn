@@ -46,6 +46,7 @@ size = Vector3(2, 0.1, 2)
 [node name="CurvedRoad" type="Node3D" unique_id=1673659985]
 
 [node name="curved_road" type="MeshInstance3D" parent="." unique_id=302714594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 mesh = SubResource("ArrayMesh_3opp6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="curved_road" unique_id=1400829385]

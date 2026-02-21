@@ -14,6 +14,9 @@ var camera_angle = 0.0
 
 @onready var col_detector = $CollisionDetector
 
+func _process(_delta):
+	RenderingServer.global_shader_parameter_set("player_position", global_position)
+	
 func _input(event):
 	if event.is_action_pressed("v"):
 		get_tree().get_root().find_child("NPC_Manager", true, false).trigger_panic(global_position, 15.0)

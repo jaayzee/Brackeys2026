@@ -97,17 +97,28 @@ void fragment() {
 	vec3 final_shadow_color = mix(original_color, shadow_color, shadow_strength);
 	vec3 final = original_color;
 	if (highlights_enabled) {
-		final = mix(final, final_highlight_color, normal_diff);
-	}
+		final = mix(final, final_highlight_color, normal_diff);	}
 	if (shadows_enabled) {
 		final = mix(final, final_shadow_color, depth_diff);
 	}
 	
 	// B&W
 	if (bw_enabled) {
-		float gray = dot(final, vec3(0.299, 0.587, 0.114));
-		gray = (gray - 0.5) * contrast + 0.5 + (brightness - 1.0);
-		final = vec3(gray);
+		vec3 accent_target = vec3(1.0, 0.0, 0.0);
+		
+		float red_intensity = original_color.r - max(original_color.g, original_color.b);
+		
+		bool is_accent = red_intensity > 0.05; 
+
+		if (!is_accent) {
+			float gray = dot(final, vec3(0.299, 0.587, 0.114));
+			gray = (gray - 0.5) * contrast + 0.5 + (brightness - 1.0);
+	        
+			vec3 blue_tint = vec3(0.9, 0.95, 1.3);
+			final = vec3(gray) * blue_tint;
+		} else {
+			final = original_color * 1.0; 
+	    }
 	}
 	
 	// RAIN

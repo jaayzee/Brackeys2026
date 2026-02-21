@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var parent: Node3D
+@export var save_name: String = "building_a"
 
 func _ready():
 	# Find all MeshInstance3D nodes
@@ -38,8 +39,8 @@ func _ready():
 		add_child(multimesh_instance)
 
 		# Save resource to disk
-		var save_path = "res://multimesh_" + mesh_type + ".tres"
-		ResourceSaver.save(multimesh, save_path)
+		var save_path = "res://scenes/citybuilder/buildings/multimesh_" + mesh_type + ".tres"
+		ResourceSaver.save(multimesh, "res://" + save_name + ".tres")
 
 		# Remove original individual mesh nodes
 		for node in nodes_in_group:
