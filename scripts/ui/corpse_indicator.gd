@@ -1,10 +1,10 @@
 extends Node2D
 
-var target_position: Vector3
+var target_node: Node3D
 var camera: Camera3D
 
 func _ready():
-	print("arrow at: ", target_position)
+	print("arrow at: ", target_node)
 	if not camera:
 		print("arrow no camera")
 
@@ -21,7 +21,13 @@ func _ready():
 	poly.add_child(outline)
 
 func _process(_delta):
-	if not camera or target_position == null: return
+	if not camera: return
+	
+	if not is_instance_valid(target_node):
+		queue_free()
+		return
+		
+	var target_position = target_node.global_position
 	
 	var screen_size = get_viewport().get_visible_rect().size 
 	var screen_pos = camera.unproject_position(target_position)
