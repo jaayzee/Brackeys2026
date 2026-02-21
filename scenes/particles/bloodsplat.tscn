@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cuaeow1edar1n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_je7yg"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1hi3i"]
+material = SubResource("StandardMaterial3D_je7yg")
+size = Vector2(0.2, 0.2)
+
+[node name="Bloodsplat" type="Node3D" unique_id=1637395372]
+
+[node name="Sprite3D" type="MeshInstance3D" parent="." unique_id=2014280256]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.005999999, -2.6226832e-10)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_1hi3i")

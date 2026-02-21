@@ -1,6 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://dui7cyl4a2o2j"]
 
 [ext_resource type="Texture2D" uid="uid://bnk7m4bxoo24p" path="res://sprites/dummywhite2.png" id="1_l3ibv"]
+[ext_resource type="Texture2D" uid="uid://bqsj2q61525vj" path="res://sprites/dummywhitepanic-Sheet.png" id="2_vg7m8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vg7m8"]
 atlas = ExtResource("1_l3ibv")
@@ -77,6 +78,50 @@ region = Rect2(384, 448, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxd5a"]
 atlas = ExtResource("1_l3ibv")
 region = Rect2(448, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bhlc"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(0, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2oxo"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(64, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em3ys"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(128, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4iyd"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(192, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svjc0"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(256, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loeoa"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(320, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfmk"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(384, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0imc"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(448, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tqrp"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(512, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6vqm"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(576, 0, 64, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xym0v"]
+atlas = ExtResource("2_vg7m8")
+region = Rect2(640, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8va1"]
 atlas = ExtResource("1_l3ibv")
@@ -216,7 +261,40 @@ animations = [{
 "name": &"jump",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6bhlc")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_a2oxo")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_em3ys")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_w4iyd")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_svjc0")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_loeoa")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_opfmk")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_w0imc")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6tqrp")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_a6vqm")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_xym0v")
+}],
 "loop": true,
 "name": &"panic",
 "speed": 5.0
