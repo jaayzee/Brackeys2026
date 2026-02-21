@@ -5,12 +5,14 @@ extends Node
 @export var max_paranoia := 100
 @export var paranoia_reset_time := 3
 
-var money := 0
 var time_remaining := 0
 var current_paranoia := 0
 var is_paranoia_full = false
 
-# player stats
+## Shop
+var money := 0
+
+# Upgradeable stats
 @export var player_speed = 1
 
 var player_ui
