@@ -24,7 +24,6 @@ turbulence_enabled = true
 [node name="shadow_particles" type="Node3D" unique_id=655269727]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=340218369]
-transparency = 0.32
 amount = 100
 lifetime = 2.0
 speed_scale = 10.0

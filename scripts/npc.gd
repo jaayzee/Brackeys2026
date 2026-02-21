@@ -13,6 +13,7 @@ var rng = RandomNumberGenerator.new()
 var move_speed := default_move_speed
 var _wait_timer := 0.0
 var _panicking := false
+var _dead := false
 var panic_speed := default_panic_speed
 var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _stuck_timer := 0.0
@@ -53,47 +54,10 @@ func panic(source_position: Vector3):
 	sprite.frame = rng.randi_range(0, f_count - 1)
 	_pick_new_point(true, source_position)
 
-func _pick_panic(source_position: Vector3):
-	if not _panicking:
-		return
-	var map = get_world_3d().navigation_map
-	var best_pt = Vector3.ZERO
-	var best_dist = 0.0
-	for i in range(40):
-		var candidate = NavigationServer3D.map_get_random_point(map, navigation_layer, false)
-		var dist = candidate.distance_to(source_position)
-		if dist > best_dist and dist > min_flee_distance:
-			best_dist = dist
-			best_pt = candidate
-	if best_pt == Vector3.ZERO:
-		best_pt = NavigationServer3D.map_get_random_point(map, navigation_layer, false)
-	if best_pt != Vector3.ZERO:
-		agent.target_position = best_pt
-		agent.target_position = best_pt
-
-func _pick():
-	if _panicking:
-		return
-	var map = get_world_3d().navigation_map
-	var pt = Vector3.ZERO
-	for i in range(10):
-		var candidate = NavigationServer3D.map_get_random_point(map, navigation_layer, false)
-		var path = NavigationServer3D.map_get_path(map, global_position, candidate, true, navigation_layer)
-		if path.size() > 0:
-			pt = candidate
-			break
-	if pt == Vector3.ZERO:
-		await get_tree().create_timer(1.0).timeout
-		_pick()
-		return
-	agent.target_position = pt
-	await agent.navigation_finished
-	await get_tree().create_timer(randf_range(wait_time_min, wait_time_max)).timeout
-	_pick()
-
 func die():
 	_dead = true
 	move_speed = 0
+	collision_layer &= ~(1 << 2) # Turns off layer 2 to not get bitten again
 	set_collision_layer_value(2, false)
 	print("DIED")
 	

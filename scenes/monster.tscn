@@ -433,7 +433,7 @@ double_sided = false
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_md0e3")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=625569348]

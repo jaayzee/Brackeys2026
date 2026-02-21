@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@onready var kill_pointer = $PointerPivot
+# @onready var kill_pointer = $PointerPivot
 
 @export var speed = 1
 @export var jump_velocity = 3.0
@@ -20,8 +20,8 @@ var camera_angle = 0.0
 @onready var col_detector = $CollisionDetector
 
 func _ready():
-	if kill_pointer:
-		kill_pointer.hide()
+	#if kill_pointer:
+		#kill_pointer.hide()
 		
 	sprite.play("idle")
 	
@@ -29,12 +29,11 @@ func _ready():
 	var manager = get_tree().get_root().find_child("NPC_Manager", true, false)
 	if manager:
 		manager.kill_occurred.connect(point_to_corpse)
+		
+	speed = GameManager.get_player_speed()
 
 func _process(_delta):
 	RenderingServer.global_shader_parameter_set("player_position", global_position)
-	
-func _ready() -> void:
-	speed = GameManager.get_player_speed()
 	
 func _input(event):
 	if event.is_action_pressed("v"):

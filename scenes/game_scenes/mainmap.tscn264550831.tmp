@@ -41,8 +41,6 @@
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redorangebuildings.tres" id="34_pmepb"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redshadebuilding.tres" id="35_yjimw"]
 [ext_resource type="PackedScene" uid="uid://ruk5tja3ktqf" path="res://scenes/npcmonster.tscn" id="40_e3ycv"]
-[ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/player_ui.tscn" id="42_yjimw"]
-[ext_resource type="PackedScene" uid="uid://dk1rcbvu130kw" path="res://scenes/managers/monster_manager.tscn" id="43_lwhic"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8xifc"]
 dof_blur_far_distance = 13.0
@@ -5497,11 +5495,5 @@ mesh = ExtResource("16_8jcbp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 mesh = ExtResource("16_8jcbp")
 
-[node name="player_ui" parent="." unique_id=343348417 instance=ExtResource("42_yjimw")]
-
-[node name="monster_manager" parent="." unique_id=1060842955 instance=ExtResource("43_lwhic")]
-
-[node name="NpcMonster" parent="monster_manager" unique_id=1023549608 instance=ExtResource("40_e3ycv")]
+[node name="NpcMonster" parent="." unique_id=1023549608 instance=ExtResource("40_e3ycv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0, -1.9250007)
-
-[editable path="player"]
