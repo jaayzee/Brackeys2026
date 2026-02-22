@@ -71,9 +71,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wsb5h")
 [node name="timer" type="Label" parent="." unique_id=2072534169]
 layout_mode = 1
 offset_left = 15.0
-offset_top = 53.0
-offset_right = 179.0
-offset_bottom = 95.0
+offset_top = 38.0
+offset_right = 274.0
+offset_bottom = 116.0
 text = "Time: 00:00"
 label_settings = SubResource("LabelSettings_48xfa")
 
@@ -83,16 +83,16 @@ layout_mode = 1
 offset_left = 15.0
 offset_top = 53.0
 offset_right = 151.0
-offset_bottom = 95.0    
+offset_bottom = 95.0
 text = "Paranoia: 0"
 label_settings = SubResource("LabelSettings_8isll")
 
 [node name="money" type="Label" parent="." unique_id=319310997]
 layout_mode = 1
 offset_left = 20.0
-offset_top = 80.0
+offset_top = 121.0
 offset_right = 157.0
-offset_bottom = 134.0
+offset_bottom = 175.0
 text = "Money: 0"
 label_settings = SubResource("LabelSettings_8isll")
 

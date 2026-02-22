@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://dk1rcbvu130kw"]
 
 [ext_resource type="Script" uid="uid://cmv506g4wtnog" path="res://scripts/monster_manager.gd" id="1_4iwms"]
+[ext_resource type="PackedScene" uid="uid://ruk5tja3ktqf" path="res://scenes/npcmonster.tscn" id="2_ia2io"]
 
 [node name="monster_manager" type="Node3D" unique_id=1060842955 groups=["monster_manager"]]
 script = ExtResource("1_4iwms")
+monster_obj = ExtResource("2_ia2io")
 monster_quota = 2
+monsters_captured = null

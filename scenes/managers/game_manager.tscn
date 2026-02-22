@@ -4,4 +4,6 @@
 
 [node name="Game_Manager" type="Node3D" unique_id=388885606]
 script = ExtResource("1_i04cf")
+reward_money = 50
+total_time = 180
 max_paranoia = 200

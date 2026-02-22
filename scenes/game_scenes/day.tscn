@@ -24,7 +24,7 @@
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redbuildings.tres" id="22_8rln2"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redorangebuildings.tres" id="23_56tbk"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redshadebuilding.tres" id="24_whqyt"]
-[ext_resource type="MultiMesh" uid="uid://df4giiw4snl1b" path="res://baseshadows.tres" id="25_c4ml4"]
+[ext_resource type="MultiMesh" uid="uid://dns85qsbcnvid" path="res://baseshadows.tres" id="25_c4ml4"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="26_li2tr"]
 [ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="27_c5o3l"]
 [ext_resource type="ArrayMesh" uid="uid://c44grorvshtod" path="res://assets/Assets/obj/car_sedan.obj" id="28_6d1vw"]
@@ -41,7 +41,6 @@
 [ext_resource type="ArrayMesh" uid="uid://bcq716sg2vhw1" path="res://assets/Assets/obj/building_E_withoutBase.obj" id="39_uae6w"]
 [ext_resource type="ArrayMesh" uid="uid://cq1wa3hrt02er" path="res://assets/Assets/obj/building_G_withoutBase.obj" id="40_b5cam"]
 [ext_resource type="Script" uid="uid://b1unbl11g72fo" path="res://scripts/utils/multimeshcreator.gd" id="41_m8v4w"]
-[ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/ui/player_ui.tscn" id="42_yv1jv"]
 [ext_resource type="PackedScene" uid="uid://d12cfks5dnnoo" path="res://scenes/game_scenes/shop_menu.tscn" id="43_4030m"]
 [ext_resource type="PackedScene" uid="uid://d3sw1gd0k6vdd" path="res://scenes/shop_interactable.tscn" id="46_evxri"]
 [ext_resource type="PackedScene" uid="uid://bg85fo2stid74" path="res://bounty_poster.tscn" id="47_t1ov1"]
@@ -6241,11 +6240,6 @@ mesh = SubResource("PlaneMesh_gimpu")
 [node name="baseshadow90" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=409472610]
 transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 3.8499947, 0.024999997, 17.649998)
 mesh = SubResource("PlaneMesh_gimpu")
-
-[node name="player_ui" parent="." unique_id=343348417 instance=ExtResource("42_yv1jv")]
-
-[node name="shop_menu" parent="." unique_id=1914158305 instance=ExtResource("43_4030m")]
-visible = false
 
 [node name="shop_interactable" parent="." unique_id=1008995146 instance=ExtResource("46_evxri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0286458, -1.7881393e-07, -2.4603887)

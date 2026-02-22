@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://id8rw6gu0vmd" path="res://scripts/ui/main_menu.gd" id="1_3hng2"]
 [ext_resource type="FontFile" uid="uid://dqgkf62xdcsti" path="res://assets/Quintessential/Quintessential-Regular.ttf" id="2_3hng2"]
+[ext_resource type="FontFile" uid="uid://chcx2mvpnuen6" path="res://assets/ThaleahFat.ttf" id="3_1g8jr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hng2"]
 
@@ -10,8 +11,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idbya"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_idbya"]
-font = ExtResource("2_3hng2")
-font_size = 125
+font = ExtResource("3_1g8jr")
+font_size = 150
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_color = Color(0.25440922, 0.21543819, 0.120704435, 0)
@@ -63,8 +64,9 @@ alignment = 0
 [node name="Label" type="Label" parent="." unique_id=125664049]
 layout_mode = 0
 offset_left = 33.0
-offset_right = 887.0
-offset_bottom = 277.0
+offset_top = 56.0
+offset_right = 1135.0
+offset_bottom = 239.0
 text = "Sanguine City"
 label_settings = SubResource("LabelSettings_idbya")
 autowrap_mode = 2
