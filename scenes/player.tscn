@@ -436,7 +436,7 @@ far = 100.0
 script = ExtResource("4_tuyoq")
 player_path = NodePath("../..")
 
-[node name="PostProcessingQuad" type="MeshInstance3D" parent="CameraPivot/Camera3D" unique_id=1224180313]
+[node name="PostProcessingQuad" type="MeshInstance3D" parent="CameraPivot/Camera3D" unique_id=1224180313 groups=["screen_shader"]]
 transform = Transform3D(-0.99999976, 8.742278e-08, 0, -8.7422755e-08, -1, 0, 0, 0, 0.99999964, -0.09171629, -0.008658409, -1.6456938)
 layers = 524288
 cast_shadow = 0

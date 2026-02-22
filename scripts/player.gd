@@ -132,3 +132,7 @@ func point_to_corpse(corpse_node: Node3D):
 	#await get_tree().create_timer(5.0).timeout
 	#if is_instance_valid(arrow):
 		#arrow.queue_free()
+
+# For Start menu
+func rotate_cam(delta):
+	camera_pivot.rotate_y(deg_to_rad(-rotation_speed * delta))

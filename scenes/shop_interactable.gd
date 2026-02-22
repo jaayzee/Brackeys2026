@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 	# Would like to change to GameManager or Player one time, avoid splitting inputs in scripts
 	if shop:
 		# Enable shop
-		if can_shop && Input.is_action_just_pressed("shop"):
+		if can_shop && Input.is_action_just_pressed("interact"):
 			if !shop.visible:
 				shop.visible = true
 			else:

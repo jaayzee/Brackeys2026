@@ -1,7 +1,15 @@
 extends Control
 
+var player
+
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player")
+	
+func _physics_process(delta: float) -> void:
+	player.rotate_cam(delta)
+	
 func _on_play_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/game_scenes/objective_menu.tscn")
+	GameManager.enter_day()
 
 func _on_quit_btn_pressed() -> void:
 	get_tree().quit()
