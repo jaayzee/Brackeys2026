@@ -54,6 +54,8 @@ func _process(delta: float) -> void:
 		abilities[2]._activate()
 		var ability3_label = player_ui.get_node("VBoxContainer/ability3")
 		ability3_label.modulate = Color(1, 1, 1, 1)
+	elif Input.is_action_just_released("Ability3"):
+		abilities[2]._deactivate()
 		
 	if Input.is_action_just_pressed("Ability4"):
 		abilities[3]._activate()
@@ -64,7 +66,7 @@ func _process(delta: float) -> void:
 	for ability in abilities:
 		if ability.ab_is_active:
 			if (player._get_near_npcs().size() >= 1):
-				GameManager._add_paranoia(ability.paranoia_rate)
+				GameManager.add_paranoia(ability.paranoia_rate)
 		
 func _reset_UI():
 	var ability_container = player_ui.get_node("VBoxContainer")

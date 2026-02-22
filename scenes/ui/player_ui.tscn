@@ -22,6 +22,9 @@ font_size = 50
 font = ExtResource("4_fatqr")
 font_size = 35
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xfa"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="player_ui" type="Control" unique_id=343348417 groups=["player_ui"]]
 layout_mode = 3
 anchors_preset = 15
@@ -68,9 +71,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wsb5h")
 [node name="timer" type="Label" parent="." unique_id=2072534169]
 layout_mode = 1
 offset_left = 15.0
-offset_top = 11.0
+offset_top = 53.0
 offset_right = 179.0
-offset_bottom = 53.0
+offset_bottom = 95.0
 text = "Time: 00:00"
 label_settings = SubResource("LabelSettings_48xfa")
 
@@ -80,7 +83,7 @@ layout_mode = 1
 offset_left = 15.0
 offset_top = 53.0
 offset_right = 151.0
-offset_bottom = 95.0
+offset_bottom = 95.0    
 text = "Paranoia: 0"
 label_settings = SubResource("LabelSettings_8isll")
 
@@ -92,3 +95,9 @@ offset_right = 157.0
 offset_bottom = 134.0
 text = "Money: 0"
 label_settings = SubResource("LabelSettings_8isll")
+
+[node name="ParanoiaBar" type="ProgressBar" parent="." unique_id=1578250490]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_48xfa")

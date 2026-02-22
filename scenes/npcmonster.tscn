@@ -425,10 +425,6 @@ animations = [{
 radius = 0.05
 height = 0.3
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_abqhh"]
-radius = 0.05
-height = 0.3
-
 [node name="NpcMonster" type="CharacterBody3D" unique_id=1023549608 groups=["monster"]]
 collision_layer = 3
 wall_min_slide_angle = 0.0
@@ -437,7 +433,7 @@ safe_margin = 0.05
 script = ExtResource("1_etuap")
 blood_trail_scene = ExtResource("2_ofdpq")
 
-[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="." unique_id=1438209376 groups=["monster"]]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1438209376 groups=["monster"]]
 transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0.20821357, 0)
 cast_shadow = 0
 billboard = 1
@@ -448,7 +444,7 @@ sprite_frames = SubResource("SpriteFrames_ofdpq")
 animation = &"walk"
 autoplay = "idle"
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1691904217]
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="." unique_id=1691904217]
 transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0.20821357, 0)
 visible = false
 cast_shadow = 0
@@ -460,21 +456,17 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1667543603]
-target_desired_distance = 0.1
+target_desired_distance = 0.2
 navigation_layers = 4
 path_postprocessing = 1
 height = 0.3
 radius = 0.05
 neighbor_distance = 0.5
 max_neighbors = 2
+debug_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1979598249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1520479, 0)
 shape = SubResource("CapsuleShape3D_4wlns")
-
-[node name="shadowcaster" type="MeshInstance3D" parent="." unique_id=523266934]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15110299, 0)
-cast_shadow = 3
-mesh = SubResource("CapsuleMesh_abqhh")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=659818832]

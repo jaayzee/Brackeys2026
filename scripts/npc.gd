@@ -56,12 +56,17 @@ func panic(source_position: Vector3):
 
 func die():
 	_dead = true
+	sprite.play("die")
 	move_speed = 0
+	velocity = Vector3.ZERO
 	collision_layer &= ~(1 << 2) # Turns off layer 2 to not get bitten again
 	set_collision_layer_value(2, false)
+	set_collision_mask_value(2, false)
 	print("DIED")
 	
 func _physics_process(delta):
+	if _dead:
+		return
 	if not is_on_floor():
 		velocity.y -= _gravity * delta
 		

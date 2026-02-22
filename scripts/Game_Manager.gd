@@ -5,8 +5,12 @@ extends Node
 @export var max_paranoia := 100
 @export var paranoia_reset_time := 3
 
+@export var base_drain_rate := 1.0
+@export var body_paranoia_rate := 1.0
+@export var blood_paranoia_rate := 0.1
+
 var time_remaining := 0
-var current_paranoia := 0
+var current_paranoia : float = 0.0
 var is_paranoia_full = false
 var is_day = false
 
@@ -37,7 +41,7 @@ func _process(delta: float) -> void:
 	time_remaining = Time.get_ticks_msec() / 1000
 	time_remaining = total_time - time_remaining
 	
-	current_paranoia -= delta # Lowkey change from delta since it probably is FPS dependent
+	current_paranoia -= base_drain_rate * delta
 	
 	# paranoia contributors
 	var bodies = get_tree().get_nodes_in_group("evidence_body").size()
@@ -62,6 +66,15 @@ func _process(delta: float) -> void:
 	else:
 		enable_rain()
 	
+	_check_paranoia()
+	
+	if player_ui:
+		player_ui.get_node("timer").text = "Time: " + str(int(time_remaining))
+		
+		var p_bar = player_ui.get_node_or_null("ParanoiaBar")
+		if p_bar:
+			p_bar.value = current_paranoia
+	
 func add_money(amount: int):
 	money += amount
 	print("Money: " + str(money))
@@ -77,9 +90,9 @@ func _completed_level():
 		
 	get_tree().change_scene_to_file("res://scenes/game_scenes/completed_level_menu.tscn")
 
-func _add_paranoia(amount: int):
-	current_paranoia += amount
-	if current_paranoia >= max_paranoia:
+func _check_paranoia():
+	if current_paranoia >= max_paranoia and not is_paranoia_full:
+		print('MAX PARANOIA')
 		is_paranoia_full = true
 		
 		var t = Timer.new()
@@ -89,6 +102,20 @@ func _add_paranoia(amount: int):
 		t.one_shot = true
 		t.timeout.connect(Callable(self, "_reset_paranoia"))
 
+func add_paranoia(amount: float):
+	if is_paranoia_full: return 
+	
+	current_paranoia += amount
+	current_paranoia = clamp(current_paranoia, 0.0, max_paranoia)
+	_check_paranoia()
+
+func remove_paranoia(amount: float):
+	if is_paranoia_full: return
+	
+	current_paranoia -= amount
+	current_paranoia = clamp(current_paranoia, 0.0, max_paranoia)
+
+	
 func _reset_paranoia():
 	current_paranoia = 0
 	is_paranoia_full = false

@@ -7,7 +7,7 @@ class_name Ability
 @export var ab_is_active := false # Is using
 @export var ab_level := 0
 @export var duration := 0.0
-@export var paranoia_rate := 0
+@export var paranoia_rate := 0.0
 
 var player
 var monster_manager
