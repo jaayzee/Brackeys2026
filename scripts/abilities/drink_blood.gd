@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 		if is_instance_valid(b):
 			if player.global_position.distance_to(b.global_position) <= drink_range:
 				b.queue_free()
+				GameManager.remove_paranoia(1.0)
 				drank_any = true
 				
 	if drank_any:

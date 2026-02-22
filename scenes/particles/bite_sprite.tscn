@@ -63,14 +63,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="bite_sprite" type="AnimatedSprite3D" unique_id=1958687649]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.1, 0)
 billboard = 1
-alpha_cut = 1
+double_sided = false
+alpha_cut = 3
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_uuuai")
 autoplay = "default"
-frame_progress = 0.73356616
+frame = 7
+frame_progress = 1.0

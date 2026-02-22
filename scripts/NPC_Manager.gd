@@ -25,9 +25,16 @@ var _map_ready: bool = false
 
 func _ready():
 	# wait for navmesh to load
-	await get_tree().process_frame 
+	call_deferred("_setup_navigation")
+	
+func _setup_navigation():
+	# wait one frame
 	await get_tree().physics_frame
-	await get_tree().physics_frame
+	
+	var map = get_world_3d().navigation_map
+	if NavigationServer3D.map_get_iteration_id(map) == 0:
+		await NavigationServer3D.map_changed
+		
 	_map_ready = true
 
 func _physics_process(delta):
