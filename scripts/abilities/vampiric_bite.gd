@@ -67,6 +67,8 @@ func _activate():
 	super()
 	# highlight on hold
 	_is_aiming = true
+	if player.has_method("start_attack"):
+		player.start_attack()
 	var target = _get_closest_target()
 	if target:
 		_apply_highlight(target)
@@ -81,9 +83,13 @@ func _deactivate():
 	_highlighted_target = null
 	
 	_is_aiming = false
+	if player.has_method("release_attack"):
+		player.release_attack()
 	super()
 	
 func _perform_bite(closest_body: Node3D):
+	if not is_instance_valid(closest_body):
+		return
 	var target_pos = closest_body.global_position
 	
 	if closest_body.is_in_group("monster"):
@@ -103,7 +109,8 @@ func _perform_bite(closest_body: Node3D):
 		await _bite(closest_body)
 		GameManager.remove_paranoia(bite_paranoia_penalty)
 		_spawn_blood(target_pos)
-		closest_body.queue_free()
+		if is_instance_valid(closest_body):
+			closest_body.queue_free()
 
 func _spawn_blood(spawn_pos: Vector3):
 	if blood_explosion_scene:

@@ -1,14 +1,17 @@
-extends Node3D
+extends Node3D 
+
+@export var jitter_amount := 0.4
+@export var min_splat_size := 1.0
+@export var max_splat_size := 2.0
 
 func _ready():
 	# random size
-	var base_scale = randf_range(0.5, 1.2)
+	var drop_size = randf_range(min_splat_size, max_splat_size) 
+	scale = Vector3(drop_size, 1.0, drop_size)
 	
-	# stretch
-	var stretch_x = base_scale * randf_range(0.8, 1.4)
-	var stretch_z = base_scale * randf_range(0.8, 1.4) 
+	# random xz offset
+	var offset_x = randf_range(-jitter_amount, jitter_amount)
+	var offset_z = randf_range(-jitter_amount, jitter_amount)
 	
-	scale = Vector3(stretch_x, 1.0, stretch_z)
-	
-	# random orientation
-	rotation.y = randf_range(0, TAU)
+	position.x += offset_x
+	position.z += offset_z

@@ -6,8 +6,6 @@ extends Node
 @export var paranoia_reset_time := 3
 
 @export var base_drain_rate := 1.0
-@export var body_paranoia_rate := 1.0
-@export var blood_paranoia_rate := 0.1
 
 var time_remaining := 0
 var current_paranoia : float = 0.0
