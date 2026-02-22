@@ -10,8 +10,14 @@ extends CharacterBody3D
 @export var sprint_multiplier = 1.6
 @export var indicator_scene: PackedScene
 
+@export_group("Sprint Effect")
+@export var ghost_interval := 0.08
+@export var ghost_duration := 0.4
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var camera_angle = 0.0
+var _ghost_timer := 0.0
+
 @onready var ui_layer = $Indicator
 @onready var sprite = $AnimatedSprite3D
 @onready var camera_pivot = $CameraPivot
@@ -98,13 +104,20 @@ func _physics_process(delta):
 	elif jump_is_finishing:
 		pass 
 	else:
-		if direction:
-			if is_sprinting:
-				sprite.play("sprint")
-			else:
-				sprite.play("walk")
+		if is_sprinting and velocity.length() > 0:
+			sprite.play("walk")
+			_ghost_timer -= delta
+			if _ghost_timer <= 0:
+				_spawn_ghost()
+				_ghost_timer = ghost_interval
+				
+		elif velocity.length() > 0:
+			sprite.play("walk")
+			_ghost_timer = 0.0 # Reset timer when not sprinting
+			
 		else:
 			sprite.play("idle")
+			_ghost_timer = 0.0
 		
 # Ability 
 func _boost_speed(increment: float):
@@ -124,9 +137,31 @@ func point_to_corpse(corpse_node: Node3D):
 	
 	ui_layer.add_child(arrow)
 	
-	# we either turn off the pointer after some time,
-	# or only turn it off if they eat the corpse
+func _spawn_ghost():
+	var ghost = Sprite3D.new()
 	
-	#await get_tree().create_timer(5.0).timeout
-	#if is_instance_valid(arrow):
-		#arrow.queue_free()
+	# take frame
+	var tex = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
+	ghost.texture = tex
+	
+	# match player orientation
+	ghost.flip_h = sprite.flip_h
+	ghost.pixel_size = sprite.pixel_size
+	ghost.offset = sprite.offset
+	ghost.modulate = Color(1.0, 0.0, 0.0)
+	
+	# get through postprocessing quad
+	ghost.alpha_cut = Sprite3D.ALPHA_CUT_HASH 
+	ghost.texture_filter = sprite.texture_filter
+	ghost.render_priority = sprite.render_priority
+	
+	# stamp where player was
+	get_tree().current_scene.add_child(ghost)
+	ghost.global_transform = sprite.global_transform
+	
+	# fade out
+	var tween = get_tree().create_tween()
+	tween.tween_property(ghost, "modulate:a", 0.0, ghost_duration)
+	tween.tween_callback(ghost.queue_free)
+	
+	
