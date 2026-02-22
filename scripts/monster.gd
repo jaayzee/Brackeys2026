@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 @export var move_speed := 0.45
+@export var run_speed := 2.0
 @export var kill_interval_min := 5.0
 @export var kill_interval_max := 12.0
 @export var blood_trail_scene: PackedScene
-@export var bleed_time:= 10.0
+@export var bleed_time:= 5.0
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
@@ -13,8 +14,13 @@ extends CharacterBody3D
 var _kill_timer := 5.0
 var _blood_timer := 0.0
 var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var _wait_timer = 0.0
+var current_move_speed = move_speed
 
 func _ready():
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -27,11 +33,18 @@ func _physics_process(delta):
 	if agent.is_navigation_finished():
 		velocity.x = 0; velocity.z = 0
 		sprite.play("idle")
-		if _kill_timer > 0:
-			_kill_timer -= delta
-			if _kill_timer <= 0: _pick_new_point()
+		
+		if _wait_timer > 0:
+			_wait_timer -= delta
+		else:
+			current_move_speed = move_speed 
+			_wait_timer = randf_range(1.0, 3.0) # Wait 1-3 seconds before moving again
+			_pick_new_point()
 	else:
 		_move_along_path()
+
+	if _kill_timer > 0:
+		_kill_timer -= delta
 
 	_handle_kill_logic(delta)
 	
@@ -50,14 +63,21 @@ func _move_along_path():
 	var next = agent.get_next_path_position()
 	var dir = (next - global_position).normalized()
 	dir.y = 0
-	velocity.x = dir.x * move_speed
-	velocity.z = dir.z * move_speed
+	velocity.x = dir.x * current_move_speed
+	velocity.z = dir.z * current_move_speed
 	
 	var cam = get_viewport().get_camera_3d()
 	if cam:
 		var local_dir = cam.global_transform.basis.inverse() * dir
 		sprite.flip_h = local_dir.x < 0
-	sprite.play("walk")
+	
+	if current_move_speed == move_speed:
+		sprite.play("walk")
+	elif current_move_speed == run_speed:
+		sprite.play("run")
+	else:
+		sprite.play("idle")
+		
 	move_and_slide()
 
 func _pick_new_point():
@@ -78,3 +98,6 @@ func _perform_kill():
 		
 	_kill_timer = randf_range(kill_interval_min, kill_interval_max)
 	_blood_timer = bleed_time
+	
+	current_move_speed = run_speed
+	_pick_new_point()

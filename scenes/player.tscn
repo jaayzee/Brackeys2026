@@ -398,6 +398,7 @@ shader_parameter/inner_radius = 0.25
 shader_parameter/outer_radius = 1.5
 
 [node name="player" type="CharacterBody3D" unique_id=52209652 groups=["player"]]
+collision_layer = 5
 collision_mask = 3
 script = ExtResource("1_dqkch")
 sprint_multiplier = 2.0
@@ -443,6 +444,7 @@ mesh = SubResource("QuadMesh_ehkex")
 surface_material_override/0 = SubResource("ShaderMaterial_ykrsh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraPivot/Camera3D" unique_id=772588420]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CameraPivot/Camera3D/CanvasLayer" unique_id=1991913873]
 material = SubResource("ShaderMaterial_tuyoq")

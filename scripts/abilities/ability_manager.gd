@@ -55,6 +55,11 @@ func _process(delta: float) -> void:
 		var ability3_label = player_ui.get_node("VBoxContainer/ability3")
 		ability3_label.modulate = Color(1, 1, 1, 1)
 		
+	if Input.is_action_just_pressed("Ability4"):
+		abilities[3]._activate()
+	elif Input.is_action_just_released("Ability4"):
+		abilities[3]._deactivate()
+		
 	# Checks if NPC is near while using an ability
 	for ability in abilities:
 		if ability.ab_is_active:

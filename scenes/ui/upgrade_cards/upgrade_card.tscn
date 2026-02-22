@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://vmagpt02nq5v"]
+
+[ext_resource type="Script" uid="uid://b6w55jc7t7k43" path="res://scripts/ui/upgrade_card.gd" id="1_jq2e7"]
+[ext_resource type="Texture2D" uid="uid://bu7hriiy7w34g" path="res://assets/icon.svg" id="3_3tn6r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ikfdi"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehfmx"]
+font_size = 25
+font_color = Color(1, 0.7607843, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jq2e7"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="upgrade_card" type="Control" unique_id=1898589759]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 106.0
+offset_bottom = 159.0
+script = ExtResource("1_jq2e7")
+
+[node name="card_bg" type="ColorRect" parent="." unique_id=67724720]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -79.5
+offset_right = 52.0
+offset_bottom = 80.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="card_img_bg" type="ColorRect" parent="." unique_id=153512921]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.5
+offset_right = 40.0
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0.73028797, 0.8622082, 0.8392745, 1)
+
+[node name="card_img" type="TextureRect" parent="." unique_id=546385841]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -31.5
+offset_right = 31.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3tn6r")
+expand_mode = 1
+
+[node name="card_title" type="Label" parent="." unique_id=1748514792]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.0
+offset_top = 8.0
+offset_right = 38.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "UPGRADE"
+label_settings = SubResource("LabelSettings_ikfdi")
+horizontal_alignment = 1
+
+[node name="card_cost" type="Label" parent="." unique_id=2106166651]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.0
+offset_top = 160.0
+offset_right = 38.0
+offset_bottom = 183.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ehfmx")
+horizontal_alignment = 1
+
+[node name="card_text" type="Label" parent="." unique_id=1307256917]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -33.0
+offset_right = 72.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "This is the text
+ for the card upgrades."
+label_settings = SubResource("LabelSettings_jq2e7")
+horizontal_alignment = 1
+
+[node name="buy_btn" type="Button" parent="." unique_id=1579598537]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -80.0
+offset_right = 52.5
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="buy_btn" to="." method="_on_button_pressed"]

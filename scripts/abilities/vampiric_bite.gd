@@ -43,6 +43,9 @@ func _activate():
 		_bite(closest_body)
 		closest_body.die()
 		GameManager._add_paranoia(paranoia_rate)
+	elif closest_body.is_in_group("evidence_body"):
+		print("Biting corpse")
+		closest_body.queue_free()
 	
 	_deactivate()
 	

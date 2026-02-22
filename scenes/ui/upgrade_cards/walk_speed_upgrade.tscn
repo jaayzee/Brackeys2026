@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bj43h26em2125"]
+
+[ext_resource type="PackedScene" uid="uid://vmagpt02nq5v" path="res://scenes/ui/upgrade_cards/upgrade_card.tscn" id="1_osvsc"]
+[ext_resource type="Script" uid="uid://crixwl5hepliu" path="res://scripts/ui/upgrades/walk_speed_upgrade.gd" id="2_aevhk"]
+
+[node name="walk_speed" unique_id=1898589759 instance=ExtResource("1_osvsc")]
+script = ExtResource("2_aevhk")
+up_name = "Swift"
+up_description = "Increase walk speed by 1"
+up_cost = 10

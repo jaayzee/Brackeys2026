@@ -4,32 +4,31 @@ extends Control
 var shop_upgrades : Array = []
 var shop_size := 3
 
+@onready var upgrade_container = $upgrade_container
+
 func _ready() -> void:
 	_setup_shop()
 	
 func _setup_shop():
-	# var random_vector3 = new Vector3(random,random,random)
-	# shop_upgrades.append(upgrades[x]
-	# shop_upgrades.append(upgrades[y]
-	# shop_upgrades.append(upgrades[z]
-	# rare upgrades? Idk
-	# for 0->shop_size append stuff
+	# Randomly select upgrades
+	var last_rand_int = -1
+	for i in range(shop_size):
+		var rand_int = randi() % upgrades.size() # Random index in upgrades array
+		if rand_int != last_rand_int: 
+			shop_upgrades.append(upgrades[rand_int])
 	
-	# determine this randomly ^
-	for upgrade in upgrades:
-		shop_upgrades.append(upgrade)
-		
+	# Display upgrades
 	for upgrade in shop_upgrades:
 		var upgrade_card = upgrade.instantiate()
-		add_child(upgrade_card)
-	
+		upgrade_container.add_child(upgrade_card)
+		upgrade_card.shop = get_node(".")
 	
 func remove_upgrade():
 	# queue_free() upgrade and clear that array slot
 	pass
 	
 func _clear_shop():
-	pass
+	shop_upgrades.clear()
 	
 func _exit_shop():
 	# hit escape or click the button 

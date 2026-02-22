@@ -116,12 +116,12 @@ func _boost_speed(increment: float):
 func _get_near_npcs() -> Array:
 	return col_detector.get_overlapping_bodies()
 
-func point_to_corpse(corpse_location: Vector3):
+func point_to_corpse(corpse_node: Node3D):
 	if not indicator_scene or not camera: return
 	
 	var arrow = indicator_scene.instantiate()
 	
-	arrow.target_position = corpse_location
+	arrow.target_node = corpse_node
 	arrow.camera = camera
 	
 	ui_layer.add_child(arrow)
