@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ce2bg4ybqiui0"]
 
+[ext_resource type="Texture2D" uid="uid://dtj836ve68frk" path="res://assets/images/circle.png" id="1_6otqx"]
+
 [sub_resource type="Curve" id="Curve_bpk1q"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5303665), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -12,6 +14,7 @@ lifetime_randomness = 0.2
 emission_shape = 1
 emission_sphere_radius = 0.1
 inherit_velocity_ratio = 0.355
+direction = Vector3(0, 1, 0)
 spread = 150.0
 gravity = Vector3(0, -0.1, 0)
 scale_min = 0.01
@@ -19,7 +22,18 @@ scale_max = 0.099999994
 scale_curve = SubResource("CurveTexture_bpk1q")
 turbulence_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_2rk77"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri4g5"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("1_6otqx")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_2w3ve"]
+material = SubResource("StandardMaterial3D_ri4g5")
 
 [node name="shadow_particles" type="Node3D" unique_id=655269727]
 
@@ -30,4 +44,4 @@ speed_scale = 10.0
 explosiveness = 0.15
 randomness = 0.2
 process_material = SubResource("ParticleProcessMaterial_bpk1q")
-draw_pass_1 = SubResource("BoxMesh_2rk77")
+draw_pass_1 = SubResource("QuadMesh_2w3ve")

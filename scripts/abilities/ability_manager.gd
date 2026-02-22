@@ -35,12 +35,14 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("Ability1"):
 		abilities[0]._activate()
+		abilities[3]._activate()
 		var ability1_label = player_ui.get_node("VBoxContainer/ability1")
 		ability1_label.modulate = Color(1, 1, 1, 1)
 		audio_shadow.play()
 	elif Input.is_action_just_released("Ability1"):
 		abilities[0]._deactivate()
-		audio_shadow.stop()
+		abilities[3]._deactivate()
+
 		
 	if Input.is_action_just_pressed("Ability2"):
 		abilities[1]._activate()
@@ -56,12 +58,6 @@ func _process(delta: float) -> void:
 		audio_stream_bite.play()
 	elif Input.is_action_just_released("Ability3"):
 		abilities[2]._deactivate()
-		
-	if Input.is_action_just_pressed("Ability4"):
-		abilities[3]._activate()
-	elif Input.is_action_just_released("Ability4"):
-		abilities[3]._deactivate()
-		
 	# Checks if NPC is near while using an ability
 	for ability in abilities:
 		if ability.ab_is_active:

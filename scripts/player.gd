@@ -10,8 +10,16 @@ extends CharacterBody3D
 @export var sprint_multiplier = 1.6
 @export var indicator_scene: PackedScene
 
+@export_group("Sprint Effect")
+@export var ghost_interval := 0.08
+@export var ghost_duration := 0.4
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var camera_angle = 0.0
+var _ghost_timer := 0.0
+var _is_charging_attack := false
+var disable_ghosts := false
+
 @onready var ui_layer = $Indicator
 @onready var sprite = $AnimatedSprite3D
 @onready var camera_pivot = $CameraPivot
@@ -59,7 +67,7 @@ func _physics_process(delta):
 		camera_pivot.rotate_y(deg_to_rad(rotation_speed * delta))
 	if Input.is_action_pressed("rotate_right"):
 		camera_pivot.rotate_y(deg_to_rad(-rotation_speed * delta))
-		
+	
 	# Movement input
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
@@ -102,21 +110,34 @@ func _physics_process(delta):
 	var jump_is_finishing = (sprite.animation == "jump" and sprite.frame < jump_total_frames - 1)
 	
 	# Animation logic
-	if not is_on_floor():
+	var attack_p2_is_finishing = false
+	if sprite.sprite_frames.has_animation("attack_p2"): 
+		var attack_total_frames = sprite.sprite_frames.get_frame_count("attack_p2")
+		attack_p2_is_finishing = (sprite.animation == "attack_p2" and sprite.frame < attack_total_frames - 1)
+	
+	# ghost trail
+	if is_sprinting and velocity.length() > 0 and is_on_floor() and not disable_ghosts:
+		_ghost_timer -= delta
+		if _ghost_timer <= 0:
+			_spawn_ghost()
+			_ghost_timer = ghost_interval
+	else:
+		_ghost_timer = 0.0
+	
+	if attack_p2_is_finishing:
+		pass
+	elif _is_charging_attack:
+		if sprite.animation != "attack_p1":
+			sprite.play("attack_p1")
+	elif not is_on_floor():
 		sprite.play("jump")
 	elif jump_is_finishing:
 		pass 
 	else:
-		if direction:
-			if is_sprinting:
-				sprite.play("sprint")
-			elif input_dir.y < 0:
-				sprite.play("walkb")
-			else:
-				sprite.play("walk")
+		if velocity.length() > 0:
+			sprite.play("walk")
 		else:
 			sprite.play("idle")
-		
 # Ability 
 func set_speed(amount: float):
 	speed = amount
@@ -135,13 +156,39 @@ func point_to_corpse(corpse_node: Node3D):
 	
 	ui_layer.add_child(arrow)
 	
-	# we either turn off the pointer after some time,
-	# or only turn it off if they eat the corpse
+func _spawn_ghost():
+	var ghost = Sprite3D.new()
 	
-	#await get_tree().create_timer(5.0).timeout
-	#if is_instance_valid(arrow):
-		#arrow.queue_free()
-
-# For Start menu
-func rotate_cam(delta):
-	camera_pivot.rotate_y(deg_to_rad(-rotation_speed * delta))
+	# take frame
+	var tex = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
+	ghost.texture = tex
+	
+	# match player orientation
+	ghost.flip_h = sprite.flip_h
+	ghost.pixel_size = sprite.pixel_size
+	ghost.offset = sprite.offset
+	#ghost.modulate = Color(1.0, 0.0, 0.0)
+	
+	# get through postprocessing quad
+	ghost.alpha_cut = Sprite3D.ALPHA_CUT_HASH 
+	ghost.texture_filter = sprite.texture_filter
+	ghost.render_priority = sprite.render_priority - 1
+	ghost.billboard = sprite.billboard
+	
+	# stamp where player was
+	get_tree().current_scene.add_child(ghost)
+	ghost.global_transform = sprite.global_transform
+	
+	# fade out
+	var tween = get_tree().create_tween()
+	tween.tween_property(ghost, "modulate:a", 0.0, ghost_duration)
+	tween.tween_callback(ghost.queue_free)
+	
+func start_attack():
+	_is_charging_attack = true
+	sprite.play("attack_p1")
+	
+func release_attack():
+	_is_charging_attack = false
+	sprite.frame = 0
+	sprite.play("attack_p2")

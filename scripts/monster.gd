@@ -81,7 +81,7 @@ func die():
 	
 func _leave_blood():
 	# spawn bloodsplat every 0.2 seconds
-	if Engine.get_frames_drawn() % 12 == 0:
+	if Engine.get_frames_drawn() % 2 == 0:
 		var b = blood_trail_scene.instantiate()
 		get_parent().add_child(b)
 		b.global_position = Vector3(global_position.x, 0.01, global_position.z)
@@ -101,7 +101,7 @@ func _calculate_path_velocity():
 	if current_move_speed == move_speed:
 		sprite.play("walk")
 	elif current_move_speed == run_speed:
-		sprite.play("run")
+		sprite.play("sprint")
 	else:
 		sprite.play("idle")
 

@@ -108,7 +108,7 @@ void fragment() {
 		
 		float red_intensity = original_color.r - max(original_color.g, original_color.b);
 		
-		bool is_accent = red_intensity > 0.05; 
+		bool is_accent = red_intensity > 0.5; 
 
 		if (!is_accent) {
 			float gray = dot(final, vec3(0.299, 0.587, 0.114));
