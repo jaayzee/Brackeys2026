@@ -25,6 +25,8 @@ shapes/navigation/3d/enable_edge_connections=false
 
 [display]
 
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/resizable=false
 window/stretch/mode="viewport"
 

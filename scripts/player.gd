@@ -101,6 +101,8 @@ func _physics_process(delta):
 		if direction:
 			if is_sprinting:
 				sprite.play("sprint")
+			elif input_dir.y < 0:
+				sprite.play("walkb")
 			else:
 				sprite.play("walk")
 		else:
