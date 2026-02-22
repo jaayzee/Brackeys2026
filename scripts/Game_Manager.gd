@@ -5,24 +5,26 @@ extends Node
 @export var max_paranoia := 100
 @export var paranoia_reset_time := 3
 
-@export var body_paranoia_rate := 1.0
-@export var blood_paranoia_rate := 0.1
-
 var time_remaining := 0
 var current_paranoia := 0
 var is_paranoia_full = false
 
 ## Shop
-var money := 0
-
+var money := 50
+var can_shop := false
 # Upgradeable stats
 @export var player_speed = 1
+@export var body_paranoia_rate := 1.0
+@export var blood_paranoia_rate := 0.1
 
+## UI
 var player_ui
+var player
 
 func _ready() -> void:
 	print("Game Manager Ready")
 	player_ui = get_tree().get_first_node_in_group("player_ui")
+	player = get_tree().get_first_node_in_group("player")
 	
 func _process(delta: float) -> void:
 	# Game Timer & Paranoia
@@ -41,8 +43,10 @@ func _process(delta: float) -> void:
 	if current_paranoia >= max_paranoia and not is_paranoia_full:
 		print("MAX PARANOIA")
 		
+	# Set UI
 	if player_ui:
 		player_ui.get_node("timer").text = "Time: " + str(time_remaining)
+		player_ui.get_node("money").text = "Money: " + str(money)
 		player_ui.get_node("paranoia").text = "Paranoia: " + str(current_paranoia)
 	
 func add_money(amount: int):
@@ -76,5 +80,11 @@ func _reset_paranoia():
 	current_paranoia = 0
 	is_paranoia_full = false
 	
-func get_player_speed():
-	return player_speed
+# Upgradeable Stats
+func set_player_speed(amount: float):
+	player_speed = amount
+	player.set_speed(player_speed)
+func set_body_paranoia_rate(amount: float):
+	body_paranoia_rate = amount
+func set_blood_paranoia_rate(amount: float):
+	blood_paranoia_rate = amount
