@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://b2wl0mtd00qh3"]
+
+[ext_resource type="Script" uid="uid://id8rw6gu0vmd" path="res://scripts/ui/main_menu.gd" id="1_3hng2"]
+[ext_resource type="FontFile" uid="uid://dqgkf62xdcsti" path="res://assets/Quintessential/Quintessential-Regular.ttf" id="2_3hng2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hng2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwayb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idbya"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_idbya"]
+font = ExtResource("2_3hng2")
+font_size = 125
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.25440922, 0.21543819, 0.120704435, 0)
+
+[node name="main_menu" type="Control" unique_id=152667215]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3hng2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1006427838]
+layout_mode = 1
+offset_left = 41.0
+offset_top = 191.0
+offset_right = 227.0
+offset_bottom = 407.0
+theme_override_constants/separation = 15
+
+[node name="play_btn" type="Button" parent="VBoxContainer" unique_id=1058697637]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_3hng2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3hng2")
+text = "> 	  Play"
+alignment = 0
+
+[node name="credits_btn" type="Button" parent="VBoxContainer" unique_id=1718254317]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_3hng2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vwayb")
+text = "> 	  Credits"
+alignment = 0
+
+[node name="quit_btn" type="Button" parent="VBoxContainer" unique_id=468427899]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_3hng2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_idbya")
+text = ">   Quit"
+alignment = 0
+
+[node name="Label" type="Label" parent="." unique_id=125664049]
+layout_mode = 0
+offset_left = 33.0
+offset_right = 887.0
+offset_bottom = 277.0
+text = "Sanguine City"
+label_settings = SubResource("LabelSettings_idbya")
+autowrap_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ce2bg4ybqiui0" path="res://scenes/particles/shadow_particles.tscn" id="5_1daek"]
 [ext_resource type="Script" uid="uid://0xsqh622je8r" path="res://scripts/NPC_Manager.gd" id="6_0kj6i"]
 [ext_resource type="PackedScene" uid="uid://dk1rcbvu130kw" path="res://scenes/managers/monster_manager.tscn" id="7_pac7f"]
-[ext_resource type="PackedScene" uid="uid://beue6pjuph0jo" path="res://scenes/monster.tscn" id="8_vpkxf"]
-[ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/player_ui.tscn" id="9_68pu7"]
+[ext_resource type="PackedScene" uid="uid://dvpor02sp2dh0" path="res://scenes/monster.tscn" id="8_vpkxf"]
+[ext_resource type="PackedScene" uid="uid://bw7uqdfhsy8d0" path="res://scenes/player_ui.tscn" id="9_68pu7"]
 [ext_resource type="PackedScene" uid="uid://c3lml70rhsfjs" path="res://scenes/particles/blood_stain.tscn" id="10_hwbp5"]
 
 [sub_resource type="Environment" id="Environment_ykrsh"]
@@ -63,7 +63,7 @@ stretch_shrink = 3
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2075480148]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(384, 216)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=204393029]
@@ -117,7 +117,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0111015, 0.4402224, -1.497
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33333564, 0)
 script = ExtResource("6_0kj6i")
 npc_scene = ExtResource("1_ojrth")
-npc_count = 100
 
 [node name="Npc" parent="NPC_Manager" unique_id=1023549608 instance=ExtResource("1_ojrth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24919817, 0)

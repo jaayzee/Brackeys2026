@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bg85fo2stid74"]
+
+[ext_resource type="Texture2D" uid="uid://bu7hriiy7w34g" path="res://assets/icon.svg" id="1_e5vi7"]
+[ext_resource type="Script" uid="uid://cttxtwohxiq7g" path="res://bounty_poster.gd" id="1_g5shj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8u7dl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5vi7"]
+albedo_color = Color(0.9997913, 0.7738868, 0.49785513, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e5vi7"]
+radius = 1.1461042
+
+[node name="bounty_poster" type="Area3D" unique_id=2115650578]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_g5shj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=21093416]
+transform = Transform3D(1, 0, 0, 0, 1.4757885, 0, 0, 0, 0.20047659, 0, 0, 0)
+mesh = SubResource("BoxMesh_8u7dl")
+surface_material_override/0 = SubResource("StandardMaterial3D_e5vi7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1567583506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003671825, 0, 0)
+shape = SubResource("SphereShape3D_e5vi7")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=182606050]
+transform = Transform3D(0.6397217, 0, 0, 0, 0.64301443, 0, 0, 0, 1, 0, 0.28129303, 0.12255156)
+texture = ExtResource("1_e5vi7")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1434505014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32767642, 0.11238897)
+modulate = Color(1, 0, 0, 1)
+text = "WANTED"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

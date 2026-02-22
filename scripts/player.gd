@@ -36,7 +36,7 @@ func _ready():
 	if manager:
 		manager.kill_occurred.connect(point_to_corpse)
 		
-	speed = GameManager.get_player_speed()
+	speed = GameManager.player_speed
 
 func _process(_delta):
 	RenderingServer.global_shader_parameter_set("player_position", global_position)
@@ -120,9 +120,9 @@ func _physics_process(delta):
 			_ghost_timer = 0.0
 		
 # Ability 
-func _boost_speed(increment: float):
-	speed += increment
-	print("Speed: " + str(increment))
+func set_speed(amount: float):
+	speed = amount
+	print("Speed: " + str(amount))
 	
 func _get_near_npcs() -> Array:
 	return col_detector.get_overlapping_bodies()

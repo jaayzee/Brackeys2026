@@ -3,7 +3,8 @@ extends Ability
 @export var shadow_particles: PackedScene
 var particles
 
-@export var speed_boost := 1.0
+@export var shadow_speed_boost := 1
+var og_walk_speed
 
 func _ready() -> void:
 	pass
@@ -11,7 +12,8 @@ func _ready() -> void:
 func _activate():
 	super()
 	ab_is_active = true
-	player._boost_speed(speed_boost)
+	og_walk_speed = player.speed
+	player.set_speed(GameManager.player_speed + shadow_speed_boost)
 	
 	# Particles
 	particles = shadow_particles.instantiate()
@@ -23,7 +25,7 @@ func _activate():
 func _deactivate():
 	super()
 	ab_is_active = false
-	player._boost_speed(-speed_boost)
+	player.set_speed(og_walk_speed)
 	if particles:
 		particles.queue_free()
 	player.sprite.visible = true

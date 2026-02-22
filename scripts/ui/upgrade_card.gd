@@ -34,6 +34,8 @@ func buy_upgrade():
 	get_node(".").modulate = Color(1,1,1, 0)
 	is_bought = true
 	
+	shop.money.text = str(GameManager.money)
+	
 	apply_upgrade()
 	
 func apply_upgrade():

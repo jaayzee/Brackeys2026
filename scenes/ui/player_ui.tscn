@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bab3wqt3mdhca" path="res://assets/images/movement.png" id="1_48xfa"]
 [ext_resource type="Texture2D" uid="uid://bgj08xd8wxrhx" path="res://assets/images/blood.png" id="2_8isll"]
 [ext_resource type="Texture2D" uid="uid://dtbero235a7al" path="res://assets/images/bite.png" id="3_7ctsh"]
+[ext_resource type="FontFile" uid="uid://dqgkf62xdcsti" path="res://assets/Quintessential/Quintessential-Regular.ttf" id="4_fatqr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkx2g"]
 texture = ExtResource("1_48xfa")
@@ -14,10 +15,12 @@ texture = ExtResource("2_8isll")
 texture = ExtResource("3_7ctsh")
 
 [sub_resource type="LabelSettings" id="LabelSettings_48xfa"]
-font_size = 30
+font = ExtResource("4_fatqr")
+font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_8isll"]
-font_size = 25
+font = ExtResource("4_fatqr")
+font_size = 35
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xfa"]
 bg_color = Color(1, 0, 0, 1)
@@ -74,12 +77,22 @@ offset_bottom = 95.0
 text = "Time: 00:00"
 label_settings = SubResource("LabelSettings_48xfa")
 
-[node name="money" type="Label" parent="." unique_id=319310997]
+[node name="paranoia" type="Label" parent="." unique_id=716724030]
+visible = false
 layout_mode = 1
 offset_left = 15.0
-offset_top = 130.0
-offset_right = 139.0
-offset_bottom = 172.0
+offset_top = 53.0
+offset_right = 151.0
+offset_bottom = 95.0    
+text = "Paranoia: 0"
+label_settings = SubResource("LabelSettings_8isll")
+
+[node name="money" type="Label" parent="." unique_id=319310997]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 157.0
+offset_bottom = 134.0
 text = "Money: 0"
 label_settings = SubResource("LabelSettings_8isll")
 

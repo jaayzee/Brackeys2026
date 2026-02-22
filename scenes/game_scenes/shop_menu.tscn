@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://d12cfks5dnnoo"]
 
 [ext_resource type="Script" uid="uid://dvt2oywhi01c1" path="res://shop_menu.gd" id="1_v22as"]
-[ext_resource type="Texture2D" uid="uid://d1qvfenx33n5h" path="res://assets/images/iu_.png" id="2_mmms3"]
 [ext_resource type="PackedScene" uid="uid://bj43h26em2125" path="res://scenes/ui/upgrade_cards/walk_speed_upgrade.tscn" id="2_qgdgx"]
 [ext_resource type="PackedScene" uid="uid://vmagpt02nq5v" path="res://scenes/ui/upgrade_cards/upgrade_card.tscn" id="3_mmms3"]
+[ext_resource type="Texture2D" uid="uid://cdbvpcky83nhq" path="res://assets/images/coin-icon-3830.png" id="5_ei2rb"]
+[ext_resource type="FontFile" uid="uid://dqgkf62xdcsti" path="res://assets/Quintessential/Quintessential-Regular.ttf" id="5_plb42"]
+[ext_resource type="Texture2D" uid="uid://djnpuxfd1d7sx" path="res://assets/images/blood_stains/blood_splatter_2.png" id="6_ei2rb"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgdgx"]
-texture = ExtResource("2_mmms3")
+[sub_resource type="LabelSettings" id="LabelSettings_pngj2"]
+font = ExtResource("5_plb42")
+font_size = 65
 
 [node name="shop_menu" type="Control" unique_id=1914158305]
 layout_mode = 3
@@ -18,34 +21,90 @@ grow_vertical = 2
 script = ExtResource("1_v22as")
 upgrades = Array[PackedScene]([ExtResource("2_qgdgx"), ExtResource("3_mmms3"), ExtResource("3_mmms3")])
 
-[node name="Panel" type="Panel" parent="." unique_id=1332926242]
-modulate = Color(0.47843137, 0.47843137, 0.47843137, 0.29411766)
+[node name="blood_splatter_1" type="TextureRect" parent="." unique_id=428471533]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -747.0
+offset_top = -1473.0
+offset_right = 1139.0
+offset_bottom = 823.49927
+grow_vertical = 0
+texture = ExtResource("6_ei2rb")
+
+[node name="blood_splatter_2" type="TextureRect" parent="." unique_id=1837405670]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 628.0
+offset_top = 1781.0
+offset_right = 2821.1074
+offset_bottom = 4451.4507
+grow_horizontal = 0
+rotation = -2.8273149
+texture = ExtResource("6_ei2rb")
+
+[node name="transparent_bg" type="Panel" parent="." unique_id=1320531805]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 185.0
-offset_top = 105.0
-offset_right = -186.55554
-offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_qgdgx")
 
-[node name="next_mission" type="Button" parent="." unique_id=782945018]
+[node name="transparent_bg2" type="Panel" parent="." unique_id=1878184759]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -71.0
-offset_top = -71.0
-offset_right = 83.0
-offset_bottom = -40.0
+offset_left = 296.0
+offset_top = 277.0
+offset_right = -241.0
+offset_bottom = -172.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "Begin next Mission"
+grow_vertical = 2
+
+[node name="gold_texture" type="TextureRect" parent="." unique_id=2061708080]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 158.0
+offset_right = -14.0
+offset_bottom = 242.0
+grow_horizontal = 2
+texture = ExtResource("5_ei2rb")
+expand_mode = 1
+
+[node name="money" type="Label" parent="." unique_id=704893106]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 152.0
+offset_right = 109.0
+offset_bottom = 253.0
+grow_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_pngj2")
+
+[node name="purchase_text" type="Label" parent="." unique_id=1899670478]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -187.0
+offset_top = 40.0
+offset_right = 187.0
+offset_bottom = 102.0
+grow_horizontal = 2
+text = "Purchase your upgrades"
+label_settings = SubResource("LabelSettings_pngj2")
+horizontal_alignment = 1
 
 [node name="upgrade_container" type="HBoxContainer" parent="." unique_id=259461644]
 layout_mode = 1
@@ -54,13 +113,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -79.5
-offset_right = 200.0
-offset_bottom = 79.5
+offset_left = -666.0
+offset_top = -194.0
+offset_right = 717.27466
+offset_bottom = 291.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 200
 alignment = 1
 
-[connection signal="pressed" from="next_mission" to="." method="_on_next_mission_pressed"]
+[node name="exit" type="Button" parent="." unique_id=782945018]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -136.0
+offset_right = 227.76465
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_plb42")
+theme_override_font_sizes/font_size = 30
+text = "Exit Shop"
+
+[connection signal="pressed" from="exit" to="." method="_on_next_mission_pressed"]
