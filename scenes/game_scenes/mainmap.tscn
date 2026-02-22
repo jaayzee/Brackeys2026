@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bjhpxc16h4s8a"]
 
+[ext_resource type="Script" uid="uid://b1unbl11g72fo" path="res://scripts/utils/multimeshcreator.gd" id="1_5a4gv"]
 [ext_resource type="PackedScene" uid="uid://bcucs32sg3yx" path="res://scenes/player.tscn" id="1_c1dn1"]
-[ext_resource type="Environment" uid="uid://cae3oqo26ddfs" path="res://worldenv.tres" id="1_pmepb"]
 [ext_resource type="Script" uid="uid://0xsqh622je8r" path="res://scripts/NPC_Manager.gd" id="3_o3404"]
 [ext_resource type="MultiMesh" uid="uid://brxgay3hpgsv0" path="res://scenes/citybuilder/multimesh/Roads.tres" id="3_t4jxw"]
 [ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="3_vg2bc"]
@@ -32,6 +32,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dgyjkmifraayv" path="res://assets/Assets/obj/car_police.obj" id="23_gioub"]
 [ext_resource type="ArrayMesh" uid="uid://8hskm8vsp1xy" path="res://assets/Assets/obj/car_taxi_wheel_rear_left.obj" id="24_vhmcb"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="25_e3ycv"]
+[ext_resource type="MultiMesh" path="res://baseshadows.tres" id="25_gimpu"]
 [ext_resource type="MultiMesh" uid="uid://bt5pu4tj35k28" path="res://scenes/citybuilder/multimesh/blueorangebuildings.tres" id="28_p3d12"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/blueshadebuilding.tres" id="29_otodh"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/blueyellowbuilding.tres" id="30_sd7p5"]
@@ -48,13 +49,6 @@
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8xifc"]
 dof_blur_far_distance = 13.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xifc"]
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cm7fs"]
-material = SubResource("StandardMaterial3D_8xifc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8u03g"]
 size = Vector3(1.6, 8, 2.8)
@@ -638,10 +632,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bocps")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a4gv"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gimpu"]
+material = SubResource("StandardMaterial3D_5a4gv")
+size = Vector2(1.2, 1.2)
+
 [node name="Mainmap" type="Node3D" unique_id=444243391]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=10510249]
-environment = ExtResource("1_pmepb")
 camera_attributes = SubResource("CameraAttributesPractical_8xifc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1675706312]
@@ -657,6 +657,9 @@ directional_shadow_max_distance = 50.0
 [node name="player" parent="." unique_id=52209652 instance=ExtResource("1_c1dn1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
 
+[node name="CanvasLayer" parent="player/CameraPivot/Camera3D" parent_id_path=PackedInt32Array(52209652, 1734948815) index="1" unique_id=772588420]
+visible = true
+
 [node name="NPC_Manager" type="Node3D" parent="." unique_id=1363450259 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3583356, 0)
 script = ExtResource("3_o3404")
@@ -664,10 +667,6 @@ npc_scene = ExtResource("4_x72hk")
 player = NodePath("../player")
 max_active_npcs = 100
 corpse_scene = ExtResource("4_e3ycv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1502190248]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -3.25)
-mesh = SubResource("BoxMesh_cm7fs")
 
 [node name="city" type="Node3D" parent="." unique_id=1932731592 groups=["city"]]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 5.0000005, 0, 5.0000005)
@@ -1181,6 +1180,7 @@ shape = SubResource("BoxShape3D_jirgv")
 
 [node name="worldhitbox" type="StaticBody3D" parent="city" unique_id=704166599]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9999995, 0)
+visible = false
 
 [node name="wallbox3D" type="CollisionShape3D" parent="city/worldhitbox" unique_id=1463159052]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -27.75, 1.75, -5.5)
@@ -1560,6 +1560,10 @@ multimesh = ExtResource("35_yjimw")
 
 [node name="Buildings" type="Node3D" parent="city" unique_id=1094438935]
 
+[node name="baseoutlineshadow" type="MultiMeshInstance3D" parent="city/Buildings" unique_id=1367206187]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -5, 0, -5)
+multimesh = ExtResource("25_gimpu")
+
 [node name="blueorangebuildings" type="MultiMeshInstance3D" parent="city/Buildings" unique_id=34618275]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -5, 0, -5)
 material_override = ExtResource("8_8006u")
@@ -1578,6 +1582,12 @@ material_override = ExtResource("8_8006u")
 cast_shadow = 0
 multimesh = ExtResource("30_sd7p5")
 
+[node name="redorangebuildings" type="MultiMeshInstance3D" parent="city/Buildings" unique_id=498941655]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -5, 0, -5)
+material_override = ExtResource("8_8006u")
+cast_shadow = 0
+multimesh = ExtResource("34_pmepb")
+
 [node name="greenshadebuildings" type="MultiMeshInstance3D" parent="city/Buildings" unique_id=1462936647]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -5, 0, -5)
 material_override = ExtResource("8_8006u")
@@ -1595,12 +1605,6 @@ transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -5, 0
 material_override = ExtResource("8_8006u")
 cast_shadow = 0
 multimesh = ExtResource("33_e3ycv")
-
-[node name="redorangebuildings" type="MultiMeshInstance3D" parent="city/Buildings" unique_id=498941655]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -5, 0, -5)
-material_override = ExtResource("8_8006u")
-cast_shadow = 0
-multimesh = ExtResource("34_pmepb")
 
 [node name="redshadebuildings" type="MultiMeshInstance3D" parent="city/Buildings" unique_id=1040140180]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -5, 0, -5)
@@ -5499,7 +5503,753 @@ mesh = ExtResource("16_8jcbp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 mesh = ExtResource("16_8jcbp")
 
+[node name="baseshadows" type="Node3D" parent="delete if for sure wont edit main playable floor area" unique_id=808810543 node_paths=PackedStringArray("parent")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 5.0000005, 0, 5.0000005)
+visible = false
+script = ExtResource("1_5a4gv")
+parent = NodePath(".")
+save_name = "baseshadows"
+
+[node name="baseshadow181" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=346172301]
+transform = Transform3D(-4.371139e-08, 0, 1.65, 0, 1, 0, -1, 0, -7.212379e-08, -10.599998, 0.024999997, 6.449996)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow182" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1072003316]
+transform = Transform3D(1, 0, -7.1054265e-15, 0, 1, 0, 0, 0, 1.65, -1.9499998, 0.024999997, -9.850003)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow183" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=665606191]
+transform = Transform3D(1, 0, -7.1054265e-15, 0, 1, 0, 0, 0, 1.65, -7.9999995, 0.024999997, -12.500004)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow184" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1253791824]
+transform = Transform3D(1, 0, -7.1054265e-15, 0, 1, 0, 0, 0, 1.65, -2.05, 0.024999997, -18.250004)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow168" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=916481263]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -11.999998, 0.024999997, -8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow176" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1576157657]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -11.649998, 0.024999997, 3.2999992)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow177" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1204601817]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -10.449997, 0.024999997, 4.249999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow178" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1194500202]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -9.249996, 0.024999997, 4.249999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow179" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1292820150]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -7.999996, 0.024999997, 2.999999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow180" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=518558213]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -7.999996, 0.024999997, 1.7999988)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow169" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1364000248]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -1.9999988, 0.024999997, -8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow170" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=756627799]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -2.049999, 0.024999997, -19.849998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow171" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=486477246]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 4.3500013, 0.024999997, -16)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow172" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=2063143185]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 7.550001, 0.024999997, -16)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow173" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1561563093]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 8.750001, 0.024999997, -16)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow174" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1788355929]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 10, 0.024999997, -15.950002)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow175" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1561385549]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 10, 0.024999997, -17.150002)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow161" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=502397606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, -11.999998, 0.024999997, -10.000001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow163" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=817278491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 2.0500002, 0.024999997, -16.450003)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow164" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=984223366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 2.0500002, 0.024999997, -14.850003)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow162" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=989799013]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 0.60000086, 0.024999997, -16.6)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow165" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=295267583]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, -11.199997, 0.024999997, -2.0000026)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow166" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=202565150]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, -7.999997, 0.024999997, -2.0000026)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow167" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=566010070]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, -9.599997, 0.024999997, -2.3000026)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow123" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1719624918]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -7.999999, 0.024999997, -8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow124" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1401013091]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -7.9999995, 0.024999997, -16.474998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow125" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=559670060]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -2.0499997, 0.024999997, -12.574999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow126" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1010741377]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 9.999998, 0.024999997, -19.949997)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow127" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=934605001]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -8.000001, 0.024999997, 4.200001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow128" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1819224534]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -8.000001, 0.024999997, 5.4000006)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow129" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1399812915]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -8.000001, 0.024999997, 6.6500006)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow130" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=748809886]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -12.200001, 0.024999997, 6.4000006)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow131" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=704836437]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -17.599998, 0.024999997, 0.20000076)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow132" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=341901284]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -18.8, 0.024999997, 0.20000076)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow133" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=384416723]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -17.599998, 0.024999997, -1.0999994)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow134" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1722080643]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -18.8, 0.024999997, -1.0999994)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow135" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1912085442]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -19.999998, 0.024999997, 0.20000076)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow136" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=2125876499]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -21.199999, 0.024999997, 0.20000076)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow137" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1888131281]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -19.999998, 0.024999997, -1.0999994)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow138" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=55000288]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -21.199999, 0.024999997, -1.0999994)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow139" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1713793829]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -22.4, 0.024999997, 0.20000076)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow140" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=266747421]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -22.4, 0.024999997, -1.0999994)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow141" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1414241080]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -17.599998, 0.024999997, -4.349999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow142" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=135560245]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -18.8, 0.024999997, -4.349999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow143" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=102661480]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -17.599998, 0.024999997, -5.649999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow144" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=267210201]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -18.8, 0.024999997, -5.649999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow145" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=909147153]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -19.999998, 0.024999997, -4.349999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow146" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1190933225]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -21.199999, 0.024999997, -4.349999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow147" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1835569636]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -19.999998, 0.024999997, -5.649999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow148" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=282626803]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -21.199999, 0.024999997, -5.649999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow149" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=212810632]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -22.4, 0.024999997, -4.349999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow150" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=264280008]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -22.4, 0.024999997, -5.649999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow151" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1311975273]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -17.599998, 0.024999997, -8.899998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow152" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1443496047]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -18.8, 0.024999997, -8.899998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow153" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1668861648]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -17.599998, 0.024999997, -10.199999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow154" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=130540509]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -18.8, 0.024999997, -10.199999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow155" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1243422040]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -19.999998, 0.024999997, -8.899998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow156" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=928650523]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -21.199999, 0.024999997, -8.899998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow157" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=693493512]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -19.999998, 0.024999997, -10.199999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow158" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=2006039530]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -21.199999, 0.024999997, -10.199999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow159" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1114550289]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -22.4, 0.024999997, -8.899998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow160" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=832692612]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -22.4, 0.024999997, -10.199999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow111" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1479511596]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.09999943, 0.024999997, -10.25)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow112" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1928863814]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.825, -0.9000015, 0.024999997, -10.150001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow113" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=624609073]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 1.1499982, 0.024999997, -20.3)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow114" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1594241156]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.825, 0.14999866, 0.024999997, -20.199999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow121" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=113077281]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -9.600001, 0.024999997, -20)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow122" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=830709375]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.825, -10.6, 0.024999997, -19.899998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow115" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1876216957]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.34999752, 0.024999997, -19)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow116" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1713348426]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.825, 1.3499975, 0.024999997, -19.099998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow117" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1234812379]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -12, 0.024999997, -12.875001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow118" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=320064162]
+transform = Transform3D(-2.622683e-08, 0, 0.82499987, 0, 0.9999999, 0, -0.6, 0, -3.6061895e-08, -11.925001, 0.024999997, -11.900001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow119" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=310410755]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -8.000001, 0.024999997, -10.100001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow120" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=415394321]
+transform = Transform3D(-2.622683e-08, 0, 0.82499987, 0, 0.9999999, 0, -0.6, 0, -3.6061895e-08, -8.100001, 0.024999997, -11.1)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1862513304]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -2.0000005, 0.024999997, -8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow2" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1175136101]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.40000057, 0.024999997, -8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow3" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1735737787]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.825, 0.5999994, 0.024999997, -8.1)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow101" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=332368989]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -10.4, 0.024999997, -8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow102" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1062281907]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.825, -9.4, 0.024999997, -8.1)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow107" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=832929864]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -8.4, 0.024999997, 10.65)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow108" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1123655581]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.825, -7.4000006, 0.024999997, 10.549999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow109" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1871972401]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -7.999999, 0.024999997, 8.65)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow110" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=6909566]
+transform = Transform3D(-2.622683e-08, 0, 0.82499987, 0, 0.9999999, 0, -0.6, 0, -3.6061895e-08, -8.1, 0.024999997, 7.6499996)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow103" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=38761530]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 5.5499983, 0.024999997, -15.8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow104" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=881553311]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.825, 6.549999, 0.024999997, -15.900001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow105" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=104686258]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -12.000002, 0.024999997, -17.899998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow106" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=23688564]
+transform = Transform3D(-2.622683e-08, 0, -0.82499987, 0, 0.9999999, 0, 0.6, 0, -3.6061895e-08, -11.899995, 0.024999997, -16.900005)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow5" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=752204389]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 1.3999968, 0.024999997, -8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow4" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=785305211]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 1.9999981, 0.024999997, -8.1)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow6" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=498638648]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 2.5999956, 0.024999997, -8)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow7" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1210947250]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 1.0999956, 0.024999997, -12.65)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow8" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1411788991]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 1.6999979, 0.024999997, -12.75)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow9" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=2093150462]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 2.2999954, 0.024999997, -12.65)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow37" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=374972574]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 1.3999944, 0.024999997, 3.6499987)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow38" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=990465924]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 1.9999981, 0.024999997, 3.5499983)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow39" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=849940401]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 2.5999956, 0.024999997, 3.6499987)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow40" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=239136405]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -0.6000056, 0.024999997, 3.6499987)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow41" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=909507051]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -1.4305115e-06, 0.024999997, 3.5499983)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow42" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=773364944]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 0.5999961, 0.024999997, 3.6499987)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow43" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1044069735]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -2.6000054, 0.024999997, 3.6499987)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow44" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=309609247]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -2.0000014, 0.024999997, 3.5499983)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow45" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=31506752]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -1.4000039, 0.024999997, 3.6499987)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow46" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=858144152]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 1.3999934, 0.024999997, -0.65000105)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow47" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1020425372]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 1.9999981, 0.024999997, -0.75000143)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow48" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=910473629]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 2.5999956, 0.024999997, -0.65000105)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow49" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1533909262]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -0.6000056, 0.024999997, -0.65000105)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow50" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1721329560]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -1.4305115e-06, 0.024999997, -0.75000143)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow51" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1094946022]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 0.5999961, 0.024999997, -0.65000105)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow52" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=499652457]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -2.6000054, 0.024999997, -0.65000105)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow53" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=26765976]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -2.0000014, 0.024999997, -0.75000143)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow54" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=576938287]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -1.4000039, 0.024999997, -0.65000105)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow10" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=943202205]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -0.9000044, 0.024999997, -12.65)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow11" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=849330115]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -0.30000162, 0.024999997, -12.75)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow12" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1417659686]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 0.2999959, 0.024999997, -12.65)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow22" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=324715846]
+transform = Transform3D(-2.84124e-08, 0, -1, 0, 1, 0, 0.65, 0, -4.371139e-08, -2.0500042, 0.024999997, -13.650001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow23" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1833641095]
+transform = Transform3D(-1.5298985e-08, 0, -0.8, 0, 1, 0, 0.35, 0, -3.4969112e-08, -1.9500024, 0.024999997, -14.250003)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow24" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=877132504]
+transform = Transform3D(-2.84124e-08, 0, 1, 0, 1, 0, -0.65, 0, -4.371139e-08, -2.0500042, 0.024999997, -14.850001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow25" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1811962239]
+transform = Transform3D(-2.84124e-08, 0, -1, 0, 1, 0, 0.65, 0, -4.371139e-08, -2.0500042, 0.024999997, -15.650001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow26" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1458743049]
+transform = Transform3D(-1.5298985e-08, 0, -0.8, 0, 1, 0, 0.35, 0, -3.4969112e-08, -1.9500029, 0.024999997, -16.250004)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow27" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=281657992]
+transform = Transform3D(-2.84124e-08, 0, 1, 0, 1, 0, -0.65, 0, -4.371139e-08, -2.0500042, 0.024999997, -16.850002)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow28" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1300606628]
+transform = Transform3D(-2.84124e-08, 0, -1, 0, 1, 0, 0.65, 0, -4.371139e-08, -12.000004, 0.024999997, -14.900001)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow29" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1408282378]
+transform = Transform3D(-1.5298985e-08, 0, -0.8, 0, 1, 0, 0.35, 0, -3.4969112e-08, -11.900002, 0.024999997, -15.500005)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow30" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1830928060]
+transform = Transform3D(-2.84124e-08, 0, 1, 0, 1, 0, -0.65, 0, -4.371139e-08, -12.000004, 0.024999997, -16.100002)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow31" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1659820085]
+transform = Transform3D(-2.84124e-08, 0, -1, 0, 1, 0, 0.65, 0, -4.371139e-08, -8.000005, 0.024999997, -18.9)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow32" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=562846471]
+transform = Transform3D(-1.5298985e-08, 0, -0.8, 0, 1, 0, 0.35, 0, -3.4969112e-08, -8.100002, 0.024999997, -19.500002)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow33" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=853468249]
+transform = Transform3D(-2.84124e-08, 0, 1, 0, 1, 0, -0.65, 0, -4.371139e-08, -8.000005, 0.024999997, -20.1)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow34" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1407398227]
+transform = Transform3D(-2.84124e-08, 0, -1, 0, 1, 0, 0.65, 0, -4.371139e-08, -7.7000055, 0.024999997, 0.7999978)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow35" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=904595261]
+transform = Transform3D(-1.5298985e-08, 0, -0.8, 0, 1, 0, 0.35, 0, -3.4969112e-08, -7.800003, 0.024999997, 0.19999552)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow36" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1162117315]
+transform = Transform3D(-2.84124e-08, 0, 1, 0, 1, 0, -0.65, 0, -4.371139e-08, -7.7000055, 0.024999997, -0.40000296)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow13" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=849692728]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 2.1499949, 0.024999997, -20)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow14" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1827116630]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 2.749998, 0.024999997, -19.9)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow15" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=433176692]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 3.3499956, 0.024999997, -20)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow55" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=622956159]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 1.3999949, 0.024999997, -1.9250021)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow56" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1220746268]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 1.9999981, 0.024999997, -1.8250017)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow57" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=336652037]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 2.5999956, 0.024999997, -1.9250021)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow58" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=432653481]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -0.60000515, 0.024999997, -1.9250023)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow59" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=558720724]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -1.4305115e-06, 0.024999997, -1.825002)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow60" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=133260268]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 0.5999961, 0.024999997, -1.9250023)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow61" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1402343382]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -2.600005, 0.024999997, -1.9250026)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow62" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=130228918]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -2.0000012, 0.024999997, -1.8250022)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow63" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1170440646]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -1.4000039, 0.024999997, -1.9250026)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow64" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1244745618]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 1.3999939, 0.024999997, 2.3749971)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow65" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=737507725]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 1.9999981, 0.024999997, 2.4749975)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow66" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1753233982]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 2.5999956, 0.024999997, 2.3749971)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow67" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=555536352]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -0.60000515, 0.024999997, 2.3749971)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow68" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=537411056]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -1.4305115e-06, 0.024999997, 2.4749975)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow69" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=2011329975]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 0.5999961, 0.024999997, 2.3749971)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow70" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=619424089]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -2.600005, 0.024999997, 2.3749971)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow71" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=94257547]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, -2.0000012, 0.024999997, 2.4749975)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow72" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=564271220]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -1.4000039, 0.024999997, 2.3749971)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow16" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=409455949]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 4.149995, 0.024999997, -19.45)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow17" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1744100030]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 4.749998, 0.024999997, -19.349998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow18" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1146040633]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 5.3499956, 0.024999997, -19.45)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow19" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1197400750]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 6.149995, 0.024999997, -20)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow20" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=794137739]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.8, 6.749998, 0.024999997, -19.899998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow21" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=600844126]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, 7.3499947, 0.024999997, -20)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow73" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=968148102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, -12, 0.024999997, -0.55000067)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow74" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1860402540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, -12, 0.024999997, 1.849999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow75" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1718028800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, -12, 0.024999997, -19.999998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow76" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1057258790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, -8, 0.024999997, -14.999999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow77" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=157155574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 2.249998, 0.024999997, -9.499999)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow78" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=57837943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 9.999996, 0.024999997, -18.55)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow79" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=982513041]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 8.549995, 0.024999997, -20)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow80" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1190398020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, -1.7500033, 0.024999997, 8.299997)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow91" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1481341012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 8.349993, 0.024999997, 11.799997)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow92" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=29401524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 9.649993, 0.024999997, 11.799997)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow93" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=701069935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 8.349993, 0.024999997, 13.399998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow94" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1568501986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 9.649992, 0.024999997, 13.399998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow95" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=899726037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 8.349993, 0.024999997, 14.999998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow96" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=989949520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 9.649992, 0.024999997, 14.999998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow97" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=450540968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 8.349993, 0.024999997, 16.599998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow98" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1860781592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 9.649992, 0.024999997, 16.599998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow99" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=459214948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 8.349993, 0.024999997, 18.174997)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow100" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=9740760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 9.649992, 0.024999997, 18.174997)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow81" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1269766111]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 1.5999961, 0.024999997, 6.8499994)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow82" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1073689681]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, -3.8146973e-06, 0.024999997, 6.8499994)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow83" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=128703928]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, -1.6000042, 0.024999997, 6.8499994)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow84" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1009818081]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 1.5999956, 0.024999997, 9.749998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow85" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=843615164]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, -3.8146973e-06, 0.024999997, 9.749998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow86" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=1842267389]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, -1.6000047, 0.024999997, 9.749998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow87" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=783429208]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 5.449995, 0.024999997, 16.374998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow88" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=877677252]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 3.8499947, 0.024999997, 16.374998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow89" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=240543714]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 5.449995, 0.024999997, 17.649998)
+mesh = SubResource("PlaneMesh_gimpu")
+
+[node name="baseshadow90" type="MeshInstance3D" parent="delete if for sure wont edit main playable floor area/baseshadows" unique_id=409472610]
+transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 3.8499947, 0.024999997, 17.649998)
+mesh = SubResource("PlaneMesh_gimpu")
+
 [node name="player_ui" parent="." unique_id=343348417 instance=ExtResource("42_yjimw")]
+
+[node name="shop_menu" parent="." unique_id=1914158305 instance=ExtResource("42_fflhb")]
+visible = false
 
 [node name="monster_manager" parent="." unique_id=1060842955 instance=ExtResource("43_lwhic")]
 
