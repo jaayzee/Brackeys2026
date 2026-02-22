@@ -14,6 +14,7 @@ ability_scenes = Array[PackedScene]([ExtResource("2_tdbhv"), ExtResource("3_yud5
 
 [node name="audio_bite" type="AudioStreamPlayer" parent="." unique_id=620712902]
 stream = ExtResource("6_k3k8o")
+pitch_scale = 0.5
 bus = &"SFX"
 
 [node name="audio_shadow" type="AudioStreamPlayer" parent="." unique_id=48064340]

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://d1txpix6nqwbc"]
+[gd_scene format=4 uid="uid://c66de75o20d2p"]
 
 [ext_resource type="PackedScene" uid="uid://bcucs32sg3yx" path="res://scenes/player.tscn" id="1_y266w"]
 [ext_resource type="Script" uid="uid://0xsqh622je8r" path="res://scripts/NPC_Manager.gd" id="2_t1ov1"]
@@ -24,7 +24,7 @@
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redbuildings.tres" id="22_8rln2"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redorangebuildings.tres" id="23_56tbk"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redshadebuilding.tres" id="24_whqyt"]
-[ext_resource type="MultiMesh" uid="uid://2x10nqjej34u" path="res://baseshadows.tres" id="25_c4ml4"]
+[ext_resource type="MultiMesh" path="res://baseshadows.tres" id="25_c4ml4"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="26_li2tr"]
 [ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="27_c5o3l"]
 [ext_resource type="ArrayMesh" uid="uid://c44grorvshtod" path="res://assets/Assets/obj/car_sedan.obj" id="28_6d1vw"]
@@ -41,8 +41,8 @@
 [ext_resource type="ArrayMesh" uid="uid://bcq716sg2vhw1" path="res://assets/Assets/obj/building_E_withoutBase.obj" id="39_uae6w"]
 [ext_resource type="ArrayMesh" uid="uid://cq1wa3hrt02er" path="res://assets/Assets/obj/building_G_withoutBase.obj" id="40_b5cam"]
 [ext_resource type="Script" uid="uid://b1unbl11g72fo" path="res://scripts/utils/multimeshcreator.gd" id="41_m8v4w"]
+[ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/ui/player_ui.tscn" id="42_yv1jv"]
 [ext_resource type="PackedScene" uid="uid://d12cfks5dnnoo" path="res://scenes/game_scenes/shop_menu.tscn" id="43_4030m"]
-[ext_resource type="AudioStream" uid="uid://coatxhwbigkqk" path="res://audio/music/alec_koff-blues-ballad-487408.mp3" id="45_62jde"]
 [ext_resource type="PackedScene" uid="uid://d3sw1gd0k6vdd" path="res://scenes/shop_interactable.tscn" id="46_evxri"]
 
 [sub_resource type="Environment" id="Environment_facfv"]
@@ -6261,9 +6261,3 @@ collision_layer = 2
 
 [node name="shop_menu" parent="shop_interactable" unique_id=1291228430 instance=ExtResource("43_4030m")]
 visible = false
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=817285498]
-stream = ExtResource("45_62jde")
-volume_db = -15.0
-autoplay = true
-bus = &"Music"

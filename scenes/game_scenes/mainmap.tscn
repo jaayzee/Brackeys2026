@@ -32,7 +32,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dgyjkmifraayv" path="res://assets/Assets/obj/car_police.obj" id="23_gioub"]
 [ext_resource type="ArrayMesh" uid="uid://8hskm8vsp1xy" path="res://assets/Assets/obj/car_taxi_wheel_rear_left.obj" id="24_vhmcb"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="25_e3ycv"]
-[ext_resource type="MultiMesh" uid="uid://cjnbevemd2acj" path="res://baseshadows.tres" id="25_gimpu"]
+[ext_resource type="MultiMesh" uid="uid://dvp0ve18upmud" path="res://baseshadows.tres" id="25_gimpu"]
 [ext_resource type="MultiMesh" uid="uid://bt5pu4tj35k28" path="res://scenes/citybuilder/multimesh/blueorangebuildings.tres" id="28_p3d12"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/blueshadebuilding.tres" id="29_otodh"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/blueyellowbuilding.tres" id="30_sd7p5"]
@@ -655,12 +655,6 @@ directional_shadow_max_distance = 50.0
 
 [node name="player" parent="." unique_id=52209652 instance=ExtResource("1_c1dn1")]
 transform = Transform3D(-0.7071069, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, -0.7071069, 0, 0.175, 0)
-
-[node name="PostProcessingQuad" parent="player/CameraPivot/Camera3D" parent_id_path=PackedInt32Array(52209652, 1734948815) index="0" unique_id=1224180313]
-visible = true
-
-[node name="CanvasLayer" parent="player/CameraPivot/Camera3D" parent_id_path=PackedInt32Array(52209652, 1734948815) index="1" unique_id=772588420]
-visible = true
 
 [node name="NPC_Manager" type="Node3D" parent="." unique_id=1363450259 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3583356, 0)
@@ -6249,6 +6243,7 @@ transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 3.8
 mesh = SubResource("PlaneMesh_gimpu")
 
 [node name="monster_manager" parent="." unique_id=1060842955 instance=ExtResource("43_lwhic")]
+monsters_captured = 0
 
 [node name="monster_spawnpoints" type="Node3D" parent="monster_manager" unique_id=1141436918]
 
@@ -6285,3 +6280,4 @@ stream = ExtResource("45_gimpu")
 volume_db = -15.0
 autoplay = true
 bus = &"Music"
+parameters/looping = true

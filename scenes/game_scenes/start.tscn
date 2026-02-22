@@ -24,7 +24,7 @@
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redbuildings.tres" id="22_tib83"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redorangebuildings.tres" id="23_u7b7d"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redshadebuilding.tres" id="24_mu116"]
-[ext_resource type="MultiMesh" path="res://baseshadows.tres" id="25_34pj6"]
+[ext_resource type="MultiMesh" uid="uid://dcks235todybx" path="res://baseshadows.tres" id="25_34pj6"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="26_2gvha"]
 [ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="27_14clb"]
 [ext_resource type="ArrayMesh" uid="uid://c44grorvshtod" path="res://assets/Assets/obj/car_sedan.obj" id="28_ypg2a"]

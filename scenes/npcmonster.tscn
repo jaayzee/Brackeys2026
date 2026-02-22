@@ -433,8 +433,9 @@ safe_margin = 0.05
 script = ExtResource("1_etuap")
 blood_trail_scene = ExtResource("2_ofdpq")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1438209376 groups=["monster"]]
+[node name="AnimatedSprite3D_poopy" type="AnimatedSprite3D" parent="." unique_id=1438209376 groups=["monster"]]
 transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0.20821357, 0)
+visible = false
 cast_shadow = 0
 billboard = 1
 double_sided = false
@@ -444,11 +445,11 @@ sprite_frames = SubResource("SpriteFrames_ofdpq")
 animation = &"sprint"
 autoplay = "idle"
 
-[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="." unique_id=1691904217]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1691904217 groups=["monster"]]
 transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0.20821357, 0)
-visible = false
 cast_shadow = 0
 billboard = 1
+double_sided = false
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = ExtResource("2_etuap")

@@ -18,6 +18,7 @@ func _ready() -> void:
 	# add ones every 2 second interval at the monsters feet AFTER he kills an NPC
 
 func _activate():
+	return
 	super()
 	monster_manager._enable_blood()
 	

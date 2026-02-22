@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_released("Ability1"):
 		abilities[0]._deactivate()
 		abilities[3]._deactivate()
-
+		audio_shadow.stop()
 		
 	if Input.is_action_just_pressed("Ability2"):
 		abilities[1]._activate()

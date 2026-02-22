@@ -94,14 +94,16 @@ func _physics_process(delta):
 		# Flip sprite based on movement
 		if input_dir.x != 0:
 			sprite.flip_h = input_dir.x < 0
-			
-		if !audio_walk_2.playing:
-			audio_walk_2.play()
+		
+		if audio_walk_2:
+			if !audio_walk_2.playing:
+				audio_walk_2.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 		velocity.z = move_toward(velocity.z, 0, friction * delta)
-		if audio_walk_2.playing:
-			audio_walk_2.stop()
+		if audio_walk_2:
+			if audio_walk_2.playing:
+				audio_walk_2.stop()
 	
 	move_and_slide()
 	
@@ -192,3 +194,6 @@ func release_attack():
 	_is_charging_attack = false
 	sprite.frame = 0
 	sprite.play("attack_p2")
+	
+func rotate_cam(delta):
+	camera_pivot.rotate_y(deg_to_rad(-rotation_speed * delta))
