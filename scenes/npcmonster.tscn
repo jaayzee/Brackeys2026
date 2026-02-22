@@ -453,7 +453,7 @@ double_sided = false
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = ExtResource("2_etuap")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1667543603]
@@ -464,7 +464,6 @@ height = 0.3
 radius = 0.05
 neighbor_distance = 0.5
 max_neighbors = 2
-debug_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1979598249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1520479, 0)

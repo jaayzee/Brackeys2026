@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 	if player_ui:
 		player_ui.get_node("timer").text = "Time: " + str(int(time_remaining))
 		
-		var p_bar = player_ui.get_node_or_null("ParanoiaBar")
+		var p_bar = player_ui.get_node_or_null("MarginContainer/ParanoiaBar")
 		if p_bar:
 			p_bar.value = current_paranoia
 			

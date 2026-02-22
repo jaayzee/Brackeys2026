@@ -30,7 +30,7 @@ var disable_ghosts := false
 # Audio
 @onready var audio_walk: AudioStreamPlayer = $audio_walk
 @onready var audio_walk_2: AudioStreamPlayer = $audio_walk2
-
+@onready var audio_bite: AudioStreamPlayer = $audio_bite
 func _ready():
 	#if kill_pointer:
 		#kill_pointer.hide()
@@ -112,13 +112,13 @@ func _physics_process(delta):
 	var jump_is_finishing = (sprite.animation == "jump" and sprite.frame < jump_total_frames - 1)
 	
 	# Animation logic
-	var attack_p2_is_finishing = false
-	if sprite.sprite_frames.has_animation("attack_p2"): 
-		var attack_total_frames = sprite.sprite_frames.get_frame_count("attack_p2")
-		attack_p2_is_finishing = (sprite.animation == "attack_p2" and sprite.frame < attack_total_frames - 1)
+	var attack_p3_is_finishing = false
+	if sprite.sprite_frames.has_animation("attack_p3"): 
+		var attack_total_frames = sprite.sprite_frames.get_frame_count("attack_p3")
+		attack_p3_is_finishing = (sprite.animation == "attack_p3" and sprite.frame < attack_total_frames - 1)
 	
 	# ghost trail
-	if is_sprinting and velocity.length() > 0 and is_on_floor() and not disable_ghosts:
+	if is_sprinting and velocity.length() > 0 and not disable_ghosts:
 		_ghost_timer -= delta
 		if _ghost_timer <= 0:
 			_spawn_ghost()
@@ -126,11 +126,16 @@ func _physics_process(delta):
 	else:
 		_ghost_timer = 0.0
 	
-	if attack_p2_is_finishing:
+	if attack_p3_is_finishing:
 		pass
 	elif _is_charging_attack:
-		if sprite.animation != "attack_p1":
+		if sprite.animation == "attack_p1":
+			var p1_frames = sprite.sprite_frames.get_frame_count("attack_p1")
+			if sprite.frame >= p1_frames - 1:
+				sprite.play("attack_p2")
+		elif sprite.animation != "attack_p2":
 			sprite.play("attack_p1")
+			
 	elif not is_on_floor():
 		sprite.play("jump")
 	elif jump_is_finishing:
@@ -193,7 +198,9 @@ func start_attack():
 func release_attack():
 	_is_charging_attack = false
 	sprite.frame = 0
-	sprite.play("attack_p2")
+	sprite.play("attack_p3")
 	
+	if audio_bite: # (Make sure this matches your actual node name!)
+		audio_bite.play()
 func rotate_cam(delta):
 	camera_pivot.rotate_y(deg_to_rad(-rotation_speed * delta))
