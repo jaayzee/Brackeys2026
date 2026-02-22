@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://boo622fpqr6sv"
+path="res://.godot/imported/vampire vibes day.wav-8538f19253cd71269a7b22b6c49862d0.sample"
+
+[deps]
+
+source_file="res://audio/music/vampire vibes day.wav"
+dest_files=["res://.godot/imported/vampire vibes day.wav-8538f19253cd71269a7b22b6c49862d0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -2,14 +2,21 @@
 
 [ext_resource type="Script" uid="uid://dvt2oywhi01c1" path="res://shop_menu.gd" id="1_v22as"]
 [ext_resource type="PackedScene" uid="uid://bj43h26em2125" path="res://scenes/ui/upgrade_cards/walk_speed_upgrade.tscn" id="2_qgdgx"]
-[ext_resource type="PackedScene" uid="uid://vmagpt02nq5v" path="res://scenes/ui/upgrade_cards/upgrade_card.tscn" id="3_mmms3"]
+[ext_resource type="PackedScene" uid="uid://dv4ag8lqivfpt" path="res://scenes/ui/upgrade_cards/paranoia_body_upgrade.tscn" id="3_ei2rb"]
+[ext_resource type="PackedScene" uid="uid://sk4f4p0qwq33" path="res://scenes/ui/upgrade_cards/paranoia_upgrade.tscn" id="4_pngj2"]
 [ext_resource type="Texture2D" uid="uid://cdbvpcky83nhq" path="res://assets/images/coin-icon-3830.png" id="5_ei2rb"]
-[ext_resource type="FontFile" uid="uid://dqgkf62xdcsti" path="res://assets/Quintessential/Quintessential-Regular.ttf" id="5_plb42"]
 [ext_resource type="Texture2D" uid="uid://djnpuxfd1d7sx" path="res://assets/images/blood_stains/blood_splatter_2.png" id="6_ei2rb"]
+[ext_resource type="FontFile" uid="uid://chcx2mvpnuen6" path="res://assets/ThaleahFat.ttf" id="6_pngj2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ei2rb"]
+font = ExtResource("6_pngj2")
+font_size = 100
+font_color = Color(1, 0.75, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pngj2"]
-font = ExtResource("5_plb42")
-font_size = 65
+font = ExtResource("6_pngj2")
+font_size = 100
+font_color = Color(0.6245067, 0.21636897, 0.22278833, 1)
 
 [node name="shop_menu" type="Control" unique_id=1914158305]
 layout_mode = 3
@@ -19,7 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v22as")
-upgrades = Array[PackedScene]([ExtResource("2_qgdgx"), ExtResource("3_mmms3"), ExtResource("3_mmms3")])
+upgrades = Array[PackedScene]([ExtResource("2_qgdgx"), ExtResource("3_ei2rb"), ExtResource("4_pngj2")])
 
 [node name="blood_splatter_1" type="TextureRect" parent="." unique_id=428471533]
 layout_mode = 1
@@ -47,6 +54,16 @@ rotation = -2.8273149
 texture = ExtResource("6_ei2rb")
 
 [node name="transparent_bg" type="Panel" parent="." unique_id=1320531805]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="transparent_bg3" type="Panel" parent="." unique_id=477736256]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,6 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="transparent_bg2" type="Panel" parent="." unique_id=1878184759]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,10 +89,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -98.0
-offset_top = 158.0
-offset_right = -14.0
-offset_bottom = 242.0
+offset_left = -106.0
+offset_top = 157.0
+offset_right = -22.0
+offset_bottom = 241.0
 grow_horizontal = 2
 texture = ExtResource("5_ei2rb")
 expand_mode = 1
@@ -90,7 +108,7 @@ offset_right = 109.0
 offset_bottom = 253.0
 grow_horizontal = 2
 text = "00"
-label_settings = SubResource("LabelSettings_pngj2")
+label_settings = SubResource("LabelSettings_ei2rb")
 
 [node name="purchase_text" type="Label" parent="." unique_id=1899670478]
 layout_mode = 1
@@ -113,10 +131,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -666.0
-offset_top = -194.0
-offset_right = 717.27466
-offset_bottom = 291.0
+offset_left = -691.6373
+offset_top = -223.0
+offset_right = 691.6373
+offset_bottom = 262.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 200
@@ -129,14 +147,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -121.0
-offset_top = -136.0
-offset_right = 227.76465
-offset_bottom = -59.0
+offset_left = -174.38232
+offset_top = -130.0
+offset_right = 174.38232
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("5_plb42")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_pngj2")
+theme_override_font_sizes/font_size = 45
 text = "Enter Night"
 
 [connection signal="pressed" from="exit" to="." method="_on_next_mission_pressed"]

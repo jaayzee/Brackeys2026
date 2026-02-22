@@ -24,7 +24,7 @@
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redbuildings.tres" id="22_8rln2"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redorangebuildings.tres" id="23_56tbk"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redshadebuilding.tres" id="24_whqyt"]
-[ext_resource type="MultiMesh" uid="uid://dhp6aw3ankuj5" path="res://baseshadows.tres" id="25_c4ml4"]
+[ext_resource type="MultiMesh" uid="uid://dns85qsbcnvid" path="res://baseshadows.tres" id="25_c4ml4"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="26_li2tr"]
 [ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="27_c5o3l"]
 [ext_resource type="ArrayMesh" uid="uid://c44grorvshtod" path="res://assets/Assets/obj/car_sedan.obj" id="28_6d1vw"]
@@ -43,6 +43,7 @@
 [ext_resource type="Script" uid="uid://b1unbl11g72fo" path="res://scripts/utils/multimeshcreator.gd" id="41_m8v4w"]
 [ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/ui/player_ui.tscn" id="42_yv1jv"]
 [ext_resource type="PackedScene" uid="uid://d12cfks5dnnoo" path="res://scenes/game_scenes/shop_menu.tscn" id="43_4030m"]
+[ext_resource type="AudioStream" uid="uid://boo622fpqr6sv" path="res://audio/music/vampire vibes day.wav" id="45_62jde"]
 [ext_resource type="PackedScene" uid="uid://d3sw1gd0k6vdd" path="res://scenes/shop_interactable.tscn" id="46_evxri"]
 
 [sub_resource type="Environment" id="Environment_facfv"]
@@ -6261,3 +6262,9 @@ collision_layer = 2
 
 [node name="shop_menu" parent="shop_interactable" unique_id=1291228430 instance=ExtResource("43_4030m")]
 visible = false
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=720536845]
+stream = ExtResource("45_62jde")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"

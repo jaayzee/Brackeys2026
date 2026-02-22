@@ -8,7 +8,7 @@ class_name Upgrade
 
 @onready var card_title = $card_title
 @onready var card_text = $card_text
-@onready var card_img = $card_img
+@onready var card_img = $card_bg/card_img
 @onready var card_cost = $card_cost
 var shop
 var is_bought = false

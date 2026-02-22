@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://sk4f4p0qwq33"]
+
+[ext_resource type="PackedScene" uid="uid://vmagpt02nq5v" path="res://scenes/ui/upgrade_cards/upgrade_card.tscn" id="1_157rh"]
+[ext_resource type="Script" uid="uid://dkropnd4lyw0r" path="res://scripts/ui/upgrades/paranoia_upgrade.gd" id="2_63c7o"]
+[ext_resource type="Texture2D" uid="uid://hucv4xli1puw" path="res://assets/images/cards-export70/cards-export20.png" id="3_u8s2x"]
+
+[node name="paranoia_upgrade" unique_id=1898589759 instance=ExtResource("1_157rh")]
+script = ExtResource("2_63c7o")
+upgrade_amount = 0.01
+up_name = "Normalia"
+up_description = "Lower the rate blood increases paranoia"
+up_cost = 35
+up_img = ExtResource("3_u8s2x")

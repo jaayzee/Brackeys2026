@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://vmagpt02nq5v" path="res://scenes/ui/upgrade_cards/upgrade_card.tscn" id="1_osvsc"]
 [ext_resource type="Script" uid="uid://crixwl5hepliu" path="res://scripts/ui/upgrades/walk_speed_upgrade.gd" id="2_aevhk"]
-[ext_resource type="Texture2D" uid="uid://cdbvpcky83nhq" path="res://assets/images/coin-icon-3830.png" id="3_bvk0g"]
+[ext_resource type="Texture2D" uid="uid://dlqtjfymdyq47" path="res://assets/images/cards-export70/cards-export1.png" id="3_bvk0g"]
 
 [node name="walk_speed" unique_id=1898589759 instance=ExtResource("1_osvsc")]
 script = ExtResource("2_aevhk")
-upgrade_amount = 2.0
-up_name = "Swift"
-up_description = "Increase walk speed by 1"
-up_cost = 10
+upgrade_amount = 0.25
+up_name = "Ascendus"
+up_description = "Increase movement speed"
+up_cost = 15
 up_img = ExtResource("3_bvk0g")

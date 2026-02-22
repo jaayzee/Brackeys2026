@@ -24,7 +24,7 @@
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redbuildings.tres" id="22_tib83"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redorangebuildings.tres" id="23_u7b7d"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redshadebuilding.tres" id="24_mu116"]
-[ext_resource type="MultiMesh" path="res://baseshadows.tres" id="25_34pj6"]
+[ext_resource type="MultiMesh" uid="uid://c6qrbfou5q388" path="res://baseshadows.tres" id="25_34pj6"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="26_2gvha"]
 [ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="27_14clb"]
 [ext_resource type="ArrayMesh" uid="uid://c44grorvshtod" path="res://assets/Assets/obj/car_sedan.obj" id="28_ypg2a"]
@@ -41,7 +41,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bcq716sg2vhw1" path="res://assets/Assets/obj/building_E_withoutBase.obj" id="39_bs8d1"]
 [ext_resource type="ArrayMesh" uid="uid://cq1wa3hrt02er" path="res://assets/Assets/obj/building_G_withoutBase.obj" id="40_05nab"]
 [ext_resource type="Script" uid="uid://b1unbl11g72fo" path="res://scripts/utils/multimeshcreator.gd" id="41_x2nl8"]
-[ext_resource type="AudioStream" uid="uid://coatxhwbigkqk" path="res://audio/music/alec_koff-blues-ballad-487408.mp3" id="43_7v2nh"]
+[ext_resource type="AudioStream" uid="uid://boo622fpqr6sv" path="res://audio/music/vampire vibes day.wav" id="43_7v2nh"]
 [ext_resource type="PackedScene" uid="uid://b2wl0mtd00qh3" path="res://scenes/ui/main_menu.tscn" id="47_t4v3x"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8xifc"]
