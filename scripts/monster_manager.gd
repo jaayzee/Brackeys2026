@@ -8,6 +8,8 @@ var monster_sprites: Array = []
 @export var monsters_captured := 0
 @export var easiness_factor := 5 # 10 is easy, 1 is hard
 
+@onready var player_ui = get_tree().get_first_node_in_group("player_ui")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_spawn_monsters()
@@ -29,6 +31,8 @@ func _spawn_monsters():
 		monster.global_transform.origin = monster_spawnpoints[rand_int].global_transform.origin
 		print("SPAWNED MONSTER")
 	
+	_update_monster_ui()
+	
 # ARCHIVED
 func _enable_blood():
 	return
@@ -47,3 +51,11 @@ func _capture_monster():
 	
 	if monsters_captured >= monster_quota:
 		GameManager.win_level()
+		
+func _update_monster_ui():
+	if not is_instance_valid(player_ui): return
+	
+	var count_label = player_ui.get_node_or_null("MonsterCountLabel")
+	if count_label:
+		#var remaining = monster_quota - monsters_captured
+		count_label.text = "x " + str(monsters.size())

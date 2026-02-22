@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 		abilities[2]._activate()
 		var ability3_label = player_ui.get_node("VBoxContainer/ability3")
 		ability3_label.modulate = Color(1, 1, 1, 1)
-		audio_stream_bite.play()
+		#audio_stream_bite.play()
 	elif Input.is_action_just_released("Ability3"):
 		abilities[2]._deactivate()
 	# Checks if NPC is near while using an ability

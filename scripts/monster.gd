@@ -101,7 +101,7 @@ func _calculate_path_velocity():
 	if current_move_speed == move_speed:
 		sprite.play("walk")
 	elif current_move_speed == run_speed:
-		sprite.play("sprint")
+		sprite.play("run")
 	else:
 		sprite.play("idle")
 
