@@ -5,7 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://q8abkpl0bc5" path="res://scenes/abilities/blood_lust.tscn" id="3_yud5s"]
 [ext_resource type="PackedScene" uid="uid://dtenhlc74gqxq" path="res://scenes/abilities/vampiric_bite.tscn" id="4_gl7ec"]
 [ext_resource type="PackedScene" uid="uid://betic7w2xgbsa" path="res://scenes/abilities/drink_blood.tscn" id="5_5ix31"]
+[ext_resource type="AudioStream" uid="uid://c53jwvlsuhuf" path="res://audio/SFX/bite.mp3" id="6_k3k8o"]
+[ext_resource type="AudioStream" uid="uid://bamvijo0nqxm4" path="res://addons/sound_manager/shadow.mp3" id="7_mqypt"]
 
 [node name="AbilityManager" type="Node3D" unique_id=1483282738]
 script = ExtResource("1_h6t5y")
 ability_scenes = Array[PackedScene]([ExtResource("2_tdbhv"), ExtResource("3_yud5s"), ExtResource("4_gl7ec"), ExtResource("5_5ix31")])
+
+[node name="audio_bite" type="AudioStreamPlayer" parent="." unique_id=620712902]
+stream = ExtResource("6_k3k8o")
+bus = &"SFX"
+
+[node name="audio_shadow" type="AudioStreamPlayer" parent="." unique_id=48064340]
+stream = ExtResource("7_mqypt")
+volume_db = -10.0
+pitch_scale = 0.8
+bus = &"SFX"
+parameters/looping = true

@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b2nal1nahp7gl" path="res://sprites/mainvampwalk-Sheet.png" id="5_smehm"]
 [ext_resource type="Texture2D" uid="uid://dn0lt88od1qpm" path="res://sprites/mainvampidle.png" id="5_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://bfkdhw52rpf24" path="res://sprites/mainvampwalkb-Sheet.png" id="6_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://dfc06pwprhcwv" path="res://audio/SFX/run.mp3" id="11_d2wvv"]
+[ext_resource type="AudioStream" uid="uid://bw483ql7afng" path="res://audio/SFX/walk_SLOWER.mp3" id="12_3v2ag"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ykrsh"]
 radius = 0.1
@@ -455,3 +457,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Indicator" type="CanvasLayer" parent="." unique_id=1570247076]
+
+[node name="audio_walk" type="AudioStreamPlayer" parent="." unique_id=2131195127]
+stream = ExtResource("11_d2wvv")
+volume_db = -10.0
+pitch_scale = 0.8
+bus = &"SFX"
+parameters/looping = true
+
+[node name="audio_walk2" type="AudioStreamPlayer" parent="." unique_id=1945092177]
+stream = ExtResource("12_3v2ag")
+volume_db = -15.0
+bus = &"SFX"
+parameters/looping = true

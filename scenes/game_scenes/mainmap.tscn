@@ -32,7 +32,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dgyjkmifraayv" path="res://assets/Assets/obj/car_police.obj" id="23_gioub"]
 [ext_resource type="ArrayMesh" uid="uid://8hskm8vsp1xy" path="res://assets/Assets/obj/car_taxi_wheel_rear_left.obj" id="24_vhmcb"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="25_e3ycv"]
-[ext_resource type="MultiMesh" uid="uid://bkcmf438a58ax" path="res://baseshadows.tres" id="25_gimpu"]
+[ext_resource type="MultiMesh" uid="uid://cjnbevemd2acj" path="res://baseshadows.tres" id="25_gimpu"]
 [ext_resource type="MultiMesh" uid="uid://bt5pu4tj35k28" path="res://scenes/citybuilder/multimesh/blueorangebuildings.tres" id="28_p3d12"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/blueshadebuilding.tres" id="29_otodh"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/blueyellowbuilding.tres" id="30_sd7p5"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://d12cfks5dnnoo" path="res://scenes/game_scenes/shop_menu.tscn" id="42_fflhb"]
 [ext_resource type="PackedScene" uid="uid://dk1rcbvu130kw" path="res://scenes/managers/monster_manager.tscn" id="43_lwhic"]
 [ext_resource type="PackedScene" uid="uid://d3sw1gd0k6vdd" path="res://scenes/shop_interactable.tscn" id="45_5a4gv"]
+[ext_resource type="AudioStream" uid="uid://coatxhwbigkqk" path="res://audio/music/alec_koff-blues-ballad-487408.mp3" id="45_gimpu"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8xifc"]
 dof_blur_far_distance = 13.0
@@ -6272,3 +6273,9 @@ collision_layer = 2
 
 [node name="shop_menu" parent="shop_interactable" unique_id=1291228430 instance=ExtResource("42_fflhb")]
 visible = false
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=416416923]
+stream = ExtResource("45_gimpu")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"

@@ -19,6 +19,10 @@ var camera_angle = 0.0
 
 @onready var col_detector = $CollisionDetector
 
+# Audio
+@onready var audio_walk: AudioStreamPlayer = $audio_walk
+@onready var audio_walk_2: AudioStreamPlayer = $audio_walk2
+
 func _ready():
 	#if kill_pointer:
 		#kill_pointer.hide()
@@ -82,9 +86,14 @@ func _physics_process(delta):
 		# Flip sprite based on movement
 		if input_dir.x != 0:
 			sprite.flip_h = input_dir.x < 0
+			
+		if !audio_walk_2.playing:
+			audio_walk_2.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 		velocity.z = move_toward(velocity.z, 0, friction * delta)
+		if audio_walk_2.playing:
+			audio_walk_2.stop()
 	
 	move_and_slide()
 	

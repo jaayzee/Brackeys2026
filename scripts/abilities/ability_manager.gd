@@ -8,12 +8,9 @@ var player
 var monster_manager
 var player_ui
 
-# Tracks ability levels & upgrades
-# do i need a shop manager
-# shop interacts with ability_manager, movement (player stats), and game_manager (increased time/paranoia)
-# upgrades can be 
-# generate from a random list of buttons each with an indivdual on press trigger?
-# each button needs to have its own image & cost
+# Audio
+@onready var audio_stream_bite = $audio_bite
+@onready var audio_shadow: AudioStreamPlayer = $audio_shadow
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -40,8 +37,10 @@ func _process(delta: float) -> void:
 		abilities[0]._activate()
 		var ability1_label = player_ui.get_node("VBoxContainer/ability1")
 		ability1_label.modulate = Color(1, 1, 1, 1)
+		audio_shadow.play()
 	elif Input.is_action_just_released("Ability1"):
 		abilities[0]._deactivate()
+		audio_shadow.stop()
 		
 	if Input.is_action_just_pressed("Ability2"):
 		abilities[1]._activate()
@@ -54,6 +53,7 @@ func _process(delta: float) -> void:
 		abilities[2]._activate()
 		var ability3_label = player_ui.get_node("VBoxContainer/ability3")
 		ability3_label.modulate = Color(1, 1, 1, 1)
+		audio_stream_bite.play()
 	elif Input.is_action_just_released("Ability3"):
 		abilities[2]._deactivate()
 		

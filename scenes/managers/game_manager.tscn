@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://h0jhpu8opw1b"]
 
 [ext_resource type="Script" uid="uid://bq657sgmbpawl" path="res://scripts/Game_Manager.gd" id="1_i04cf"]
+[ext_resource type="AudioStream" uid="uid://bpmigeeyu1mgh" path="res://audio/SFX/click (1).wav" id="2_r76ct"]
 
 [node name="Game_Manager" type="Node3D" unique_id=388885606]
 script = ExtResource("1_i04cf")
 reward_money = 50
 total_time = 180
 max_paranoia = 200
+
+[node name="audio_btn" type="AudioStreamPlayer" parent="." unique_id=1528090363]
+stream = ExtResource("2_r76ct")

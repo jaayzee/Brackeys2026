@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://jdvahl8xcsyh"]
+
+[ext_resource type="Script" uid="uid://c6vuwt0kieirp" path="res://addons/sound_manager/sound_manager.gd" id="1_rfe6j"]
+[ext_resource type="AudioStream" uid="uid://c53jwvlsuhuf" path="res://audio/SFX/bite.mp3" id="2_b57pc"]
+
+[node name="sound_manager" type="Node3D" unique_id=570568004]
+script = ExtResource("1_rfe6j")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=79970379]
+stream = ExtResource("2_b57pc")

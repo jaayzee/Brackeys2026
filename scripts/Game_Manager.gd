@@ -34,6 +34,10 @@ var player
 var screen_shader
 var monster_manager
 
+# Audio
+var audio_btn_obj = preload("res://scenes/audio_click.tscn")
+var audio_btn
+
 func _ready() -> void:
 	print("Game Manager Ready")
 	player_ui = player_ui_obj.instantiate()
@@ -49,6 +53,10 @@ func _ready() -> void:
 	player_ui.visible = false
 	lose_screen.visible = false
 	completed_level.visible = false
+	
+	# Audio
+	audio_btn = audio_btn_obj.instantiate()
+	add_child(audio_btn)
 	
 func _process(delta: float) -> void:
 	# Game Timer & Paranoia
@@ -206,3 +214,6 @@ func set_body_paranoia_rate(amount: float):
 	body_paranoia_rate = amount
 func set_blood_paranoia_rate(amount: float):
 	blood_paranoia_rate = amount
+	
+func click_sfx():
+	audio_btn.play()
