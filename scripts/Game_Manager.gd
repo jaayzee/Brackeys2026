@@ -49,7 +49,7 @@ func _ready() -> void:
 	
 	add_child(player_ui)
 	add_child(lose_screen)
-	add_child(completed_level_obj)
+	add_child(completed_level)
 	player_ui.visible = false
 	lose_screen.visible = false
 	completed_level.visible = false
@@ -120,7 +120,7 @@ func win_level():
 	completed_level.visible = true
 	#completed_level.get_node("gold").text = str(reward_money) + " Gold"
 	
-	get_tree().change_scene_to_file("res://scenes/game_scenes/completed_level_menu.tscn")
+	#get_tree().change_scene_to_file("res://scenes/game_scenes/completed_level_menu.tscn")
 
 func _check_paranoia():
 	if current_paranoia >= max_paranoia and not is_paranoia_full:
@@ -197,7 +197,7 @@ func change_scene(is_it_day: bool, rain_on: bool, is_ui_visible: bool):
 	if is_ui_visible: player_ui.visible = true
 	else: player_ui.visible = false
 	lose_screen.visible = false
-	completed_level = false
+	completed_level.visible = false
 	get_tree().paused = false
 	
 # Debugging method

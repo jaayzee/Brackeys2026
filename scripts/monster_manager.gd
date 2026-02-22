@@ -3,7 +3,7 @@ extends Node3D
 @export var monster_obj : PackedScene
 var monsters: Array = []
 var monster_sprites: Array = []
-var monster_spawnpoints: Array = []
+@onready var monster_spawnpoints = $monster_spawnpoints.get_children()
 @export var monster_quota := 0
 @export var monsters_captured := 0
 @export var easiness_factor := 5 # 10 is easy, 1 is hard
@@ -11,21 +11,16 @@ var monster_spawnpoints: Array = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_spawn_monsters()
-	
-	#if monsters.size() > 0:
-		#for monster in monsters:
-			#monster_sprites.append(monster.get_node("AnimatedSprite3D"))
-	#else:
-		#print("NO MONSTERS: ADD MONSTERS TO SCENE")
 
 func _spawn_monsters():
+	print("SPWANING")
 	if !monster_spawnpoints:
 		return
 		
 	monster_quota = GameManager.current_level / 3 + 1
 	monster_quota = ((1/easiness_factor) * (GameManager.current_level * GameManager.current_level)) + 1
-	monster_spawnpoints = $monster_spawnpoints.get_children()
-	
+	#monster_spawnpoints = $monster_spawnpoints.get_children()
+	print("SPAWNEDED")
 	for i in range(monster_quota):
 		var rand_int = randi() % monster_spawnpoints.size()
 		var monster = monster_obj.instantiate()
