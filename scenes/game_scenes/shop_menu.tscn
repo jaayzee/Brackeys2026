@@ -153,6 +153,7 @@ offset_right = 174.38232
 offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.7490196, 0, 1)
 theme_override_fonts/font = ExtResource("6_pngj2")
 theme_override_font_sizes/font_size = 45
 text = "Enter Night"

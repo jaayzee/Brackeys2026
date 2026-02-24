@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dtjytakdymaqf"]
+
+[ext_resource type="FontFile" uid="uid://chcx2mvpnuen6" path="res://assets/ThaleahFat.ttf" id="1_k8r76"]
+[ext_resource type="Script" uid="uid://dsmekbwfoc0jg" path="res://scripts/ui/tutorial.gd" id="1_xlqdv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlqdv"]
+font = ExtResource("1_k8r76")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_6e533"]
+font = ExtResource("1_k8r76")
+font_size = 130
+font_color = Color(0.8810677, 0, 0.2490561, 1)
+
+[node name="tutorial" type="Control" unique_id=853397947]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xlqdv")
+
+[node name="bg" type="Panel" parent="." unique_id=1910123400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg2" type="Panel" parent="." unique_id=845545590]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="begin" type="Button" parent="." unique_id=1112219152]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -422.0
+offset_top = -127.0
+offset_right = -73.23535
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.7490196, 0, 1)
+theme_override_fonts/font = ExtResource("1_k8r76")
+theme_override_font_sizes/font_size = 45
+text = "Begin"
+
+[node name="timer2" type="Label" parent="." unique_id=148449243]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -207.0
+offset_right = 984.0
+offset_bottom = 258.0
+grow_vertical = 2
+text = "You have 3 minutes to find a monster on the loose.
+Running out of time, or letting the city be engulfed in paranoia
+means failure.
+
+clean up the blood of bodies using: I 
+Consume bodies and monsters by using: o
+move: WASD
+Sprint: Shift
+
+blood and bodies raise paranoia
+Consume the monster(s) to win. 
+
+Be careful, it's hard to tell who's a monster now
+a days. good luck"
+label_settings = SubResource("LabelSettings_xlqdv")
+
+[node name="timer" type="Label" parent="." unique_id=576076277]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 63.0
+offset_right = 890.0
+offset_bottom = 183.0
+text = "Your objective:"
+label_settings = SubResource("LabelSettings_6e533")
+
+[connection signal="pressed" from="begin" to="." method="_on_begin_pressed"]

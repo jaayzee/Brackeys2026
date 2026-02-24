@@ -41,6 +41,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="bg2" type="Panel" parent="." unique_id=91754459]
+modulate = Color(1, 1, 1, 0.61960787)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="survived_text" type="Label" parent="." unique_id=856076519]
 layout_mode = 1
 anchors_preset = 8
@@ -49,9 +58,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -953.0
-offset_top = -294.0
+offset_top = -413.0
 offset_right = 953.0
-offset_bottom = 165.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "SURVIVED"
@@ -67,9 +76,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -953.0
-offset_top = -116.5
+offset_top = -235.5
 offset_right = 953.0
-offset_bottom = 342.5
+offset_bottom = 223.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "You live another day"

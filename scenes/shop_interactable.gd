@@ -2,6 +2,7 @@ extends Area3D
 
 var can_shop := false
 var shop
+@onready var shop_ui: Label = $shop_ui
 
 func _ready() -> void:
 	shop = get_node_or_null("shop_menu")
@@ -25,7 +26,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	print("Entered shop")
 	can_shop = true
+	shop_ui.visible = true
 
 func _on_body_exited(body: Node3D) -> void:
 	print("Exited shop")
 	can_shop = false
+	shop_ui.visible = false

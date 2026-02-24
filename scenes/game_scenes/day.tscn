@@ -24,7 +24,7 @@
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redbuildings.tres" id="22_8rln2"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redorangebuildings.tres" id="23_56tbk"]
 [ext_resource type="MultiMesh" path="res://scenes/citybuilder/multimesh/redshadebuilding.tres" id="24_whqyt"]
-[ext_resource type="MultiMesh" path="res://baseshadows.tres" id="25_c4ml4"]
+[ext_resource type="MultiMesh" uid="uid://b0cj7lxf0tbbu" path="res://baseshadows.tres" id="25_c4ml4"]
 [ext_resource type="NavigationMesh" uid="uid://da6wxyvo51oc8" path="res://navmeshes/npc_navigation_mesh.tres" id="26_li2tr"]
 [ext_resource type="ArrayMesh" uid="uid://djq00se54863" path="res://assets/Assets/obj/base.obj" id="27_c5o3l"]
 [ext_resource type="ArrayMesh" uid="uid://c44grorvshtod" path="res://assets/Assets/obj/car_sedan.obj" id="28_6d1vw"]
@@ -41,10 +41,10 @@
 [ext_resource type="ArrayMesh" uid="uid://bcq716sg2vhw1" path="res://assets/Assets/obj/building_E_withoutBase.obj" id="39_uae6w"]
 [ext_resource type="ArrayMesh" uid="uid://cq1wa3hrt02er" path="res://assets/Assets/obj/building_G_withoutBase.obj" id="40_b5cam"]
 [ext_resource type="Script" uid="uid://b1unbl11g72fo" path="res://scripts/utils/multimeshcreator.gd" id="41_m8v4w"]
-[ext_resource type="PackedScene" uid="uid://c015mybw80gst" path="res://scenes/ui/player_ui.tscn" id="42_yv1jv"]
 [ext_resource type="PackedScene" uid="uid://d12cfks5dnnoo" path="res://scenes/game_scenes/shop_menu.tscn" id="43_4030m"]
 [ext_resource type="AudioStream" uid="uid://boo622fpqr6sv" path="res://audio/music/vampire vibes day.wav" id="45_62jde"]
 [ext_resource type="PackedScene" uid="uid://d3sw1gd0k6vdd" path="res://scenes/shop_interactable.tscn" id="46_evxri"]
+[ext_resource type="ArrayMesh" uid="uid://c6saqhtu3s1lb" path="res://assets/Assets/obj/firehydrant.obj" id="46_y266w"]
 
 [sub_resource type="Environment" id="Environment_facfv"]
 background_mode = 1
@@ -643,6 +643,10 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_5a4gv")
 size = Vector2(1.2, 1.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1ov1"]
+shading_mode = 0
+albedo_color = Color(0.8288101, 2.7193873e-06, 5.7756904e-07, 1)
+
 [node name="Day" type="Node3D" unique_id=444243391]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=10510249]
@@ -652,7 +656,7 @@ camera_attributes = SubResource("CameraAttributesPractical_8xifc")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1675706312]
 transform = Transform3D(0.4539993, -0.86313725, -0.22108531, 0.37503064, -0.039964274, 0.9261506, -0.80823064, -0.5033855, 0.30555916, 0, 21.053648, 0)
 light_color = Color(0.470174, 0.5253522, 0.6120865, 1)
-light_energy = 0.7
+light_energy = 3.0
 light_volumetric_fog_energy = 0.5
 shadow_enabled = true
 shadow_reverse_cull_face = true
@@ -661,7 +665,7 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 50.0
 
 [node name="player" parent="." unique_id=52209652 instance=ExtResource("1_y266w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -1.3545104, 0.175, -1.2908101)
 
 [node name="NPC_Manager" type="Node3D" parent="." unique_id=1363450259 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3583356, 0)
@@ -6249,14 +6253,8 @@ mesh = SubResource("PlaneMesh_gimpu")
 transform = Transform3D(-4.371139e-08, 0, 1.3, 0, 1, 0, -1, 0, -5.68248e-08, 3.8499947, 0.024999997, 17.649998)
 mesh = SubResource("PlaneMesh_gimpu")
 
-[node name="player_ui" parent="." unique_id=343348417 instance=ExtResource("42_yv1jv")]
-visible = false
-
-[node name="shop_menu" parent="." unique_id=1914158305 instance=ExtResource("43_4030m")]
-visible = false
-
 [node name="shop_interactable" parent="." unique_id=1008995146 instance=ExtResource("46_evxri")]
-transform = Transform3D(0.6498771, 0, 0, 0, 1, 0, 0, 0, 1, -3.0286458, -1.7881393e-07, -2.4603887)
+transform = Transform3D(0.6498771, 0, 0, 0, 1, 0, 0, 0, 1, -3.0239232, -1.7881393e-07, -2.4603887)
 collision_layer = 2
 
 [node name="shop_menu" parent="shop_interactable" unique_id=1291228430 instance=ExtResource("43_4030m")]
@@ -6267,3 +6265,8 @@ stream = ExtResource("45_62jde")
 volume_db = -15.0
 autoplay = true
 bus = &"Music"
+
+[node name="Firehydrant" type="MeshInstance3D" parent="." unique_id=2064090860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5113707, -1.7881393e-07, -2.2224598)
+mesh = ExtResource("46_y266w")
+surface_material_override/0 = SubResource("StandardMaterial3D_t1ov1")

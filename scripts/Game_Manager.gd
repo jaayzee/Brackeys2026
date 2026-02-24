@@ -1,16 +1,18 @@
 extends Node
 
 @export var reward_money := 500 # Changes depending on level
-@export var total_time := 360
+@export var total_time := 200
 @export var max_paranoia := 100
 @export var paranoia_reset_time := 3
 
 @export var base_drain_rate := 1.0
 
 var time_remaining := 0
+var time_not_in_night := 0
 var current_paranoia : float = 0.0
 var is_paranoia_full = false
 var is_day = false
+var timer_on = false
 
 ## Levels
 var current_level := 0
@@ -27,22 +29,28 @@ var can_shop := false
 var player_ui_obj = preload("res://scenes/ui/player_ui.tscn")
 var lose_screen_obj = preload("res://scenes/ui/you_lose_screen.tscn")
 var completed_level_obj = preload("res://scenes/game_scenes/completed_level_menu.tscn")
+var tutorial_screen_obj = preload("res://scenes/ui/tutorial.tscn")
 var player_ui
 var lose_screen
 var completed_level
 var player
 var screen_shader
 var monster_manager
+var tutorial_screen
+var first_time = true
 
 # Audio
 var audio_btn_obj = preload("res://scenes/audio_click.tscn")
 var audio_btn
+
+var shop
 
 func _ready() -> void:
 	print("Game Manager Ready")
 	player_ui = player_ui_obj.instantiate()
 	lose_screen = lose_screen_obj.instantiate()
 	completed_level = completed_level_obj.instantiate()
+	tutorial_screen = tutorial_screen_obj.instantiate()
 	player = get_tree().get_first_node_in_group("player")
 	screen_shader = get_tree().get_first_node_in_group("screen_shader")
 	monster_manager = get_tree().get_first_node_in_group("monster_manager")
@@ -50,9 +58,11 @@ func _ready() -> void:
 	add_child(player_ui)
 	add_child(lose_screen)
 	add_child(completed_level)
+	add_child(tutorial_screen)
 	player_ui.visible = false
 	lose_screen.visible = false
 	completed_level.visible = false
+	tutorial_screen.visible = false
 	
 	# Audio
 	audio_btn = audio_btn_obj.instantiate()
@@ -60,11 +70,26 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	# Game Timer & Paranoia
-	time_remaining = Time.get_ticks_msec() / 1000
-	time_remaining = total_time - time_remaining
-	if time_remaining <= 0:
-		lose_game()
-	
+	if timer_on:
+		time_remaining = (Time.get_ticks_msec() / 1000) - time_not_in_night
+		time_remaining = total_time - time_remaining
+		if time_remaining <= 0:
+			lose_game()
+	else:
+		time_not_in_night = Time.get_ticks_msec() / 1000
+		
+	if is_day:
+		if shop:
+			player.point_to_corpse(shop)
+		else:
+			shop = get_tree().get_root().find_child("shop_interactable")
+			
+		if first_time:
+			tutorial_screen.visible = true
+			player_ui.visible = false
+		else:
+			tutorial_screen.visible = false
+
 	current_paranoia -= base_drain_rate * delta
 	
 	# paranoia contributors
@@ -103,10 +128,10 @@ func _process(delta: float) -> void:
 		enable_rain()
 		
 	# Lose Debug
-	if Input.is_action_just_pressed("escape"):
-		lose_game()
-	elif Input.is_action_just_pressed("ui_focus_next"): #Tab
-		win_level()
+	#if Input.is_action_just_pressed("escape"):
+		#lose_game()
+	#elif Input.is_action_just_pressed("ui_focus_next"): #Tab
+		#win_level()
 
 func add_money(amount: int):
 	money += amount
@@ -118,6 +143,7 @@ func win_level():
 	add_money(reward_money)
 	player_ui.visible = false
 	completed_level.visible = true
+	get_tree().paused = true
 	#completed_level.get_node("gold").text = str(reward_money) + " Gold"
 	
 	#get_tree().change_scene_to_file("res://scenes/game_scenes/completed_level_menu.tscn")
@@ -176,19 +202,19 @@ func enter_day():
 	get_tree().change_scene_to_file("res://scenes/game_scenes/day.tscn")
 	await get_tree().process_frame
 	print("Entered day")
-	change_scene(true, false, true)
+	change_scene(true, false, true, false)
 func enter_night():
 	get_tree().change_scene_to_file("res://scenes/game_scenes/mainmap.tscn") # CHANGE TO NIGHT
 	await get_tree().process_frame
 	print("Entered night")
-	change_scene(false, true, true)
+	change_scene(false, true, true, true)
 func enter_start():
 	get_tree().change_scene_to_file("res://scenes/game_scenes/start.tscn")
 	await get_tree().process_frame
 	print("Enter start")
-	change_scene(true, true, false)
+	change_scene(true, true, false, false)
 	
-func change_scene(is_it_day: bool, rain_on: bool, is_ui_visible: bool):
+func change_scene(is_it_day: bool, rain_on: bool, is_ui_visible: bool, is_timer_on: bool):
 	is_day = is_it_day
 	if rain_on: enable_rain()
 	else: disable_rain()
@@ -199,6 +225,8 @@ func change_scene(is_it_day: bool, rain_on: bool, is_ui_visible: bool):
 	lose_screen.visible = false
 	completed_level.visible = false
 	get_tree().paused = false
+	
+	timer_on = is_timer_on
 	
 # Debugging method
 func reattach_nodes():
